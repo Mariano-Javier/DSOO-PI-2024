@@ -16,5 +16,35 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             InitializeComponent();
         }
+
+        private void btnComprobante_Click(object sender, EventArgs e)
+        {
+            // Ocultar todas las ventanas abiertas menos la ventana emergente
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form != this) // Omitimos la ventana actual, se oculta al final
+                {
+                    form.Hide();
+                }
+            }
+
+            // Oculta la ventana actual (si es necesario)
+            this.Hide();
+
+            // Crea y muestra la ventana emergente
+            Comprobante comprobante = new Comprobante();
+            comprobante.ShowDialog(); // Mostrar como ventana modal
+
+            // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
+            foreach (Form form in Application.OpenForms)
+            {
+                form.Show();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

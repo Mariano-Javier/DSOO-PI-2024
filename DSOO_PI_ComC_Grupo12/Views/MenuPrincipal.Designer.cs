@@ -53,9 +53,9 @@
             this.lblNombreAdmin = new System.Windows.Forms.Label();
             this.picUserMain = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.picLogoMain = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panelPagosSM.SuspendLayout();
@@ -133,6 +133,7 @@
             this.btnNoSocios.TabIndex = 1;
             this.btnNoSocios.Text = "NO SOCIOS";
             this.btnNoSocios.UseVisualStyleBackColor = true;
+            this.btnNoSocios.Click += new System.EventHandler(this.btnNoSocios_Click);
             // 
             // btnCuotaSocios
             // 
@@ -370,6 +371,17 @@
             this.panelContenedor.Size = new System.Drawing.Size(735, 650);
             this.panelContenedor.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(234, 600);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Seleccione una opción para comenzar";
+            // 
             // picLogoMain
             // 
             this.picLogoMain.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.logoMainMenuv2;
@@ -392,17 +404,6 @@
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(234, 600);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Seleccione una opción para comenzar";
             // 
             // MenuPrincipal
             // 

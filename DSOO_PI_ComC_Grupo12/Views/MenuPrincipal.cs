@@ -92,5 +92,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
             IRegistrar formulario = new RegistrarCliente();
             FormHelper.OpenChildFormInPanel((Form)formulario, panelContenedor);
         }
+
+        private void btnNoSocios_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new RegistrarPago(), panelContenedor);
+        }
     }
 }
