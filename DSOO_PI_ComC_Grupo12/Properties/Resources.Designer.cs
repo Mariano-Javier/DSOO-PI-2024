@@ -163,6 +163,16 @@ namespace DSOO_PI_ComC_Grupo12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logoMainBlue140 {
+            get {
+                object obj = ResourceManager.GetObject("logoMainBlue140", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoMainMenuv2 {
             get {
                 object obj = ResourceManager.GetObject("logoMainMenuv2", resourceCulture);
@@ -186,6 +196,16 @@ namespace DSOO_PI_ComC_Grupo12.Properties {
         internal static System.Drawing.Bitmap LogoMainV4 {
             get {
                 object obj = ResourceManager.GetObject("LogoMainV4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoMainvBlue150 {
+            get {
+                object obj = ResourceManager.GetObject("logoMainvBlue150", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

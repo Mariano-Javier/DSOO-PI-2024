@@ -145,6 +145,9 @@
   <data name="logoMain500" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoMain500.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logoMainBlue140" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoMainBlue140.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logoMainMenuv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoMainMenuv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,6 +156,9 @@
   </data>
   <data name="LogoMainV4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoMainV4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoMainvBlue150" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoMainvBlue150.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logoMovie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoMovie.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
