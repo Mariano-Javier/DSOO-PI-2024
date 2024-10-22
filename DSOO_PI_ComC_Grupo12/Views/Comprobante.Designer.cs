@@ -39,11 +39,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblFechaPago = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblFormaPago = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panelDNI = new System.Windows.Forms.Panel();
+            this.lblDNI = new System.Windows.Forms.Label();
             this.panelNombreApellido = new System.Windows.Forms.Panel();
+            this.lblNombreApellido = new System.Windows.Forms.Label();
             this.lblTituloDNI = new System.Windows.Forms.Label();
             this.lblTituloNombre = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,16 +57,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblNombreApellido = new System.Windows.Forms.Label();
-            this.lblDNI = new System.Windows.Forms.Label();
-            this.lblFechaPago = new System.Windows.Forms.Label();
-            this.lblFormaPago = new System.Windows.Forms.Label();
+            this.panelTotal = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panelComprobante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelDNI.SuspendLayout();
             this.panelNombreApellido.SuspendLayout();
+            this.panelTotal.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -97,6 +100,7 @@
             // panelComprobante
             // 
             this.panelComprobante.BackColor = System.Drawing.Color.White;
+            this.panelComprobante.Controls.Add(this.panelTotal);
             this.panelComprobante.Controls.Add(this.label11);
             this.panelComprobante.Controls.Add(this.label10);
             this.panelComprobante.Controls.Add(this.label9);
@@ -196,6 +200,16 @@
             this.panel2.Size = new System.Drawing.Size(163, 30);
             this.panel2.TabIndex = 99;
             // 
+            // lblFechaPago
+            // 
+            this.lblFechaPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaPago.Location = new System.Drawing.Point(0, 0);
+            this.lblFechaPago.Name = "lblFechaPago";
+            this.lblFechaPago.Size = new System.Drawing.Size(163, 30);
+            this.lblFechaPago.TabIndex = 0;
+            this.lblFechaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -205,6 +219,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(163, 30);
             this.panel1.TabIndex = 99;
+            // 
+            // lblFormaPago
+            // 
+            this.lblFormaPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFormaPago.Location = new System.Drawing.Point(0, 0);
+            this.lblFormaPago.Name = "lblFormaPago";
+            this.lblFormaPago.Size = new System.Drawing.Size(163, 30);
+            this.lblFormaPago.TabIndex = 0;
+            this.lblFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
@@ -239,6 +262,17 @@
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 97;
             // 
+            // lblDNI
+            // 
+            this.lblDNI.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDNI.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDNI.Location = new System.Drawing.Point(0, 0);
+            this.lblDNI.Name = "lblDNI";
+            this.lblDNI.Size = new System.Drawing.Size(140, 30);
+            this.lblDNI.TabIndex = 0;
+            this.lblDNI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panelNombreApellido
             // 
             this.panelNombreApellido.BackColor = System.Drawing.Color.White;
@@ -247,6 +281,17 @@
             this.panelNombreApellido.Name = "panelNombreApellido";
             this.panelNombreApellido.Size = new System.Drawing.Size(200, 30);
             this.panelNombreApellido.TabIndex = 96;
+            // 
+            // lblNombreApellido
+            // 
+            this.lblNombreApellido.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblNombreApellido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblNombreApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreApellido.Location = new System.Drawing.Point(0, 0);
+            this.lblNombreApellido.Name = "lblNombreApellido";
+            this.lblNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.lblNombreApellido.TabIndex = 0;
+            this.lblNombreApellido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTituloDNI
             // 
@@ -353,46 +398,23 @@
             this.label1.TabIndex = 92;
             this.label1.Text = "__________________________________________________________";
             // 
-            // lblNombreApellido
+            // panelTotal
             // 
-            this.lblNombreApellido.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNombreApellido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNombreApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreApellido.Location = new System.Drawing.Point(0, 0);
-            this.lblNombreApellido.Name = "lblNombreApellido";
-            this.lblNombreApellido.Size = new System.Drawing.Size(200, 30);
-            this.lblNombreApellido.TabIndex = 0;
-            this.lblNombreApellido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelTotal.Controls.Add(this.lblTotal);
+            this.panelTotal.Location = new System.Drawing.Point(424, 538);
+            this.panelTotal.Name = "panelTotal";
+            this.panelTotal.Size = new System.Drawing.Size(163, 30);
+            this.panelTotal.TabIndex = 102;
             // 
-            // lblDNI
+            // lblTotal
             // 
-            this.lblDNI.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDNI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDNI.Location = new System.Drawing.Point(0, 0);
-            this.lblDNI.Name = "lblDNI";
-            this.lblDNI.Size = new System.Drawing.Size(140, 30);
-            this.lblDNI.TabIndex = 0;
-            this.lblDNI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblFechaPago
-            // 
-            this.lblFechaPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(0, 0);
-            this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(163, 30);
-            this.lblFechaPago.TabIndex = 0;
-            this.lblFechaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblFormaPago
-            // 
-            this.lblFormaPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFormaPago.Location = new System.Drawing.Point(0, 0);
-            this.lblFormaPago.Name = "lblFormaPago";
-            this.lblFormaPago.Size = new System.Drawing.Size(163, 30);
-            this.lblFormaPago.TabIndex = 0;
-            this.lblFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(0, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(163, 30);
+            this.lblTotal.TabIndex = 0;
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Comprobante
             // 
@@ -414,6 +436,7 @@
             this.panel1.ResumeLayout(false);
             this.panelDNI.ResumeLayout(false);
             this.panelNombreApellido.ResumeLayout(false);
+            this.panelTotal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -448,5 +471,7 @@
         private System.Windows.Forms.Label lblDNI;
         private System.Windows.Forms.Label lblFechaPago;
         private System.Windows.Forms.Label lblFormaPago;
+        private System.Windows.Forms.Panel panelTotal;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

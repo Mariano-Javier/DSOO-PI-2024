@@ -108,6 +108,7 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ActividadRepository.cs" />
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />

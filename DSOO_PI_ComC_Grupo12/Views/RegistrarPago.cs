@@ -16,9 +16,17 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         public Cliente? ClienteSeleccionado { get; set; }
         public string FormaPago = "Efectivo";
+        private List<Form> ventanasAbiertas;
+        public List<string> actividadesSeleccionadas;
+        private ActividadRepository actividadRepository;
+        public Decimal TotalPagar;
         public RegistrarPago()
         {
             InitializeComponent();
+            ventanasAbiertas = new List<Form>();
+            actividadesSeleccionadas = new List<string>();
+            actividadRepository = new ActividadRepository();
+            TotalPagar = 0;
         }
 
         private void ResetearRadioButtons()
@@ -32,14 +40,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Verificar si se ha seleccionado un cliente
             if (ClienteSeleccionado != null)
             {
-                // Obtener la fecha seleccionada en el DateTimePicker
-                DateTime fechaPago = dateFechaPago.Value;
-
-                // Ocultar todas las ventanas abiertas menos la ventana emergente
+                // Guardar las ventanas abiertas en la lista, excluyendo la ventana de Login
+                ventanasAbiertas.Clear();
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form != this) // Omitimos la ventana actual, se oculta al final
+                    if (form != this && !(form is Login)) // Omitimos la ventana actual y la ventana de Login
                     {
+                        ventanasAbiertas.Add(form);
                         form.Hide();
                     }
                 }
@@ -47,12 +54,16 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 // Oculta la ventana actual (si es necesario)
                 this.Hide();
 
+                // Obtener la fecha seleccionada en el DateTimePicker
+                DateTime fechaPago = dateFechaPago.Value;
+
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
-                foreach (Form form in Application.OpenForms)
+                this.Show(); 
+                foreach (Form form in ventanasAbiertas)
                 {
                     form.Show();
                 }
@@ -81,7 +92,30 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //
+            // Obtener las actividades seleccionadas
+            ObtenerCheckBoxesSeleccionados();
+
+            // Verificar si hay actividades seleccionadas
+            if (actividadesSeleccionadas.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione al menos una actividad.");
+                return;
+            }
+
+            // Obtener los precios de las actividades seleccionadas
+            Dictionary<string, decimal> preciosActividades = actividadRepository.ObtenerPreciosActividades(actividadesSeleccionadas);
+
+            // Calcular el total
+            TotalPagar = 0;
+            foreach (var actividad in actividadesSeleccionadas)
+            {
+                if (preciosActividades.TryGetValue(actividad, out decimal precio))
+                {
+                    TotalPagar += precio;
+                }
+            }
+            // Mostrar el total
+            lblTotalPagar.Text = TotalPagar.ToString();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -147,6 +181,35 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 FormaPago = "Tarjeta en 6 cuotas";
             }
+        }
+
+        private void ObtenerCheckBoxesSeleccionados()
+        {
+            actividadesSeleccionadas.Clear();
+            // Diccionario para mapear los checkboxes con sus valores string
+            Dictionary<CheckBox, string> actividades = new Dictionary<CheckBox, string>()
+        {
+            { checkBoxFutbol, "Fútbol" },
+            { checkBoxVoley, "Voley" },
+            { checkBoxNatacion, "Natación" },
+            { checkBoxGimnasio, "Gimnasio" },
+            { checkBoxPilates, "Pilates" },
+            { checkBoxFutsal, "Futsal" },
+            { checkBoxBasket, "Basket" },
+            { checkBoxTenis, "Tenis" },
+            { checkBoxAcquagym, "Acquagym" },
+            { checkBoxNutricion, "Nutrición" }
+        };
+
+            // Iterar a través del diccionario para ver qué checkboxes están seleccionados
+            foreach (var actividad in actividades)
+            {
+                if (actividad.Key.Checked) // Si el checkbox está marcado
+                {
+                    actividadesSeleccionadas.Add(actividad.Value); // Añadir la actividad seleccionada a la lista
+                }
+            }
+
         }
     }
 }

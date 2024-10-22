@@ -15,7 +15,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         private Cliente? Cliente { get; set; }
         private DateTime FechaPago { get; set; }
-        public Comprobante(Cliente cliente, DateTime fechaPago,String FormaPago)
+        public Comprobante(Cliente cliente, DateTime fechaPago,String FormaPago, Decimal TotalPagar)
         {
             InitializeComponent();
             Cliente = cliente;
@@ -24,6 +24,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDNI.Text = cliente.Dni;
             lblFechaPago.Text = fechaPago.ToString("dd/MM/yyyy");
             lblFormaPago.Text = FormaPago;
+            lblTotal.Text = TotalPagar.ToString();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -41,13 +41,13 @@
             this.panelNombreApellido = new System.Windows.Forms.Panel();
             this.lblNombreApellido = new System.Windows.Forms.Label();
             this.groupActividades = new System.Windows.Forms.GroupBox();
-            this.checkBoxAquagym = new System.Windows.Forms.CheckBox();
+            this.checkBoxAcquagym = new System.Windows.Forms.CheckBox();
             this.checkBoxNutricion = new System.Windows.Forms.CheckBox();
             this.checkBoxNatacion = new System.Windows.Forms.CheckBox();
             this.checkBoxBasket = new System.Windows.Forms.CheckBox();
             this.checkBoxFutsal = new System.Windows.Forms.CheckBox();
             this.checkBoxPilates = new System.Windows.Forms.CheckBox();
-            this.checkBoxGimnasion = new System.Windows.Forms.CheckBox();
+            this.checkBoxGimnasio = new System.Windows.Forms.CheckBox();
             this.checkBoxTenis = new System.Windows.Forms.CheckBox();
             this.checkBoxVoley = new System.Windows.Forms.CheckBox();
             this.checkBoxFutbol = new System.Windows.Forms.CheckBox();
@@ -218,13 +218,13 @@
             // 
             // groupActividades
             // 
-            this.groupActividades.Controls.Add(this.checkBoxAquagym);
+            this.groupActividades.Controls.Add(this.checkBoxAcquagym);
             this.groupActividades.Controls.Add(this.checkBoxNutricion);
             this.groupActividades.Controls.Add(this.checkBoxNatacion);
             this.groupActividades.Controls.Add(this.checkBoxBasket);
             this.groupActividades.Controls.Add(this.checkBoxFutsal);
             this.groupActividades.Controls.Add(this.checkBoxPilates);
-            this.groupActividades.Controls.Add(this.checkBoxGimnasion);
+            this.groupActividades.Controls.Add(this.checkBoxGimnasio);
             this.groupActividades.Controls.Add(this.checkBoxTenis);
             this.groupActividades.Controls.Add(this.checkBoxVoley);
             this.groupActividades.Controls.Add(this.checkBoxFutbol);
@@ -236,15 +236,15 @@
             this.groupActividades.TabStop = false;
             this.groupActividades.Text = "Actividades";
             // 
-            // checkBoxAquagym
+            // checkBoxAcquagym
             // 
-            this.checkBoxAquagym.AutoSize = true;
-            this.checkBoxAquagym.Location = new System.Drawing.Point(122, 59);
-            this.checkBoxAquagym.Name = "checkBoxAquagym";
-            this.checkBoxAquagym.Size = new System.Drawing.Size(98, 21);
-            this.checkBoxAquagym.TabIndex = 9;
-            this.checkBoxAquagym.Text = "Acquagym";
-            this.checkBoxAquagym.UseVisualStyleBackColor = true;
+            this.checkBoxAcquagym.AutoSize = true;
+            this.checkBoxAcquagym.Location = new System.Drawing.Point(122, 59);
+            this.checkBoxAcquagym.Name = "checkBoxAcquagym";
+            this.checkBoxAcquagym.Size = new System.Drawing.Size(98, 21);
+            this.checkBoxAcquagym.TabIndex = 9;
+            this.checkBoxAcquagym.Text = "Acquagym";
+            this.checkBoxAcquagym.UseVisualStyleBackColor = true;
             // 
             // checkBoxNutricion
             // 
@@ -296,15 +296,15 @@
             this.checkBoxPilates.Text = "Pilates";
             this.checkBoxPilates.UseVisualStyleBackColor = true;
             // 
-            // checkBoxGimnasion
+            // checkBoxGimnasio
             // 
-            this.checkBoxGimnasion.AutoSize = true;
-            this.checkBoxGimnasion.Location = new System.Drawing.Point(324, 32);
-            this.checkBoxGimnasion.Name = "checkBoxGimnasion";
-            this.checkBoxGimnasion.Size = new System.Drawing.Size(88, 21);
-            this.checkBoxGimnasion.TabIndex = 3;
-            this.checkBoxGimnasion.Text = "Gimnasio";
-            this.checkBoxGimnasion.UseVisualStyleBackColor = true;
+            this.checkBoxGimnasio.AutoSize = true;
+            this.checkBoxGimnasio.Location = new System.Drawing.Point(324, 32);
+            this.checkBoxGimnasio.Name = "checkBoxGimnasio";
+            this.checkBoxGimnasio.Size = new System.Drawing.Size(88, 21);
+            this.checkBoxGimnasio.TabIndex = 3;
+            this.checkBoxGimnasio.Text = "Gimnasio";
+            this.checkBoxGimnasio.UseVisualStyleBackColor = true;
             // 
             // checkBoxTenis
             // 
@@ -642,13 +642,13 @@
         private System.Windows.Forms.Panel panelTotal;
         private System.Windows.Forms.Label lblTituloTotal;
         private System.Windows.Forms.CheckBox checkBoxFutbol;
-        private System.Windows.Forms.CheckBox checkBoxAquagym;
+        private System.Windows.Forms.CheckBox checkBoxAcquagym;
         private System.Windows.Forms.CheckBox checkBoxNutricion;
         private System.Windows.Forms.CheckBox checkBoxNatacion;
         private System.Windows.Forms.CheckBox checkBoxBasket;
         private System.Windows.Forms.CheckBox checkBoxFutsal;
         private System.Windows.Forms.CheckBox checkBoxPilates;
-        private System.Windows.Forms.CheckBox checkBoxGimnasion;
+        private System.Windows.Forms.CheckBox checkBoxGimnasio;
         private System.Windows.Forms.CheckBox checkBoxTenis;
         private System.Windows.Forms.CheckBox checkBoxVoley;
         private System.Windows.Forms.Label label5;
