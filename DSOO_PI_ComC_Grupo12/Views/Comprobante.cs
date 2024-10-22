@@ -15,7 +15,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         private Cliente? Cliente { get; set; }
         private DateTime FechaPago { get; set; }
-        public Comprobante(Cliente cliente, DateTime fechaPago,String FormaPago, Decimal TotalPagar)
+        public Comprobante(Cliente cliente, DateTime fechaPago,String FormaPago, Decimal TotalPagar, Dictionary<String,decimal> preciosActividades)
         {
             InitializeComponent();
             Cliente = cliente;
@@ -24,12 +24,28 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDNI.Text = cliente.Dni;
             lblFechaPago.Text = fechaPago.ToString("dd/MM/yyyy");
             lblFormaPago.Text = FormaPago;
-            lblTotal.Text = TotalPagar.ToString();
+            lblTotal.Text = TotalPagar.ToString()+" $";
+            dataGridResumen.DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridResumen.DefaultCellStyle.SelectionForeColor = Color.Black;
+            CargarDataGridView(preciosActividades);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        //modificar: poner en una clase estatica:-> RegistrarPago y Comprobante
+        private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
+        {
+            // Limpiar el DataGridView antes de cargar nuevos datos
+            dataGridResumen.Rows.Clear();
+
+            // Iterar a través del diccionario y agregar filas al DataGridView
+            foreach (var actividad in preciosActividades)
+            {
+                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+            }
         }
     }
 }

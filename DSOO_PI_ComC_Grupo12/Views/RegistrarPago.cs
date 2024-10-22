@@ -21,6 +21,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private ActividadRepository actividadRepository;
         public Decimal TotalPagar;
         private bool EstadoPagado;
+        Dictionary<string, decimal> preciosActividades;
         public RegistrarPago()
         {
             InitializeComponent();
@@ -92,11 +93,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 DateTime fechaPago = dateFechaPago.Value;
 
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
-                this.Show(); 
+                this.Show();
                 foreach (Form form in ventanasAbiertas)
                 {
                     form.Show();
@@ -128,6 +129,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             ClienteSeleccionado = null;
             dataGridResumen.Rows.Clear();
             EstadoPagado = false;
+            preciosActividades.Clear();
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
@@ -148,7 +150,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
 
             // Obtener los precios de las actividades seleccionadas
-            Dictionary<string, decimal> preciosActividades = actividadRepository.ObtenerPreciosActividades(actividadesSeleccionadas);
+            preciosActividades = actividadRepository.ObtenerPreciosActividades(actividadesSeleccionadas);
 
             // Calcular el total
             TotalPagar = 0;
@@ -160,11 +162,22 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 }
             }
 
+            var (totalConDescuento, montoDescuento) = TotalDescuento(TotalPagar, FormaPago);
+
             // Mostrar el total
-            lblTotalPagar.Text = TotalPagar.ToString();
+            TotalPagar = totalConDescuento;
+            lblTotalPagar.Text = TotalPagar.ToString()+" $";
 
             // Cargar los datos en el DataGridView
+            
+
+            if (preciosActividades.Count > 0)
+            {
+                preciosActividades.Add("Descuento:", -montoDescuento);
+            }
             CargarDataGridView(preciosActividades);
+
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -231,6 +244,28 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 FormaPago = "Tarjeta en 6 cuotas";
             }
         }
+
+        private (decimal TotalConDescuento, decimal MontoDescuento) TotalDescuento(decimal Total, string FormaPago)
+        {
+            decimal TotalConDescuento = Total;
+            decimal MontoDescuento = 0m;
+
+            if (FormaPago == "Tarjeta en 3 cuotas")
+            {
+                MontoDescuento = Math.Round(Total * 0.10m, 2);  // 10% de descuento, redondeado a 2 decimales
+                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
+            }
+            else if (FormaPago == "Tarjeta en 6 cuotas")
+            {
+                MontoDescuento = Math.Round(Total * 0.15m, 2);  // 15% de descuento, redondeado a 2 decimales
+                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
+            }
+            // Si es en efectivo o cualquier otra forma de pago, no hay descuento
+
+            return (TotalConDescuento, MontoDescuento);
+        }
+
+
 
         private void ObtenerCheckBoxesSeleccionados()
         {
