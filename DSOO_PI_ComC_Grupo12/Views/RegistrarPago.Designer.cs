@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupOpcionesPago = new System.Windows.Forms.GroupBox();
@@ -71,6 +73,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.dataGridResumen = new System.Windows.Forms.DataGridView();
+            this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -78,6 +83,7 @@
             this.groupActividades.SuspendLayout();
             this.panelTotal.SuspendLayout();
             this.panelBuscarCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -575,11 +581,59 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // dataGridResumen
+            // 
+            this.dataGridResumen.AllowUserToAddRows = false;
+            this.dataGridResumen.AllowUserToDeleteRows = false;
+            this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Actividad,
+            this.Precio});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
+            this.dataGridResumen.Name = "dataGridResumen";
+            this.dataGridResumen.ReadOnly = true;
+            this.dataGridResumen.RowHeadersVisible = false;
+            this.dataGridResumen.Size = new System.Drawing.Size(422, 150);
+            this.dataGridResumen.TabIndex = 94;
+            // 
+            // Actividad
+            // 
+            this.Actividad.HeaderText = "Actividad";
+            this.Actividad.Name = "Actividad";
+            this.Actividad.ReadOnly = true;
+            this.Actividad.Width = 300;
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
             // RegistrarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.dataGridResumen);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panelDNI);
@@ -614,6 +668,7 @@
             this.panelTotal.ResumeLayout(false);
             this.panelBuscarCliente.ResumeLayout(false);
             this.panelBuscarCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,5 +719,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.DataGridView dataGridResumen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
     }
 }

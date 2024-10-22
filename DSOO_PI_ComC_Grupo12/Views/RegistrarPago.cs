@@ -20,6 +20,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public List<string> actividadesSeleccionadas;
         private ActividadRepository actividadRepository;
         public Decimal TotalPagar;
+        private bool EstadoPagado;
         public RegistrarPago()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             actividadesSeleccionadas = new List<string>();
             actividadRepository = new ActividadRepository();
             TotalPagar = 0;
+            EstadoPagado = false;
         }
 
         private void ResetearRadioButtons()
@@ -35,8 +37,40 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Restablecer el valor de la variable  a su valor original
             FormaPago = "Efectivo";
         }
+
+        private void ResetearCheckBox()
+        {
+            checkBoxFutbol.CheckState = CheckState.Unchecked;
+            checkBoxAcquagym.CheckState = CheckState.Unchecked;
+            checkBoxBasket.CheckState = CheckState.Unchecked;
+            checkBoxFutsal.CheckState = CheckState.Unchecked;
+            checkBoxGimnasio.CheckState = CheckState.Unchecked;
+            checkBoxNatacion.CheckState = CheckState.Unchecked;
+            checkBoxNutricion.CheckState = CheckState.Unchecked;
+            checkBoxPilates.CheckState = CheckState.Unchecked;
+            checkBoxTenis.CheckState = CheckState.Unchecked;
+            checkBoxVoley.CheckState = CheckState.Unchecked;
+        }
+
+        private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
+        {
+            // Limpiar el DataGridView antes de cargar nuevos datos
+            dataGridResumen.Rows.Clear();
+
+            // Iterar a través del diccionario y agregar filas al DataGridView
+            foreach (var actividad in preciosActividades)
+            {
+                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+            }
+        }
+
         private void btnComprobante_Click(object sender, EventArgs e)
         {
+            if (EstadoPagado == false)
+            {
+                MessageBox.Show("Debe realizar el pago antes de poder emitir el comprobante.");
+                return;
+            }
             // Verificar si se ha seleccionado un cliente
             if (ClienteSeleccionado != null)
             {
@@ -82,12 +116,23 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-
+            txtClienteID.Text = string.Empty;
+            lblNombreApellido.Text = string.Empty;
+            lblDNI.Text = string.Empty;
+            dateFechaPago.Value = DateTime.Now;
+            lblTotalPagar.Text = string.Empty;
+            ResetearRadioButtons();
+            ResetearCheckBox();
+            actividadesSeleccionadas.Clear();
+            TotalPagar = 0;
+            ClienteSeleccionado = null;
+            dataGridResumen.Rows.Clear();
+            EstadoPagado = false;
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            //dateFechaPago
+            EstadoPagado = true;
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -114,8 +159,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     TotalPagar += precio;
                 }
             }
+
             // Mostrar el total
             lblTotalPagar.Text = TotalPagar.ToString();
+
+            // Cargar los datos en el DataGridView
+            CargarDataGridView(preciosActividades);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
