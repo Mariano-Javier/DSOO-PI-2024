@@ -130,6 +130,7 @@
             this.radioCuota6.TabStop = true;
             this.radioCuota6.Text = "Tarjeta 6 Cuotas";
             this.radioCuota6.UseVisualStyleBackColor = true;
+            this.radioCuota6.CheckedChanged += new System.EventHandler(this.radioCuota6_CheckedChanged);
             // 
             // radioEfectivo
             // 
@@ -143,6 +144,7 @@
             this.radioEfectivo.TabStop = true;
             this.radioEfectivo.Text = "Efectivo";
             this.radioEfectivo.UseVisualStyleBackColor = false;
+            this.radioEfectivo.CheckedChanged += new System.EventHandler(this.radioEfectivo_CheckedChanged);
             // 
             // radioCuota3
             // 
@@ -155,6 +157,7 @@
             this.radioCuota3.TabStop = true;
             this.radioCuota3.Text = "Tarjeta 3 Cuotas";
             this.radioCuota3.UseVisualStyleBackColor = true;
+            this.radioCuota3.CheckedChanged += new System.EventHandler(this.radioCuota3_CheckedChanged);
             // 
             // panel6
             // 

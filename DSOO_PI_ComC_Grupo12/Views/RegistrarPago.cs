@@ -15,16 +15,26 @@ namespace DSOO_PI_ComC_Grupo12.Views
     public partial class RegistrarPago : Form
     {
         public Cliente? ClienteSeleccionado { get; set; }
+        public string FormaPago = "Efectivo";
         public RegistrarPago()
         {
             InitializeComponent();
         }
 
+        private void ResetearRadioButtons()
+        {
+            radioEfectivo.Checked = true;
+            // Restablecer el valor de la variable  a su valor original
+            FormaPago = "Efectivo";
+        }
         private void btnComprobante_Click(object sender, EventArgs e)
         {
             // Verificar si se ha seleccionado un cliente
             if (ClienteSeleccionado != null)
             {
+                // Obtener la fecha seleccionada en el DateTimePicker
+                DateTime fechaPago = dateFechaPago.Value;
+
                 // Ocultar todas las ventanas abiertas menos la ventana emergente
                 foreach (Form form in Application.OpenForms)
                 {
@@ -38,7 +48,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 this.Hide();
 
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
@@ -113,6 +123,30 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Por favor, ingrese un ID de cliente válido.");
             }
 
+        }
+
+        private void radioEfectivo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioEfectivo.Checked)
+            {
+                FormaPago = "Efectivo";
+            }
+        }
+
+        private void radioCuota3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCuota3.Checked)
+            {
+                FormaPago = "Tarjeta en 3 cuotas";
+            }
+        }
+
+        private void radioCuota6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioCuota6.Checked)
+            {
+                FormaPago = "Tarjeta en 6 cuotas";
+            }
         }
     }
 }

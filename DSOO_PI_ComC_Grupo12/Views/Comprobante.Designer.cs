@@ -55,8 +55,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreApellido = new System.Windows.Forms.Label();
             this.lblDNI = new System.Windows.Forms.Label();
+            this.lblFechaPago = new System.Windows.Forms.Label();
+            this.lblFormaPago = new System.Windows.Forms.Label();
             this.panelComprobante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelDNI.SuspendLayout();
             this.panelNombreApellido.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +189,8 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.lblFechaPago);
             this.panel2.Location = new System.Drawing.Point(424, 73);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(163, 30);
@@ -194,6 +199,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.lblFormaPago);
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(424, 230);
             this.panel1.Name = "panel1";
@@ -369,6 +375,25 @@
             this.lblDNI.TabIndex = 0;
             this.lblDNI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblFechaPago
+            // 
+            this.lblFechaPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaPago.Location = new System.Drawing.Point(0, 0);
+            this.lblFechaPago.Name = "lblFechaPago";
+            this.lblFechaPago.Size = new System.Drawing.Size(163, 30);
+            this.lblFechaPago.TabIndex = 0;
+            this.lblFechaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblFormaPago
+            // 
+            this.lblFormaPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFormaPago.Location = new System.Drawing.Point(0, 0);
+            this.lblFormaPago.Name = "lblFormaPago";
+            this.lblFormaPago.Size = new System.Drawing.Size(163, 30);
+            this.lblFormaPago.TabIndex = 0;
+            this.lblFormaPago.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Comprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +410,8 @@
             this.panelComprobante.ResumeLayout(false);
             this.panelComprobante.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panelDNI.ResumeLayout(false);
             this.panelNombreApellido.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -419,5 +446,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblNombreApellido;
         private System.Windows.Forms.Label lblDNI;
+        private System.Windows.Forms.Label lblFechaPago;
+        private System.Windows.Forms.Label lblFormaPago;
     }
 }
