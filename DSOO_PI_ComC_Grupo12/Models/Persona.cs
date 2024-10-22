@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSOO_PI_ComC_Grupo12.Models
 {
-    internal class Persona
+    public class Persona
     {
         // Atributos de la clase
         public int Id { get; set; }

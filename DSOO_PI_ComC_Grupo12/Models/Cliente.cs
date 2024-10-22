@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSOO_PI_ComC_Grupo12.Models
 {
-    internal class Cliente : Persona
+    public class Cliente : Persona
     {
         // Atributo adicional
         public bool EsSocio { get; set; }

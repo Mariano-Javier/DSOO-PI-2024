@@ -104,6 +104,7 @@
             this.btnCalcular.TabIndex = 64;
             this.btnCalcular.Text = "CALCULAR";
             this.btnCalcular.UseVisualStyleBackColor = false;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // groupOpcionesPago
             // 
@@ -378,6 +379,7 @@
             this.btnPagar.TabIndex = 79;
             this.btnPagar.Text = "PAGAR";
             this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // btnComprobante
             // 
@@ -483,6 +485,7 @@
             this.btnBuscar.TabIndex = 85;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // lblClienteID
             // 
@@ -567,6 +570,7 @@
             this.btnLimpiar.TabIndex = 93;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // RegistrarPago
             // 

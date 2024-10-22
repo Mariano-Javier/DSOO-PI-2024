@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSOO_PI_ComC_Grupo12.Models
 {
-    internal class Empleado : Persona
+    public class Empleado : Persona
     {
         // Atributo adicional
         public String Rol { get; set; }
