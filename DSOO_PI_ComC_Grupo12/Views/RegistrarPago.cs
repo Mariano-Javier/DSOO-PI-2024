@@ -129,7 +129,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
             ClienteSeleccionado = null;
             dataGridResumen.Rows.Clear();
             EstadoPagado = false;
-            preciosActividades.Clear();
+
+            if (preciosActividades != null && preciosActividades.Count > 0)
+            {
+                preciosActividades.Clear();
+            }
         }
 
         private void btnPagar_Click(object sender, EventArgs e)
