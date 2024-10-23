@@ -1,5 +1,6 @@
 ﻿using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             actividadRepository = new ActividadRepository();
             TotalPagar = 0;
             EstadoPagado = false;
+            dateFechaPago.Value = DateTime.Now;
+            dateDiaSeleccionado.Value = DateTime.Now;
         }
 
         private void ResetearRadioButtons()
@@ -92,8 +95,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 // Obtener la fecha seleccionada en el DateTimePicker
                 DateTime fechaPago = dateFechaPago.Value;
 
+                DateTime fechaSeleccionada = dateDiaSeleccionado.Value;
+
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaSeleccionada);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
@@ -121,6 +126,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblNombreApellido.Text = string.Empty;
             lblDNI.Text = string.Empty;
             dateFechaPago.Value = DateTime.Now;
+            dateDiaSeleccionado.Value = DateTime.Now;
             lblTotalPagar.Text = string.Empty;
             ResetearRadioButtons();
             ResetearCheckBox();
@@ -157,7 +163,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     ClienteSeleccionado.Id,
                     TotalPagar,
                     FormaPago,
-                    dateFechaPago.Value
+                    dateFechaPago.Value,
+                    dateDiaSeleccionado.Value,
+                    null, // periodo_fin es null
+                    false  // socio_al_pagar es false
                 );
 
                 EstadoPagado = true;

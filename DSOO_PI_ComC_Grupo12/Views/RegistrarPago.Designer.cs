@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupOpcionesPago = new System.Windows.Forms.GroupBox();
@@ -76,6 +76,9 @@
             this.dataGridResumen = new System.Windows.Forms.DataGridView();
             this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateDiaSeleccionado = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -84,6 +87,7 @@
             this.panelTotal.SuspendLayout();
             this.panelBuscarCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -235,9 +239,9 @@
             this.groupActividades.Controls.Add(this.checkBoxVoley);
             this.groupActividades.Controls.Add(this.checkBoxFutbol);
             this.groupActividades.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupActividades.Location = new System.Drawing.Point(12, 268);
+            this.groupActividades.Location = new System.Drawing.Point(222, 268);
             this.groupActividades.Name = "groupActividades";
-            this.groupActividades.Size = new System.Drawing.Size(711, 100);
+            this.groupActividades.Size = new System.Drawing.Size(501, 100);
             this.groupActividades.TabIndex = 71;
             this.groupActividades.TabStop = false;
             this.groupActividades.Text = "Actividades";
@@ -245,7 +249,7 @@
             // checkBoxAcquagym
             // 
             this.checkBoxAcquagym.AutoSize = true;
-            this.checkBoxAcquagym.Location = new System.Drawing.Point(122, 59);
+            this.checkBoxAcquagym.Location = new System.Drawing.Point(111, 58);
             this.checkBoxAcquagym.Name = "checkBoxAcquagym";
             this.checkBoxAcquagym.Size = new System.Drawing.Size(98, 21);
             this.checkBoxAcquagym.TabIndex = 9;
@@ -255,7 +259,7 @@
             // checkBoxNutricion
             // 
             this.checkBoxNutricion.AutoSize = true;
-            this.checkBoxNutricion.Location = new System.Drawing.Point(225, 59);
+            this.checkBoxNutricion.Location = new System.Drawing.Point(214, 58);
             this.checkBoxNutricion.Name = "checkBoxNutricion";
             this.checkBoxNutricion.Size = new System.Drawing.Size(85, 21);
             this.checkBoxNutricion.TabIndex = 8;
@@ -265,7 +269,7 @@
             // checkBoxNatacion
             // 
             this.checkBoxNatacion.AutoSize = true;
-            this.checkBoxNatacion.Location = new System.Drawing.Point(225, 32);
+            this.checkBoxNatacion.Location = new System.Drawing.Point(214, 31);
             this.checkBoxNatacion.Name = "checkBoxNatacion";
             this.checkBoxNatacion.Size = new System.Drawing.Size(88, 21);
             this.checkBoxNatacion.TabIndex = 7;
@@ -275,7 +279,7 @@
             // checkBoxBasket
             // 
             this.checkBoxBasket.AutoSize = true;
-            this.checkBoxBasket.Location = new System.Drawing.Point(615, 32);
+            this.checkBoxBasket.Location = new System.Drawing.Point(407, 58);
             this.checkBoxBasket.Name = "checkBoxBasket";
             this.checkBoxBasket.Size = new System.Drawing.Size(68, 21);
             this.checkBoxBasket.TabIndex = 6;
@@ -285,7 +289,7 @@
             // checkBoxFutsal
             // 
             this.checkBoxFutsal.AutoSize = true;
-            this.checkBoxFutsal.Location = new System.Drawing.Point(528, 32);
+            this.checkBoxFutsal.Location = new System.Drawing.Point(407, 31);
             this.checkBoxFutsal.Name = "checkBoxFutsal";
             this.checkBoxFutsal.Size = new System.Drawing.Size(63, 21);
             this.checkBoxFutsal.TabIndex = 5;
@@ -295,7 +299,7 @@
             // checkBoxPilates
             // 
             this.checkBoxPilates.AutoSize = true;
-            this.checkBoxPilates.Location = new System.Drawing.Point(436, 32);
+            this.checkBoxPilates.Location = new System.Drawing.Point(313, 58);
             this.checkBoxPilates.Name = "checkBoxPilates";
             this.checkBoxPilates.Size = new System.Drawing.Size(68, 21);
             this.checkBoxPilates.TabIndex = 4;
@@ -305,7 +309,7 @@
             // checkBoxGimnasio
             // 
             this.checkBoxGimnasio.AutoSize = true;
-            this.checkBoxGimnasio.Location = new System.Drawing.Point(324, 32);
+            this.checkBoxGimnasio.Location = new System.Drawing.Point(313, 31);
             this.checkBoxGimnasio.Name = "checkBoxGimnasio";
             this.checkBoxGimnasio.Size = new System.Drawing.Size(88, 21);
             this.checkBoxGimnasio.TabIndex = 3;
@@ -315,7 +319,7 @@
             // checkBoxTenis
             // 
             this.checkBoxTenis.AutoSize = true;
-            this.checkBoxTenis.Location = new System.Drawing.Point(35, 59);
+            this.checkBoxTenis.Location = new System.Drawing.Point(24, 58);
             this.checkBoxTenis.Name = "checkBoxTenis";
             this.checkBoxTenis.Size = new System.Drawing.Size(56, 21);
             this.checkBoxTenis.TabIndex = 2;
@@ -325,7 +329,7 @@
             // checkBoxVoley
             // 
             this.checkBoxVoley.AutoSize = true;
-            this.checkBoxVoley.Location = new System.Drawing.Point(122, 32);
+            this.checkBoxVoley.Location = new System.Drawing.Point(111, 31);
             this.checkBoxVoley.Name = "checkBoxVoley";
             this.checkBoxVoley.Size = new System.Drawing.Size(62, 21);
             this.checkBoxVoley.TabIndex = 1;
@@ -335,7 +339,7 @@
             // checkBoxFutbol
             // 
             this.checkBoxFutbol.AutoSize = true;
-            this.checkBoxFutbol.Location = new System.Drawing.Point(35, 32);
+            this.checkBoxFutbol.Location = new System.Drawing.Point(24, 31);
             this.checkBoxFutbol.Name = "checkBoxFutbol";
             this.checkBoxFutbol.Size = new System.Drawing.Size(67, 21);
             this.checkBoxFutbol.TabIndex = 0;
@@ -349,9 +353,9 @@
             this.lblFechaPago.Location = new System.Drawing.Point(447, 196);
             this.lblFechaPago.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(47, 17);
+            this.lblFechaPago.Size = new System.Drawing.Size(107, 17);
             this.lblFechaPago.TabIndex = 70;
-            this.lblFechaPago.Text = "Fecha";
+            this.lblFechaPago.Text = "Fecha de Pago";
             // 
             // lblTituloDNI
             // 
@@ -587,26 +591,26 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Precio});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
@@ -628,11 +632,44 @@
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 268);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 17);
+            this.label3.TabIndex = 95;
+            this.label3.Text = "Día Seleccionado";
+            // 
+            // dateDiaSeleccionado
+            // 
+            this.dateDiaSeleccionado.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaSeleccionado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaSeleccionado.Location = new System.Drawing.Point(6, 4);
+            this.dateDiaSeleccionado.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaSeleccionado.Name = "dateDiaSeleccionado";
+            this.dateDiaSeleccionado.Size = new System.Drawing.Size(189, 22);
+            this.dateDiaSeleccionado.TabIndex = 53;
+            this.dateDiaSeleccionado.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dateDiaSeleccionado);
+            this.panel1.Location = new System.Drawing.Point(15, 288);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 30);
+            this.panel1.TabIndex = 96;
+            // 
             // RegistrarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridResumen);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.panel6);
@@ -669,6 +706,7 @@
             this.panelBuscarCliente.ResumeLayout(false);
             this.panelBuscarCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -722,5 +760,8 @@
         private System.Windows.Forms.DataGridView dataGridResumen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateDiaSeleccionado;
+        private System.Windows.Forms.Panel panel1;
     }
 }

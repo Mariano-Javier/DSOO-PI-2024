@@ -18,20 +18,26 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         private Cliente? Cliente { get; set; }
         private DateTime FechaPago { get; set; }
-        // Variable para almacenar la imagen del panel
+        private DateTime FechaInicio { get; set; }
 
-        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades)
+        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades, DateTime fechaInicio)
         {
             InitializeComponent();
             Cliente = cliente;
             FechaPago = fechaPago;
+            FechaInicio = fechaInicio; 
+
             lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
             lblDNI.Text = cliente.Dni;
             lblFechaPago.Text = fechaPago.ToString("dd/MM/yyyy");
             lblFormaPago.Text = FormaPago;
             lblTotal.Text = TotalPagar.ToString() + " $";
+
             dataGridResumen.DefaultCellStyle.SelectionBackColor = Color.White;
             dataGridResumen.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridFechas.DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
+
             CargarDataGridView(preciosActividades);
             printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
         }
@@ -46,12 +52,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
+            dataGridFechas.Rows.Clear();
 
             // Iterar a través del diccionario y agregar filas al DataGridView
             foreach (var actividad in preciosActividades)
             {
                 dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
             }
+
+            dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), "");
         }
         //----------------------------------IMPRESION----------------------------------
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -103,5 +112,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Libera los recursos de la imagen
             bmp.Dispose();
         }
+        //------------------------------FIN-IMPRESION----------------------------------
     }
 }

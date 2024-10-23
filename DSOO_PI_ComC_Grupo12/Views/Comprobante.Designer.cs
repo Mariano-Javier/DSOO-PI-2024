@@ -31,9 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comprobante));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panelComprobante = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridResumen = new System.Windows.Forms.DataGridView();
             this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,10 +70,9 @@
             this.printPrevDialogComprobante = new System.Windows.Forms.PrintPreviewDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridFechas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelComprobante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panelTotal.SuspendLayout();
@@ -76,6 +81,7 @@
             this.panel1.SuspendLayout();
             this.panelDNI.SuspendLayout();
             this.panelNombreApellido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -85,7 +91,7 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.Location = new System.Drawing.Point(166, 639);
+            this.btnImprimir.Location = new System.Drawing.Point(171, 696);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(135, 30);
             this.btnImprimir.TabIndex = 95;
@@ -100,7 +106,7 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Location = new System.Drawing.Point(307, 639);
+            this.btnCerrar.Location = new System.Drawing.Point(312, 696);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(135, 30);
             this.btnCerrar.TabIndex = 94;
@@ -111,6 +117,7 @@
             // panelComprobante
             // 
             this.panelComprobante.BackColor = System.Drawing.Color.White;
+            this.panelComprobante.Controls.Add(this.dataGridFechas);
             this.panelComprobante.Controls.Add(this.panel6);
             this.panelComprobante.Controls.Add(this.panel5);
             this.panelComprobante.Controls.Add(this.panel4);
@@ -136,8 +143,40 @@
             this.panelComprobante.Controls.Add(this.lblTitulo);
             this.panelComprobante.Location = new System.Drawing.Point(12, 12);
             this.panelComprobante.Name = "panelComprobante";
-            this.panelComprobante.Size = new System.Drawing.Size(596, 621);
+            this.panelComprobante.Size = new System.Drawing.Size(596, 675);
             this.panelComprobante.TabIndex = 96;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel6.Location = new System.Drawing.Point(6, 51);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(585, 1);
+            this.panel6.TabIndex = 107;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel5.Location = new System.Drawing.Point(6, 194);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(585, 1);
+            this.panel5.TabIndex = 106;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel4.Location = new System.Drawing.Point(6, 268);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(585, 1);
+            this.panel4.TabIndex = 105;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel3.Location = new System.Drawing.Point(5, 632);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(585, 1);
+            this.panel3.TabIndex = 104;
             // 
             // dataGridResumen
             // 
@@ -167,7 +206,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridResumen.Location = new System.Drawing.Point(8, 306);
+            this.dataGridResumen.Location = new System.Drawing.Point(8, 353);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
             this.dataGridResumen.RowHeadersVisible = false;
@@ -191,7 +230,7 @@
             // panelTotal
             // 
             this.panelTotal.Controls.Add(this.lblTotal);
-            this.panelTotal.Location = new System.Drawing.Point(427, 588);
+            this.panelTotal.Location = new System.Drawing.Point(423, 639);
             this.panelTotal.Name = "panelTotal";
             this.panelTotal.Size = new System.Drawing.Size(163, 30);
             this.panelTotal.TabIndex = 102;
@@ -294,7 +333,7 @@
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.lblFormaPago);
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(424, 230);
+            this.panel1.Location = new System.Drawing.Point(424, 224);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(163, 30);
             this.panel1.TabIndex = 99;
@@ -325,7 +364,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label5.Location = new System.Drawing.Point(421, 210);
+            this.label5.Location = new System.Drawing.Point(421, 204);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 17);
@@ -336,7 +375,7 @@
             // 
             this.panelDNI.BackColor = System.Drawing.Color.White;
             this.panelDNI.Controls.Add(this.lblDNI);
-            this.panelDNI.Location = new System.Drawing.Point(218, 230);
+            this.panelDNI.Location = new System.Drawing.Point(218, 224);
             this.panelDNI.Name = "panelDNI";
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 97;
@@ -356,7 +395,7 @@
             // 
             this.panelNombreApellido.BackColor = System.Drawing.Color.White;
             this.panelNombreApellido.Controls.Add(this.lblNombreApellido);
-            this.panelNombreApellido.Location = new System.Drawing.Point(9, 230);
+            this.panelNombreApellido.Location = new System.Drawing.Point(9, 224);
             this.panelNombreApellido.Name = "panelNombreApellido";
             this.panelNombreApellido.Size = new System.Drawing.Size(200, 30);
             this.panelNombreApellido.TabIndex = 96;
@@ -377,7 +416,7 @@
             this.lblTituloDNI.AutoSize = true;
             this.lblTituloDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloDNI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblTituloDNI.Location = new System.Drawing.Point(215, 210);
+            this.lblTituloDNI.Location = new System.Drawing.Point(215, 204);
             this.lblTituloDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloDNI.Name = "lblTituloDNI";
             this.lblTituloDNI.Size = new System.Drawing.Size(31, 17);
@@ -389,7 +428,7 @@
             this.lblTituloNombre.AutoSize = true;
             this.lblTituloNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblTituloNombre.Location = new System.Drawing.Point(7, 210);
+            this.lblTituloNombre.Location = new System.Drawing.Point(7, 204);
             this.lblTituloNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloNombre.Name = "lblTituloNombre";
             this.lblTituloNombre.Size = new System.Drawing.Size(128, 17);
@@ -401,7 +440,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label4.Location = new System.Drawing.Point(337, 591);
+            this.label4.Location = new System.Drawing.Point(339, 642);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 22);
             this.label4.TabIndex = 93;
@@ -412,7 +451,7 @@
             this.lblDetalle.AutoSize = true;
             this.lblDetalle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblDetalle.Location = new System.Drawing.Point(5, 285);
+            this.lblDetalle.Location = new System.Drawing.Point(6, 271);
             this.lblDetalle.Name = "lblDetalle";
             this.lblDetalle.Size = new System.Drawing.Size(70, 17);
             this.lblDetalle.TabIndex = 93;
@@ -443,43 +482,60 @@
             // 
             this.printDialog.UseEXDialog = true;
             // 
-            // panel3
+            // dataGridFechas
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panel3.Location = new System.Drawing.Point(5, 583);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(585, 1);
-            this.panel3.TabIndex = 104;
+            this.dataGridFechas.AllowUserToAddRows = false;
+            this.dataGridFechas.AllowUserToDeleteRows = false;
+            this.dataGridFechas.AllowUserToResizeColumns = false;
+            this.dataGridFechas.AllowUserToResizeRows = false;
+            this.dataGridFechas.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridFechas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridFechas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridFechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFechas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridFechas.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridFechas.Location = new System.Drawing.Point(8, 294);
+            this.dataGridFechas.Name = "dataGridFechas";
+            this.dataGridFechas.ReadOnly = true;
+            this.dataGridFechas.RowHeadersVisible = false;
+            this.dataGridFechas.Size = new System.Drawing.Size(580, 53);
+            this.dataGridFechas.TabIndex = 108;
             // 
-            // panel4
+            // dataGridViewTextBoxColumn1
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panel4.Location = new System.Drawing.Point(5, 278);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(585, 1);
-            this.panel4.TabIndex = 105;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Fecha Inicio";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 290;
             // 
-            // panel5
+            // dataGridViewTextBoxColumn2
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panel5.Location = new System.Drawing.Point(6, 194);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(585, 1);
-            this.panel5.TabIndex = 106;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panel6.Location = new System.Drawing.Point(6, 51);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(585, 1);
-            this.panel6.TabIndex = 107;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha Fin";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // Comprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 677);
+            this.ClientSize = new System.Drawing.Size(620, 734);
             this.Controls.Add(this.panelComprobante);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnCerrar);
@@ -497,6 +553,7 @@
             this.panel1.ResumeLayout(false);
             this.panelDNI.ResumeLayout(false);
             this.panelNombreApellido.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -540,5 +597,8 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridView dataGridFechas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

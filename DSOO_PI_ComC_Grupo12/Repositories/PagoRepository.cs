@@ -7,7 +7,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
 {
     internal class PagoRepository
     {
-        public void RegistrarPago(int idCliente, decimal monto, string medioPago, DateTime fechaPago)
+        public void RegistrarPago(int idCliente, decimal monto, string medioPago, DateTime fechaPago, DateTime periodoInicio, DateTime? periodoFin, bool socioAlPagar)
         {
             MySqlConnection? conexionDb = null;
 
@@ -24,12 +24,15 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 using (MySqlCommand comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
-                    comando.CommandText = "INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago) VALUES (@idCliente, @monto, @medioPago, @fechaPago)";
+                    comando.CommandText = "INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar) VALUES (@idCliente, @monto, @medioPago, @fechaPago, @periodoInicio, @periodoFin, @socioAlPagar)";
 
                     comando.Parameters.AddWithValue("@idCliente", idCliente);
                     comando.Parameters.AddWithValue("@monto", monto);
                     comando.Parameters.AddWithValue("@medioPago", medioPago);
                     comando.Parameters.AddWithValue("@fechaPago", fechaPago);
+                    comando.Parameters.AddWithValue("@periodoInicio", periodoInicio);
+                    comando.Parameters.AddWithValue("@periodoFin", periodoFin ?? (object)DBNull.Value);
+                    comando.Parameters.AddWithValue("@socioAlPagar", socioAlPagar);
 
                     comando.ExecuteNonQuery();
                 }
