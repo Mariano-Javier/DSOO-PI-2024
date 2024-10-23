@@ -138,7 +138,35 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            EstadoPagado = true;
+            if (ClienteSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente antes de realizar el pago.");
+                return;
+            }
+
+            if (TotalPagar <= 0)
+            {
+                MessageBox.Show("El monto a pagar debe ser mayor que cero.");
+                return;
+            }
+
+            try
+            {
+                PagoRepository pagoRepository = new PagoRepository();
+                pagoRepository.RegistrarPago(
+                    ClienteSeleccionado.Id,
+                    TotalPagar,
+                    FormaPago,
+                    dateFechaPago.Value
+                );
+
+                EstadoPagado = true;
+                MessageBox.Show("Pago registrado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el pago: " + ex.Message);
+            }
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)

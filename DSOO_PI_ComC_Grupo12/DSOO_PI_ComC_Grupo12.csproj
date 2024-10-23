@@ -112,6 +112,7 @@
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
+    <Compile Include="Repositories\PagoRepository.cs" />
     <Compile Include="Services\Conexion.cs" />
     <Compile Include="Views\About.cs">
       <SubType>Form</SubType>
