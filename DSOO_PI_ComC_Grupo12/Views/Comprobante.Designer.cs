@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Comprobante));
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panelComprobante = new System.Windows.Forms.Panel();
+            this.dataGridResumen = new System.Windows.Forms.DataGridView();
+            this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelTotal = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,21 +60,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblDetalle = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridResumen = new System.Windows.Forms.DataGridView();
-            this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printComprobante = new System.Drawing.Printing.PrintDocument();
+            this.printPrevDialogComprobante = new System.Windows.Forms.PrintPreviewDialog();
+            this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panelComprobante.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panelTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelDNI.SuspendLayout();
             this.panelNombreApellido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -87,6 +91,7 @@
             this.btnImprimir.TabIndex = 95;
             this.btnImprimir.Text = "IMPRIMIR";
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnCerrar
             // 
@@ -106,6 +111,10 @@
             // panelComprobante
             // 
             this.panelComprobante.BackColor = System.Drawing.Color.White;
+            this.panelComprobante.Controls.Add(this.panel6);
+            this.panelComprobante.Controls.Add(this.panel5);
+            this.panelComprobante.Controls.Add(this.panel4);
+            this.panelComprobante.Controls.Add(this.panel3);
             this.panelComprobante.Controls.Add(this.dataGridResumen);
             this.panelComprobante.Controls.Add(this.panelTotal);
             this.panelComprobante.Controls.Add(this.label11);
@@ -125,14 +134,59 @@
             this.panelComprobante.Controls.Add(this.label4);
             this.panelComprobante.Controls.Add(this.lblDetalle);
             this.panelComprobante.Controls.Add(this.lblTitulo);
-            this.panelComprobante.Controls.Add(this.label6);
-            this.panelComprobante.Controls.Add(this.label2);
-            this.panelComprobante.Controls.Add(this.label3);
-            this.panelComprobante.Controls.Add(this.label1);
             this.panelComprobante.Location = new System.Drawing.Point(12, 12);
             this.panelComprobante.Name = "panelComprobante";
             this.panelComprobante.Size = new System.Drawing.Size(596, 621);
             this.panelComprobante.TabIndex = 96;
+            // 
+            // dataGridResumen
+            // 
+            this.dataGridResumen.AllowUserToAddRows = false;
+            this.dataGridResumen.AllowUserToDeleteRows = false;
+            this.dataGridResumen.AllowUserToResizeColumns = false;
+            this.dataGridResumen.AllowUserToResizeRows = false;
+            this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Actividad,
+            this.Precio});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridResumen.Location = new System.Drawing.Point(8, 306);
+            this.dataGridResumen.Name = "dataGridResumen";
+            this.dataGridResumen.ReadOnly = true;
+            this.dataGridResumen.RowHeadersVisible = false;
+            this.dataGridResumen.Size = new System.Drawing.Size(580, 276);
+            this.dataGridResumen.TabIndex = 103;
+            // 
+            // Actividad
+            // 
+            this.Actividad.HeaderText = "Actividad";
+            this.Actividad.Name = "Actividad";
+            this.Actividad.ReadOnly = true;
+            this.Actividad.Width = 450;
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // panelTotal
             // 
@@ -347,7 +401,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label4.Location = new System.Drawing.Point(337, 592);
+            this.label4.Location = new System.Drawing.Point(337, 591);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 22);
             this.label4.TabIndex = 93;
@@ -375,102 +429,51 @@
             this.lblTitulo.TabIndex = 57;
             this.lblTitulo.Text = "Comprobante de Pago";
             // 
-            // label6
+            // printPrevDialogComprobante
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label6.Location = new System.Drawing.Point(4, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(590, 22);
-            this.label6.TabIndex = 92;
-            this.label6.Text = "__________________________________________________________";
+            this.printPrevDialogComprobante.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPrevDialogComprobante.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPrevDialogComprobante.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPrevDialogComprobante.Enabled = true;
+            this.printPrevDialogComprobante.Icon = ((System.Drawing.Icon)(resources.GetObject("printPrevDialogComprobante.Icon")));
+            this.printPrevDialogComprobante.Name = "printPrevDialogComprobante";
+            this.printPrevDialogComprobante.Visible = false;
             // 
-            // label2
+            // printDialog
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Location = new System.Drawing.Point(3, 261);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(590, 22);
-            this.label2.TabIndex = 92;
-            this.label2.Text = "__________________________________________________________";
+            this.printDialog.UseEXDialog = true;
             // 
-            // label3
+            // panel3
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label3.Location = new System.Drawing.Point(4, 564);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(590, 22);
-            this.label3.TabIndex = 92;
-            this.label3.Text = "__________________________________________________________";
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel3.Location = new System.Drawing.Point(5, 583);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(585, 1);
+            this.panel3.TabIndex = 104;
             // 
-            // label1
+            // panel4
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label1.Location = new System.Drawing.Point(4, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(590, 22);
-            this.label1.TabIndex = 92;
-            this.label1.Text = "__________________________________________________________";
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel4.Location = new System.Drawing.Point(5, 278);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(585, 1);
+            this.panel4.TabIndex = 105;
             // 
-            // dataGridResumen
+            // panel5
             // 
-            this.dataGridResumen.AllowUserToAddRows = false;
-            this.dataGridResumen.AllowUserToDeleteRows = false;
-            this.dataGridResumen.AllowUserToResizeColumns = false;
-            this.dataGridResumen.AllowUserToResizeRows = false;
-            this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Actividad,
-            this.Precio});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridResumen.Location = new System.Drawing.Point(8, 306);
-            this.dataGridResumen.Name = "dataGridResumen";
-            this.dataGridResumen.ReadOnly = true;
-            this.dataGridResumen.RowHeadersVisible = false;
-            this.dataGridResumen.Size = new System.Drawing.Size(580, 276);
-            this.dataGridResumen.TabIndex = 103;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel5.Location = new System.Drawing.Point(6, 194);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(585, 1);
+            this.panel5.TabIndex = 106;
             // 
-            // Actividad
+            // panel6
             // 
-            this.Actividad.HeaderText = "Actividad";
-            this.Actividad.Name = "Actividad";
-            this.Actividad.ReadOnly = true;
-            this.Actividad.Width = 450;
-            // 
-            // Precio
-            // 
-            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panel6.Location = new System.Drawing.Point(6, 51);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(585, 1);
+            this.panel6.TabIndex = 107;
             // 
             // Comprobante
             // 
@@ -487,13 +490,13 @@
             this.Text = "Comprobante de Pago";
             this.panelComprobante.ResumeLayout(false);
             this.panelComprobante.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.panelTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelDNI.ResumeLayout(false);
             this.panelNombreApellido.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -504,9 +507,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel panelComprobante;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblDetalle;
         private System.Windows.Forms.Panel panel1;
@@ -515,7 +515,6 @@
         private System.Windows.Forms.Panel panelNombreApellido;
         private System.Windows.Forms.Label lblTituloDNI;
         private System.Windows.Forms.Label lblTituloNombre;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -533,5 +532,13 @@
         private System.Windows.Forms.DataGridView dataGridResumen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Drawing.Printing.PrintDocument printComprobante;
+        private System.Windows.Forms.PrintPreviewDialog printPrevDialogComprobante;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog;
+        private System.Windows.Forms.PrintDialog printDialog;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }
