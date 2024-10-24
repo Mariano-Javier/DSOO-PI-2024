@@ -97,5 +97,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             FormHelper.OpenChildFormInPanel(new RegistrarPago(), panelContenedor);
         }
+
+        private void btnCuotaSocios_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new RegistrarCuota(), panelContenedor);
+        }
     }
 }

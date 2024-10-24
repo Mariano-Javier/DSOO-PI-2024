@@ -148,6 +148,7 @@
             this.btnCuotaSocios.TabIndex = 0;
             this.btnCuotaSocios.Text = "CUOTA SOCIOS";
             this.btnCuotaSocios.UseVisualStyleBackColor = true;
+            this.btnCuotaSocios.Click += new System.EventHandler(this.btnCuotaSocios_Click);
             // 
             // btnPagos
             // 

@@ -111,7 +111,9 @@
     <Compile Include="Repositories\ActividadRepository.cs" />
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\CuotaSocioRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
+    <Compile Include="Repositories\PagoRepository.cs" />
     <Compile Include="Services\Conexion.cs" />
     <Compile Include="Views\About.cs">
       <SubType>Form</SubType>
@@ -148,6 +150,12 @@
     </Compile>
     <Compile Include="Views\RegistrarCliente.Designer.cs">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrarCuota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrarCuota.Designer.cs">
+      <DependentUpon>RegistrarCuota.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrarEmpleado.cs">
       <SubType>Form</SubType>
@@ -188,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RegistrarCuota.resx">
+      <DependentUpon>RegistrarCuota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistrarEmpleado.resx">
       <DependentUpon>RegistrarEmpleado.cs</DependentUpon>
