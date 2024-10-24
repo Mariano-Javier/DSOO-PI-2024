@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupOpcionesPago = new System.Windows.Forms.GroupBox();
@@ -173,18 +173,18 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.dateFechaPago);
-            this.panel6.Location = new System.Drawing.Point(450, 216);
+            this.panel6.Location = new System.Drawing.Point(440, 216);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(273, 30);
+            this.panel6.Size = new System.Drawing.Size(283, 30);
             this.panel6.TabIndex = 77;
             // 
             // dateFechaPago
             // 
             this.dateFechaPago.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaPago.Location = new System.Drawing.Point(8, 4);
+            this.dateFechaPago.Location = new System.Drawing.Point(4, 4);
             this.dateFechaPago.Margin = new System.Windows.Forms.Padding(2);
             this.dateFechaPago.Name = "dateFechaPago";
-            this.dateFechaPago.Size = new System.Drawing.Size(258, 22);
+            this.dateFechaPago.Size = new System.Drawing.Size(273, 22);
             this.dateFechaPago.TabIndex = 53;
             this.dateFechaPago.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
             // 
@@ -192,7 +192,7 @@
             // 
             this.panelDNI.BackColor = System.Drawing.Color.White;
             this.panelDNI.Controls.Add(this.lblDNI);
-            this.panelDNI.Location = new System.Drawing.Point(222, 216);
+            this.panelDNI.Location = new System.Drawing.Point(294, 216);
             this.panelDNI.Name = "panelDNI";
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 74;
@@ -213,7 +213,7 @@
             this.panelNombreApellido.Controls.Add(this.lblNombreApellido);
             this.panelNombreApellido.Location = new System.Drawing.Point(15, 216);
             this.panelNombreApellido.Name = "panelNombreApellido";
-            this.panelNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.panelNombreApellido.Size = new System.Drawing.Size(273, 30);
             this.panelNombreApellido.TabIndex = 72;
             // 
             // lblNombreApellido
@@ -222,7 +222,7 @@
             this.lblNombreApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreApellido.Location = new System.Drawing.Point(0, 0);
             this.lblNombreApellido.Name = "lblNombreApellido";
-            this.lblNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.lblNombreApellido.Size = new System.Drawing.Size(273, 30);
             this.lblNombreApellido.TabIndex = 91;
             this.lblNombreApellido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -350,7 +350,7 @@
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(447, 196);
+            this.lblFechaPago.Location = new System.Drawing.Point(440, 196);
             this.lblFechaPago.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(107, 17);
@@ -361,7 +361,7 @@
             // 
             this.lblTituloDNI.AutoSize = true;
             this.lblTituloDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDNI.Location = new System.Drawing.Point(219, 196);
+            this.lblTituloDNI.Location = new System.Drawing.Point(291, 196);
             this.lblTituloDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloDNI.Name = "lblTituloDNI";
             this.lblTituloDNI.Size = new System.Drawing.Size(31, 17);
@@ -429,7 +429,7 @@
             this.lblDetalle.AutoSize = true;
             this.lblDetalle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblDetalle.Location = new System.Drawing.Point(295, 156);
+            this.lblDetalle.Location = new System.Drawing.Point(291, 156);
             this.lblDetalle.Name = "lblDetalle";
             this.lblDetalle.Size = new System.Drawing.Size(168, 22);
             this.lblDetalle.TabIndex = 82;
@@ -439,9 +439,9 @@
             // 
             this.panelTotal.BackColor = System.Drawing.Color.White;
             this.panelTotal.Controls.Add(this.lblTotalPagar);
-            this.panelTotal.Location = new System.Drawing.Point(448, 554);
+            this.panelTotal.Location = new System.Drawing.Point(440, 554);
             this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Size = new System.Drawing.Size(273, 30);
+            this.panelTotal.Size = new System.Drawing.Size(281, 30);
             this.panelTotal.TabIndex = 87;
             // 
             // lblTotalPagar
@@ -450,7 +450,7 @@
             this.lblTotalPagar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagar.Location = new System.Drawing.Point(0, 0);
             this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(273, 30);
+            this.lblTotalPagar.Size = new System.Drawing.Size(281, 30);
             this.lblTotalPagar.TabIndex = 0;
             this.lblTotalPagar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -458,7 +458,7 @@
             // 
             this.lblTituloTotal.AutoSize = true;
             this.lblTituloTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotal.Location = new System.Drawing.Point(447, 534);
+            this.lblTituloTotal.Location = new System.Drawing.Point(442, 534);
             this.lblTituloTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloTotal.Name = "lblTituloTotal";
             this.lblTituloTotal.Size = new System.Drawing.Size(95, 17);
@@ -516,7 +516,7 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblSubtitulo.Location = new System.Drawing.Point(306, 4);
+            this.lblSubtitulo.Location = new System.Drawing.Point(302, 4);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(140, 22);
             this.lblSubtitulo.TabIndex = 87;
@@ -591,26 +591,26 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Precio});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;

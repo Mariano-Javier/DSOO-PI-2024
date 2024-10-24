@@ -7,7 +7,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
 {
     internal class PagoRepository
     {
-        public void RegistrarPago(int idCliente, decimal monto, string medioPago, DateTime fechaPago, DateTime periodoInicio, DateTime? periodoFin, bool socioAlPagar)
+        public void RegistrarPago(int idCliente, decimal monto, string medioPago, DateTime fechaPago, DateTime periodoInicio, DateTime? periodoFin, bool socioAlPagar, int? idCuota)
         {
             MySqlConnection? conexionDb = null;
 
@@ -24,7 +24,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 using (MySqlCommand comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
-                    comando.CommandText = "INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar) VALUES (@idCliente, @monto, @medioPago, @fechaPago, @periodoInicio, @periodoFin, @socioAlPagar)";
+                    comando.CommandText = "INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar, id_cuota) VALUES (@idCliente, @monto, @medioPago, @fechaPago, @periodoInicio, @periodoFin, @socioAlPagar, @idCuota)";
 
                     comando.Parameters.AddWithValue("@idCliente", idCliente);
                     comando.Parameters.AddWithValue("@monto", monto);
@@ -33,6 +33,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     comando.Parameters.AddWithValue("@periodoInicio", periodoInicio);
                     comando.Parameters.AddWithValue("@periodoFin", periodoFin ?? (object)DBNull.Value);
                     comando.Parameters.AddWithValue("@socioAlPagar", socioAlPagar);
+                    comando.Parameters.AddWithValue("@idCuota", idCuota ?? (object)DBNull.Value);
 
                     comando.ExecuteNonQuery();
                 }

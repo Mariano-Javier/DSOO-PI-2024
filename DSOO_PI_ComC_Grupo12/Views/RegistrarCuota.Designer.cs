@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridResumen = new System.Windows.Forms.DataGridView();
             this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +58,12 @@
             this.radioEfectivo = new System.Windows.Forms.RadioButton();
             this.radioCuota3 = new System.Windows.Forms.RadioButton();
             this.groupActividades = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dateDiaFin = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dateDiaInicio = new System.Windows.Forms.DateTimePicker();
             this.lblFechaPago = new System.Windows.Forms.Label();
             this.lblTituloDNI = new System.Windows.Forms.Label();
             this.lblTituloNombre = new System.Windows.Forms.Label();
@@ -66,12 +72,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dateDiaInicio = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dateDiaFin = new System.Windows.Forms.DateTimePicker();
+            this.groupBoxTipoSocio = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxTipoSocio = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -80,8 +84,10 @@
             this.panelBuscarCliente.SuspendLayout();
             this.groupOpcionesPago.SuspendLayout();
             this.groupActividades.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBoxTipoSocio.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridResumen
@@ -90,26 +96,26 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Precio});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
@@ -149,18 +155,18 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.dateFechaPago);
-            this.panel6.Location = new System.Drawing.Point(450, 216);
+            this.panel6.Location = new System.Drawing.Point(440, 216);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(273, 30);
+            this.panel6.Size = new System.Drawing.Size(283, 30);
             this.panel6.TabIndex = 103;
             // 
             // dateFechaPago
             // 
             this.dateFechaPago.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaPago.Location = new System.Drawing.Point(8, 4);
+            this.dateFechaPago.Location = new System.Drawing.Point(5, 4);
             this.dateFechaPago.Margin = new System.Windows.Forms.Padding(2);
             this.dateFechaPago.Name = "dateFechaPago";
-            this.dateFechaPago.Size = new System.Drawing.Size(258, 22);
+            this.dateFechaPago.Size = new System.Drawing.Size(273, 22);
             this.dateFechaPago.TabIndex = 53;
             this.dateFechaPago.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
             // 
@@ -168,7 +174,7 @@
             // 
             this.panelDNI.BackColor = System.Drawing.Color.White;
             this.panelDNI.Controls.Add(this.lblDNI);
-            this.panelDNI.Location = new System.Drawing.Point(222, 216);
+            this.panelDNI.Location = new System.Drawing.Point(293, 216);
             this.panelDNI.Name = "panelDNI";
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 102;
@@ -189,7 +195,7 @@
             this.panelNombreApellido.Controls.Add(this.lblNombreApellido);
             this.panelNombreApellido.Location = new System.Drawing.Point(15, 216);
             this.panelNombreApellido.Name = "panelNombreApellido";
-            this.panelNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.panelNombreApellido.Size = new System.Drawing.Size(272, 30);
             this.panelNombreApellido.TabIndex = 101;
             // 
             // lblNombreApellido
@@ -198,7 +204,7 @@
             this.lblNombreApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreApellido.Location = new System.Drawing.Point(0, 0);
             this.lblNombreApellido.Name = "lblNombreApellido";
-            this.lblNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.lblNombreApellido.Size = new System.Drawing.Size(272, 30);
             this.lblNombreApellido.TabIndex = 91;
             this.lblNombreApellido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -206,7 +212,7 @@
             // 
             this.lblTituloTotal.AutoSize = true;
             this.lblTituloTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotal.Location = new System.Drawing.Point(447, 534);
+            this.lblTituloTotal.Location = new System.Drawing.Point(442, 534);
             this.lblTituloTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloTotal.Name = "lblTituloTotal";
             this.lblTituloTotal.Size = new System.Drawing.Size(95, 17);
@@ -217,9 +223,9 @@
             // 
             this.panelTotal.BackColor = System.Drawing.Color.White;
             this.panelTotal.Controls.Add(this.lblTotalPagar);
-            this.panelTotal.Location = new System.Drawing.Point(448, 554);
+            this.panelTotal.Location = new System.Drawing.Point(440, 554);
             this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Size = new System.Drawing.Size(273, 30);
+            this.panelTotal.Size = new System.Drawing.Size(281, 30);
             this.panelTotal.TabIndex = 110;
             // 
             // lblTotalPagar
@@ -228,7 +234,7 @@
             this.lblTotalPagar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagar.Location = new System.Drawing.Point(0, 0);
             this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(273, 30);
+            this.lblTotalPagar.Size = new System.Drawing.Size(281, 30);
             this.lblTotalPagar.TabIndex = 0;
             this.lblTotalPagar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -413,16 +419,78 @@
             this.groupActividades.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupActividades.Location = new System.Drawing.Point(12, 268);
             this.groupActividades.Name = "groupActividades";
-            this.groupActividades.Size = new System.Drawing.Size(350, 100);
+            this.groupActividades.Size = new System.Drawing.Size(422, 100);
             this.groupActividades.TabIndex = 100;
             this.groupActividades.TabStop = false;
             this.groupActividades.Text = "Mes / Periodo a Pagar";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(213, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 100;
+            this.label4.Text = "Fecha Fin";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.dateDiaFin);
+            this.panel2.Location = new System.Drawing.Point(216, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 30);
+            this.panel2.TabIndex = 99;
+            // 
+            // dateDiaFin
+            // 
+            this.dateDiaFin.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaFin.Location = new System.Drawing.Point(3, 4);
+            this.dateDiaFin.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaFin.Name = "dateDiaFin";
+            this.dateDiaFin.Size = new System.Drawing.Size(194, 22);
+            this.dateDiaFin.TabIndex = 53;
+            this.dateDiaFin.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 29);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 17);
+            this.label3.TabIndex = 98;
+            this.label3.Text = "Fecha Inicio";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dateDiaInicio);
+            this.panel1.Location = new System.Drawing.Point(10, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 30);
+            this.panel1.TabIndex = 97;
+            // 
+            // dateDiaInicio
+            // 
+            this.dateDiaInicio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaInicio.Location = new System.Drawing.Point(3, 4);
+            this.dateDiaInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaInicio.Name = "dateDiaInicio";
+            this.dateDiaInicio.Size = new System.Drawing.Size(194, 22);
+            this.dateDiaInicio.TabIndex = 53;
+            this.dateDiaInicio.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
             // 
             // lblFechaPago
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(447, 196);
+            this.lblFechaPago.Location = new System.Drawing.Point(440, 196);
             this.lblFechaPago.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(107, 17);
@@ -433,7 +501,7 @@
             // 
             this.lblTituloDNI.AutoSize = true;
             this.lblTituloDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDNI.Location = new System.Drawing.Point(219, 196);
+            this.lblTituloDNI.Location = new System.Drawing.Point(290, 196);
             this.lblTituloDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloDNI.Name = "lblTituloDNI";
             this.lblTituloDNI.Size = new System.Drawing.Size(31, 17);
@@ -512,73 +580,56 @@
             this.label2.TabIndex = 114;
             this.label2.Text = "_______________________________________________________________________";
             // 
-            // panel1
+            // groupBoxTipoSocio
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.dateDiaInicio);
-            this.panel1.Location = new System.Drawing.Point(12, 49);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 30);
-            this.panel1.TabIndex = 97;
+            this.groupBoxTipoSocio.Controls.Add(this.label6);
+            this.groupBoxTipoSocio.Controls.Add(this.panel4);
+            this.groupBoxTipoSocio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxTipoSocio.Location = new System.Drawing.Point(440, 268);
+            this.groupBoxTipoSocio.Name = "groupBoxTipoSocio";
+            this.groupBoxTipoSocio.Size = new System.Drawing.Size(283, 100);
+            this.groupBoxTipoSocio.TabIndex = 117;
+            this.groupBoxTipoSocio.TabStop = false;
+            this.groupBoxTipoSocio.Text = "Concepto a Pagar";
             // 
-            // dateDiaInicio
+            // panel4
             // 
-            this.dateDiaInicio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDiaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDiaInicio.Location = new System.Drawing.Point(4, 4);
-            this.dateDiaInicio.Margin = new System.Windows.Forms.Padding(2);
-            this.dateDiaInicio.Name = "dateDiaInicio";
-            this.dateDiaInicio.Size = new System.Drawing.Size(152, 22);
-            this.dateDiaInicio.TabIndex = 53;
-            this.dateDiaInicio.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.comboBoxTipoSocio);
+            this.panel4.Location = new System.Drawing.Point(10, 49);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(266, 30);
+            this.panel4.TabIndex = 97;
             // 
-            // label3
+            // comboBoxTipoSocio
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 29);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 17);
-            this.label3.TabIndex = 98;
-            this.label3.Text = "Fecha Inicio";
+            this.comboBoxTipoSocio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoSocio.FormattingEnabled = true;
+            this.comboBoxTipoSocio.Items.AddRange(new object[] {
+            "Cuota Regular",
+            "Cuota Premium"});
+            this.comboBoxTipoSocio.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxTipoSocio.Name = "comboBoxTipoSocio";
+            this.comboBoxTipoSocio.Size = new System.Drawing.Size(260, 25);
+            this.comboBoxTipoSocio.TabIndex = 0;
             // 
-            // label4
+            // label6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(177, 29);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
-            this.label4.TabIndex = 100;
-            this.label4.Text = "Fecha Fin";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.dateDiaFin);
-            this.panel2.Location = new System.Drawing.Point(180, 49);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(160, 30);
-            this.panel2.TabIndex = 99;
-            // 
-            // dateDiaFin
-            // 
-            this.dateDiaFin.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDiaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDiaFin.Location = new System.Drawing.Point(4, 4);
-            this.dateDiaFin.Margin = new System.Windows.Forms.Padding(2);
-            this.dateDiaFin.Name = "dateDiaFin";
-            this.dateDiaFin.Size = new System.Drawing.Size(152, 22);
-            this.dateDiaFin.TabIndex = 53;
-            this.dateDiaFin.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 29);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 17);
+            this.label6.TabIndex = 100;
+            this.label6.Text = "Tipo de Cuota";
             // 
             // RegistrarCuota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.groupBoxTipoSocio);
             this.Controls.Add(this.dataGridResumen);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.panel6);
@@ -615,8 +666,11 @@
             this.groupOpcionesPago.PerformLayout();
             this.groupActividades.ResumeLayout(false);
             this.groupActividades.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.groupBoxTipoSocio.ResumeLayout(false);
+            this.groupBoxTipoSocio.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -666,5 +720,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dateDiaInicio;
+        private System.Windows.Forms.GroupBox groupBoxTipoSocio;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox comboBoxTipoSocio;
+        private System.Windows.Forms.Label label6;
     }
 }

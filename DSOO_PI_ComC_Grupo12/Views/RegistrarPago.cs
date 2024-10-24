@@ -171,11 +171,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     dateFechaPago.Value,
                     dateDiaSeleccionado.Value,
                     null, // periodo_fin es null
-                    false  // socio_al_pagar es false
+                    false,  // socio_al_pagar es false
+                    null // id_cuota no usado para no socios
                 );
 
                 EstadoPagado = true;
-                
+
                 MessageBox.Show("Pago registrado exitosamente.");
 
                 btnComprobante.Enabled = true;
@@ -185,6 +186,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Error al registrar el pago: " + ex.Message);
             }
         }
+
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
