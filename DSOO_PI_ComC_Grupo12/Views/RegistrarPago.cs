@@ -190,6 +190,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            btnComprobante.Enabled = false;
             // Obtener las actividades seleccionadas
             ObtenerCheckBoxesSeleccionados();
 

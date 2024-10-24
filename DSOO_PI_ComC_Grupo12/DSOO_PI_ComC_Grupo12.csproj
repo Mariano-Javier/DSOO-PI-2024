@@ -111,6 +111,7 @@
     <Compile Include="Repositories\ActividadRepository.cs" />
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\CuotaSocioRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
     <Compile Include="Repositories\PagoRepository.cs" />
     <Compile Include="Services\Conexion.cs" />
