@@ -23,6 +23,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public Decimal TotalPagar;
         private bool EstadoPagado;
         Dictionary<string, decimal> preciosActividades;
+        
         public RegistrarPago()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             EstadoPagado = false;
             dateFechaPago.Value = DateTime.Now;
             dateDiaSeleccionado.Value = DateTime.Now;
+            btnPagar.Enabled = false;
+            btnComprobante.Enabled = false;
         }
 
         private void ResetearRadioButtons()
@@ -135,6 +138,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             ClienteSeleccionado = null;
             dataGridResumen.Rows.Clear();
             EstadoPagado = false;
+            btnPagar.Enabled = false;
+            btnComprobante.Enabled = false;
 
             if (preciosActividades != null && preciosActividades.Count > 0)
             {
@@ -170,7 +175,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 );
 
                 EstadoPagado = true;
+                
                 MessageBox.Show("Pago registrado exitosamente.");
+
+                btnComprobante.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -218,7 +226,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             CargarDataGridView(preciosActividades);
 
-
+            btnPagar.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

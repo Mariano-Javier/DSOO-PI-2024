@@ -66,6 +66,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dateDiaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dateDiaFin = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -73,6 +79,9 @@
             this.panelTotal.SuspendLayout();
             this.panelBuscarCliente.SuspendLayout();
             this.groupOpcionesPago.SuspendLayout();
+            this.groupActividades.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridResumen
@@ -397,10 +406,14 @@
             // 
             // groupActividades
             // 
+            this.groupActividades.Controls.Add(this.label4);
+            this.groupActividades.Controls.Add(this.panel2);
+            this.groupActividades.Controls.Add(this.label3);
+            this.groupActividades.Controls.Add(this.panel1);
             this.groupActividades.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupActividades.Location = new System.Drawing.Point(12, 268);
             this.groupActividades.Name = "groupActividades";
-            this.groupActividades.Size = new System.Drawing.Size(711, 100);
+            this.groupActividades.Size = new System.Drawing.Size(350, 100);
             this.groupActividades.TabIndex = 100;
             this.groupActividades.TabStop = false;
             this.groupActividades.Text = "Mes / Periodo a Pagar";
@@ -499,6 +512,68 @@
             this.label2.TabIndex = 114;
             this.label2.Text = "_______________________________________________________________________";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dateDiaInicio);
+            this.panel1.Location = new System.Drawing.Point(12, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(160, 30);
+            this.panel1.TabIndex = 97;
+            // 
+            // dateDiaInicio
+            // 
+            this.dateDiaInicio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaInicio.Location = new System.Drawing.Point(4, 4);
+            this.dateDiaInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaInicio.Name = "dateDiaInicio";
+            this.dateDiaInicio.Size = new System.Drawing.Size(152, 22);
+            this.dateDiaInicio.TabIndex = 53;
+            this.dateDiaInicio.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 29);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 17);
+            this.label3.TabIndex = 98;
+            this.label3.Text = "Fecha Inicio";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(177, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 100;
+            this.label4.Text = "Fecha Fin";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.dateDiaFin);
+            this.panel2.Location = new System.Drawing.Point(180, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(160, 30);
+            this.panel2.TabIndex = 99;
+            // 
+            // dateDiaFin
+            // 
+            this.dateDiaFin.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaFin.Location = new System.Drawing.Point(4, 4);
+            this.dateDiaFin.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaFin.Name = "dateDiaFin";
+            this.dateDiaFin.Size = new System.Drawing.Size(152, 22);
+            this.dateDiaFin.TabIndex = 53;
+            this.dateDiaFin.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            // 
             // RegistrarCuota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,6 +613,10 @@
             this.panelBuscarCliente.PerformLayout();
             this.groupOpcionesPago.ResumeLayout(false);
             this.groupOpcionesPago.PerformLayout();
+            this.groupActividades.ResumeLayout(false);
+            this.groupActividades.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,5 +660,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker dateDiaFin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateDiaInicio;
     }
 }

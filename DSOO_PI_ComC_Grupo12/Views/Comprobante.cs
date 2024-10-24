@@ -60,7 +60,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
             }
 
-            dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), "");
+            dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), "Válido solo por el día abonado");
         }
         //----------------------------------IMPRESION----------------------------------
         private void btnImprimir_Click(object sender, EventArgs e)
