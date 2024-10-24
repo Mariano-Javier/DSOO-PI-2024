@@ -19,6 +19,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public Decimal TotalPagar;
         public int TipoCuota;
         Dictionary<string, decimal> preciosActividades;
+        private List<Form> ventanasAbiertas;
 
         public RegistrarCuota()
         {
@@ -32,6 +33,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             comboBoxTipoSocio.SelectedIndex = 0; 
             TipoCuota = 1;
             preciosActividades = new Dictionary<string, decimal>();
+            ventanasAbiertas = new List<Form>();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -261,6 +263,48 @@ namespace DSOO_PI_ComC_Grupo12.Views
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar el pago: " + ex.Message);
+            }
+        }
+
+        private void btnComprobante_Click(object sender, EventArgs e)
+        {
+            // Verificar si se ha seleccionado un cliente
+            if (ClienteSeleccionado != null)
+            {
+                // Guardar las ventanas abiertas en la lista, excluyendo la ventana de Login
+                ventanasAbiertas.Clear();
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form != this && !(form is Login)) // Omitimos la ventana actual y la ventana de Login
+                    {
+                        ventanasAbiertas.Add(form);
+                        form.Hide();
+                    }
+                }
+
+                // Oculta la ventana actual (si es necesario)
+                this.Hide();
+
+                // Obtener la fecha seleccionada en el DateTimePicker
+                DateTime fechaPago = dateFechaPago.Value;
+                DateTime fechaInicio = dateDiaInicio.Value;
+                DateTime fechaFin = dateDiaFin.Value;
+
+                // Crea y muestra la ventana emergente
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaInicio,fechaFin);
+                comprobante.ShowDialog(); // Mostrar como ventana modal
+
+                // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
+                this.Show();
+                foreach (Form form in ventanasAbiertas)
+                {
+                    form.Show();
+                }
+            }
+            else
+            {
+                // Mostrar un mensaje de error si no se ha seleccionado un cliente
+                MessageBox.Show("Por favor, busque y seleccione un cliente antes de generar el comprobante.");
             }
         }
     }

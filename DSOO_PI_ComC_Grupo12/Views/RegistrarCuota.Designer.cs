@@ -347,6 +347,7 @@
             this.btnComprobante.TabIndex = 106;
             this.btnComprobante.Text = "COMPROBANTE";
             this.btnComprobante.UseVisualStyleBackColor = false;
+            this.btnComprobante.Click += new System.EventHandler(this.btnComprobante_Click);
             // 
             // btnPagar
             // 

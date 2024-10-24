@@ -19,6 +19,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private Cliente? Cliente { get; set; }
         private DateTime FechaPago { get; set; }
         private DateTime FechaInicio { get; set; }
+        private DateTime FechaFin {  get; set; }
 
         public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades, DateTime fechaInicio)
         {
@@ -38,9 +39,34 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridFechas.DefaultCellStyle.SelectionBackColor = Color.White;
             dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            CargarDataGridView(preciosActividades);
+            CargarDataGridViewNS(preciosActividades);
             printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
         }
+
+        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades, DateTime fechaInicio, DateTime fechaFin)
+        {
+            InitializeComponent();
+            Cliente = cliente;
+            FechaPago = fechaPago;
+            FechaInicio = fechaInicio;
+            FechaFin = fechaFin;
+
+            lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
+            lblDNI.Text = cliente.Dni;
+            lblFechaPago.Text = fechaPago.ToString("dd/MM/yyyy");
+            lblFormaPago.Text = FormaPago;
+            lblTotal.Text = TotalPagar.ToString() + " $";
+
+            dataGridResumen.DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridResumen.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridFechas.DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            CargarDataGridViewS(preciosActividades);
+            printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
+
+        }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -48,7 +74,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         }
 
         //modificar: poner en una clase estatica:-> RegistrarPago y Comprobante
-        private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
+        private void CargarDataGridViewNS(Dictionary<string, decimal> preciosActividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
@@ -62,6 +88,25 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), "Válido solo por el día abonado");
         }
+
+        private void CargarDataGridViewS(Dictionary<string, decimal> preciosActividades)
+        {
+            // Limpiar el DataGridView antes de cargar nuevos datos
+            dataGridResumen.Rows.Clear();
+            dataGridFechas.Rows.Clear();
+
+            // Iterar a través del diccionario y agregar filas al DataGridView
+            foreach (var actividad in preciosActividades)
+            {
+                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+            }
+
+            dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), FechaFin.ToString("dd/MM/yyyy"));
+        }
+
+
+
+
         //----------------------------------IMPRESION----------------------------------
         private void btnImprimir_Click(object sender, EventArgs e)
         {
