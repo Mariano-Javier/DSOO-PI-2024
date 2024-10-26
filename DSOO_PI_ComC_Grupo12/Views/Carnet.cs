@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
             InitializeComponent();
             LimpiarCarnet();
             btnGenerar.Enabled = false;
+            btnImprimir.Enabled = false;
+
+            // Suscribir el evento PrintPage del PrintDocument
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -34,6 +39,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDniCarnet.ForeColor = Color.White;
             lblTelCarnet.ForeColor = Color.White;
             lblEmailCarnet.ForeColor = Color.White;
+            btnImprimir.Enabled = false;
         }
 
         private void CarnetSocio()
@@ -161,6 +167,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
                 lblEmailCarnet.Text = ClienteSeleccionado.Email;
                 CarnetSocio();
+                btnImprimir.Enabled = true;
             }
             else
             {
@@ -171,6 +178,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
                 lblEmailCarnet.Text = ClienteSeleccionado.Email;
                 CarnetComun();
+                btnImprimir.Enabled = true;
             }
         }
 
@@ -182,6 +190,29 @@ namespace DSOO_PI_ComC_Grupo12.Views
             LimpiarCarnet();
             txtClienteIDoDNI.Clear();
             lblResultadoBusqueda.Text = string.Empty;
+            btnImprimir.Enabled = false;
         }
+
+        //----------------------------------IMPRESION----------------------------------
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument;
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(panelCarnet.Width, panelCarnet.Height);
+            panelCarnet.DrawToBitmap(bitmap, new Rectangle(0, 0, panelCarnet.Width, panelCarnet.Height));
+            e.Graphics.DrawImage(bitmap, 0, 0);
+        }
+
+
+        //------------------------------FIN-IMPRESION----------------------------------
     }
 }

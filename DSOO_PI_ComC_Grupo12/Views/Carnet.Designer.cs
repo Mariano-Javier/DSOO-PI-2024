@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Carnet));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.txtClienteIDoDNI = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -55,6 +56,10 @@
             this.lblIdCarnet = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNombreApellidoCarnet = new System.Windows.Forms.Label();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
             this.panelBuscar.SuspendLayout();
             this.groupOpcionesBusqueda.SuspendLayout();
             this.groupOpcionesCarnet.SuspendLayout();
@@ -266,6 +271,7 @@
             this.btnImprimir.TabIndex = 100;
             this.btnImprimir.Text = "IMPRIMIR";
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // panelCarnet
             // 
@@ -395,6 +401,20 @@
             this.lblNombreApellidoCarnet.Text = "Mariano Javier";
             this.lblNombreApellidoCarnet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // printDialog
+            // 
+            this.printDialog.UseEXDialog = true;
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
+            // 
             // Carnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,5 +478,9 @@
         private System.Windows.Forms.Label lblTelCarnet;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblDniCarnet;
+        private System.Windows.Forms.PrintDialog printDialog;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog;
     }
 }
