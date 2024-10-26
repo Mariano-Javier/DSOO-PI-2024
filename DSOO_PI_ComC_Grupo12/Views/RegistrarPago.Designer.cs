@@ -76,6 +76,12 @@
             this.dataGridResumen = new System.Windows.Forms.DataGridView();
             this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateDiaSeleccionado = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBuscarStatus = new System.Windows.Forms.Label();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -84,6 +90,8 @@
             this.panelTotal.SuspendLayout();
             this.panelBuscarCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -169,18 +177,18 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.dateFechaPago);
-            this.panel6.Location = new System.Drawing.Point(450, 216);
+            this.panel6.Location = new System.Drawing.Point(440, 216);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(273, 30);
+            this.panel6.Size = new System.Drawing.Size(283, 30);
             this.panel6.TabIndex = 77;
             // 
             // dateFechaPago
             // 
             this.dateFechaPago.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFechaPago.Location = new System.Drawing.Point(8, 4);
+            this.dateFechaPago.Location = new System.Drawing.Point(4, 4);
             this.dateFechaPago.Margin = new System.Windows.Forms.Padding(2);
             this.dateFechaPago.Name = "dateFechaPago";
-            this.dateFechaPago.Size = new System.Drawing.Size(258, 22);
+            this.dateFechaPago.Size = new System.Drawing.Size(273, 22);
             this.dateFechaPago.TabIndex = 53;
             this.dateFechaPago.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
             // 
@@ -188,7 +196,7 @@
             // 
             this.panelDNI.BackColor = System.Drawing.Color.White;
             this.panelDNI.Controls.Add(this.lblDNI);
-            this.panelDNI.Location = new System.Drawing.Point(222, 216);
+            this.panelDNI.Location = new System.Drawing.Point(294, 216);
             this.panelDNI.Name = "panelDNI";
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 74;
@@ -209,7 +217,7 @@
             this.panelNombreApellido.Controls.Add(this.lblNombreApellido);
             this.panelNombreApellido.Location = new System.Drawing.Point(15, 216);
             this.panelNombreApellido.Name = "panelNombreApellido";
-            this.panelNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.panelNombreApellido.Size = new System.Drawing.Size(273, 30);
             this.panelNombreApellido.TabIndex = 72;
             // 
             // lblNombreApellido
@@ -218,7 +226,7 @@
             this.lblNombreApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreApellido.Location = new System.Drawing.Point(0, 0);
             this.lblNombreApellido.Name = "lblNombreApellido";
-            this.lblNombreApellido.Size = new System.Drawing.Size(200, 30);
+            this.lblNombreApellido.Size = new System.Drawing.Size(273, 30);
             this.lblNombreApellido.TabIndex = 91;
             this.lblNombreApellido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -235,9 +243,9 @@
             this.groupActividades.Controls.Add(this.checkBoxVoley);
             this.groupActividades.Controls.Add(this.checkBoxFutbol);
             this.groupActividades.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupActividades.Location = new System.Drawing.Point(12, 268);
+            this.groupActividades.Location = new System.Drawing.Point(222, 268);
             this.groupActividades.Name = "groupActividades";
-            this.groupActividades.Size = new System.Drawing.Size(711, 100);
+            this.groupActividades.Size = new System.Drawing.Size(501, 100);
             this.groupActividades.TabIndex = 71;
             this.groupActividades.TabStop = false;
             this.groupActividades.Text = "Actividades";
@@ -245,7 +253,7 @@
             // checkBoxAcquagym
             // 
             this.checkBoxAcquagym.AutoSize = true;
-            this.checkBoxAcquagym.Location = new System.Drawing.Point(122, 59);
+            this.checkBoxAcquagym.Location = new System.Drawing.Point(111, 58);
             this.checkBoxAcquagym.Name = "checkBoxAcquagym";
             this.checkBoxAcquagym.Size = new System.Drawing.Size(98, 21);
             this.checkBoxAcquagym.TabIndex = 9;
@@ -255,7 +263,7 @@
             // checkBoxNutricion
             // 
             this.checkBoxNutricion.AutoSize = true;
-            this.checkBoxNutricion.Location = new System.Drawing.Point(225, 59);
+            this.checkBoxNutricion.Location = new System.Drawing.Point(214, 58);
             this.checkBoxNutricion.Name = "checkBoxNutricion";
             this.checkBoxNutricion.Size = new System.Drawing.Size(85, 21);
             this.checkBoxNutricion.TabIndex = 8;
@@ -265,7 +273,7 @@
             // checkBoxNatacion
             // 
             this.checkBoxNatacion.AutoSize = true;
-            this.checkBoxNatacion.Location = new System.Drawing.Point(225, 32);
+            this.checkBoxNatacion.Location = new System.Drawing.Point(214, 31);
             this.checkBoxNatacion.Name = "checkBoxNatacion";
             this.checkBoxNatacion.Size = new System.Drawing.Size(88, 21);
             this.checkBoxNatacion.TabIndex = 7;
@@ -275,7 +283,7 @@
             // checkBoxBasket
             // 
             this.checkBoxBasket.AutoSize = true;
-            this.checkBoxBasket.Location = new System.Drawing.Point(615, 32);
+            this.checkBoxBasket.Location = new System.Drawing.Point(407, 58);
             this.checkBoxBasket.Name = "checkBoxBasket";
             this.checkBoxBasket.Size = new System.Drawing.Size(68, 21);
             this.checkBoxBasket.TabIndex = 6;
@@ -285,7 +293,7 @@
             // checkBoxFutsal
             // 
             this.checkBoxFutsal.AutoSize = true;
-            this.checkBoxFutsal.Location = new System.Drawing.Point(528, 32);
+            this.checkBoxFutsal.Location = new System.Drawing.Point(407, 31);
             this.checkBoxFutsal.Name = "checkBoxFutsal";
             this.checkBoxFutsal.Size = new System.Drawing.Size(63, 21);
             this.checkBoxFutsal.TabIndex = 5;
@@ -295,7 +303,7 @@
             // checkBoxPilates
             // 
             this.checkBoxPilates.AutoSize = true;
-            this.checkBoxPilates.Location = new System.Drawing.Point(436, 32);
+            this.checkBoxPilates.Location = new System.Drawing.Point(313, 58);
             this.checkBoxPilates.Name = "checkBoxPilates";
             this.checkBoxPilates.Size = new System.Drawing.Size(68, 21);
             this.checkBoxPilates.TabIndex = 4;
@@ -305,7 +313,7 @@
             // checkBoxGimnasio
             // 
             this.checkBoxGimnasio.AutoSize = true;
-            this.checkBoxGimnasio.Location = new System.Drawing.Point(324, 32);
+            this.checkBoxGimnasio.Location = new System.Drawing.Point(313, 31);
             this.checkBoxGimnasio.Name = "checkBoxGimnasio";
             this.checkBoxGimnasio.Size = new System.Drawing.Size(88, 21);
             this.checkBoxGimnasio.TabIndex = 3;
@@ -315,7 +323,7 @@
             // checkBoxTenis
             // 
             this.checkBoxTenis.AutoSize = true;
-            this.checkBoxTenis.Location = new System.Drawing.Point(35, 59);
+            this.checkBoxTenis.Location = new System.Drawing.Point(24, 58);
             this.checkBoxTenis.Name = "checkBoxTenis";
             this.checkBoxTenis.Size = new System.Drawing.Size(56, 21);
             this.checkBoxTenis.TabIndex = 2;
@@ -325,7 +333,7 @@
             // checkBoxVoley
             // 
             this.checkBoxVoley.AutoSize = true;
-            this.checkBoxVoley.Location = new System.Drawing.Point(122, 32);
+            this.checkBoxVoley.Location = new System.Drawing.Point(111, 31);
             this.checkBoxVoley.Name = "checkBoxVoley";
             this.checkBoxVoley.Size = new System.Drawing.Size(62, 21);
             this.checkBoxVoley.TabIndex = 1;
@@ -335,7 +343,7 @@
             // checkBoxFutbol
             // 
             this.checkBoxFutbol.AutoSize = true;
-            this.checkBoxFutbol.Location = new System.Drawing.Point(35, 32);
+            this.checkBoxFutbol.Location = new System.Drawing.Point(24, 31);
             this.checkBoxFutbol.Name = "checkBoxFutbol";
             this.checkBoxFutbol.Size = new System.Drawing.Size(67, 21);
             this.checkBoxFutbol.TabIndex = 0;
@@ -346,18 +354,18 @@
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(447, 196);
+            this.lblFechaPago.Location = new System.Drawing.Point(440, 196);
             this.lblFechaPago.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(47, 17);
+            this.lblFechaPago.Size = new System.Drawing.Size(107, 17);
             this.lblFechaPago.TabIndex = 70;
-            this.lblFechaPago.Text = "Fecha";
+            this.lblFechaPago.Text = "Fecha de Pago";
             // 
             // lblTituloDNI
             // 
             this.lblTituloDNI.AutoSize = true;
             this.lblTituloDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDNI.Location = new System.Drawing.Point(219, 196);
+            this.lblTituloDNI.Location = new System.Drawing.Point(291, 196);
             this.lblTituloDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloDNI.Name = "lblTituloDNI";
             this.lblTituloDNI.Size = new System.Drawing.Size(31, 17);
@@ -425,7 +433,7 @@
             this.lblDetalle.AutoSize = true;
             this.lblDetalle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblDetalle.Location = new System.Drawing.Point(295, 156);
+            this.lblDetalle.Location = new System.Drawing.Point(291, 156);
             this.lblDetalle.Name = "lblDetalle";
             this.lblDetalle.Size = new System.Drawing.Size(168, 22);
             this.lblDetalle.TabIndex = 82;
@@ -435,9 +443,9 @@
             // 
             this.panelTotal.BackColor = System.Drawing.Color.White;
             this.panelTotal.Controls.Add(this.lblTotalPagar);
-            this.panelTotal.Location = new System.Drawing.Point(448, 554);
+            this.panelTotal.Location = new System.Drawing.Point(440, 554);
             this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Size = new System.Drawing.Size(273, 30);
+            this.panelTotal.Size = new System.Drawing.Size(281, 30);
             this.panelTotal.TabIndex = 87;
             // 
             // lblTotalPagar
@@ -446,7 +454,7 @@
             this.lblTotalPagar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalPagar.Location = new System.Drawing.Point(0, 0);
             this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(273, 30);
+            this.lblTotalPagar.Size = new System.Drawing.Size(281, 30);
             this.lblTotalPagar.TabIndex = 0;
             this.lblTotalPagar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -454,7 +462,7 @@
             // 
             this.lblTituloTotal.AutoSize = true;
             this.lblTituloTotal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloTotal.Location = new System.Drawing.Point(447, 534);
+            this.lblTituloTotal.Location = new System.Drawing.Point(442, 534);
             this.lblTituloTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloTotal.Name = "lblTituloTotal";
             this.lblTituloTotal.Size = new System.Drawing.Size(95, 17);
@@ -478,7 +486,7 @@
             this.panelBuscar.BackColor = System.Drawing.Color.White;
             this.panelBuscar.Location = new System.Drawing.Point(15, 49);
             this.panelBuscar.Name = "panelBuscar";
-            this.panelBuscar.Size = new System.Drawing.Size(99, 30);
+            this.panelBuscar.Size = new System.Drawing.Size(172, 30);
             this.panelBuscar.TabIndex = 84;
             // 
             // btnBuscar
@@ -488,7 +496,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(120, 49);
+            this.btnBuscar.Location = new System.Drawing.Point(193, 49);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(95, 30);
             this.btnBuscar.TabIndex = 85;
@@ -512,7 +520,7 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblSubtitulo.Location = new System.Drawing.Point(306, 4);
+            this.lblSubtitulo.Location = new System.Drawing.Point(302, -1);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(140, 22);
             this.lblSubtitulo.TabIndex = 87;
@@ -522,16 +530,18 @@
             // 
             this.txtClienteID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtClienteID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClienteID.Location = new System.Drawing.Point(19, 56);
+            this.txtClienteID.Location = new System.Drawing.Point(18, 56);
             this.txtClienteID.Margin = new System.Windows.Forms.Padding(2);
             this.txtClienteID.Name = "txtClienteID";
-            this.txtClienteID.Size = new System.Drawing.Size(92, 16);
+            this.txtClienteID.Size = new System.Drawing.Size(166, 16);
             this.txtClienteID.TabIndex = 88;
             this.txtClienteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panelBuscarCliente
             // 
             this.panelBuscarCliente.BackColor = System.Drawing.SystemColors.Control;
+            this.panelBuscarCliente.Controls.Add(this.label4);
+            this.panelBuscarCliente.Controls.Add(this.panel2);
             this.panelBuscarCliente.Controls.Add(this.txtClienteID);
             this.panelBuscarCliente.Controls.Add(this.lblSubtitulo);
             this.panelBuscarCliente.Controls.Add(this.lblClienteID);
@@ -560,7 +570,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Location = new System.Drawing.Point(11, 34);
+            this.label2.Location = new System.Drawing.Point(11, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(720, 22);
             this.label2.TabIndex = 92;
@@ -628,11 +638,74 @@
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 268);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 17);
+            this.label3.TabIndex = 95;
+            this.label3.Text = "Día Seleccionado";
+            // 
+            // dateDiaSeleccionado
+            // 
+            this.dateDiaSeleccionado.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDiaSeleccionado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDiaSeleccionado.Location = new System.Drawing.Point(6, 4);
+            this.dateDiaSeleccionado.Margin = new System.Windows.Forms.Padding(2);
+            this.dateDiaSeleccionado.Name = "dateDiaSeleccionado";
+            this.dateDiaSeleccionado.Size = new System.Drawing.Size(189, 22);
+            this.dateDiaSeleccionado.TabIndex = 53;
+            this.dateDiaSeleccionado.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dateDiaSeleccionado);
+            this.panel1.Location = new System.Drawing.Point(15, 288);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 30);
+            this.panel1.TabIndex = 96;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(442, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 17);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "Estado del Cliente";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblBuscarStatus);
+            this.panel2.Location = new System.Drawing.Point(440, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(281, 30);
+            this.panel2.TabIndex = 89;
+            // 
+            // lblBuscarStatus
+            // 
+            this.lblBuscarStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBuscarStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblBuscarStatus.Name = "lblBuscarStatus";
+            this.lblBuscarStatus.Size = new System.Drawing.Size(281, 30);
+            this.lblBuscarStatus.TabIndex = 0;
+            this.lblBuscarStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // RegistrarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridResumen);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.panel6);
@@ -669,6 +742,8 @@
             this.panelBuscarCliente.ResumeLayout(false);
             this.panelBuscarCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -722,5 +797,11 @@
         private System.Windows.Forms.DataGridView dataGridResumen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateDiaSeleccionado;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblBuscarStatus;
     }
 }

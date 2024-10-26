@@ -148,6 +148,7 @@
             this.btnCuotaSocios.TabIndex = 0;
             this.btnCuotaSocios.Text = "CUOTA SOCIOS";
             this.btnCuotaSocios.UseVisualStyleBackColor = true;
+            this.btnCuotaSocios.Click += new System.EventHandler(this.btnCuotaSocios_Click);
             // 
             // btnPagos
             // 
@@ -191,6 +192,7 @@
             this.btnCarnet.TabIndex = 1;
             this.btnCarnet.Text = "CARNET";
             this.btnCarnet.UseVisualStyleBackColor = true;
+            this.btnCarnet.Click += new System.EventHandler(this.btnCarnet_Click);
             // 
             // btnListarClientes
             // 
@@ -205,6 +207,7 @@
             this.btnListarClientes.TabIndex = 0;
             this.btnListarClientes.Text = "LISTAR CLIENTES";
             this.btnListarClientes.UseVisualStyleBackColor = true;
+            this.btnListarClientes.Click += new System.EventHandler(this.btnListarClientes_Click);
             // 
             // btnConsultas
             // 

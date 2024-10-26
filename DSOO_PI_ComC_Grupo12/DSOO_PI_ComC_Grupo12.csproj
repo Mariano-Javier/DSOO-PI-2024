@@ -111,13 +111,21 @@
     <Compile Include="Repositories\ActividadRepository.cs" />
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\CuotaSocioRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
+    <Compile Include="Repositories\PagoRepository.cs" />
     <Compile Include="Services\Conexion.cs" />
     <Compile Include="Views\About.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Carnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Carnet.Designer.cs">
+      <DependentUpon>Carnet.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Comprobante.cs">
       <SubType>Form</SubType>
@@ -130,6 +138,12 @@
     </Compile>
     <Compile Include="Views\ConfigurarBD.Designer.cs">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ListarCliente.Designer.cs">
+      <DependentUpon>ListarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -148,6 +162,12 @@
     </Compile>
     <Compile Include="Views\RegistrarCliente.Designer.cs">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrarCuota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrarCuota.Designer.cs">
+      <DependentUpon>RegistrarCuota.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrarEmpleado.cs">
       <SubType>Form</SubType>
@@ -174,11 +194,17 @@
     <EmbeddedResource Include="Views\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Carnet.resx">
+      <DependentUpon>Carnet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Comprobante.resx">
       <DependentUpon>Comprobante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfigurarBD.resx">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListarCliente.resx">
+      <DependentUpon>ListarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -188,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RegistrarCuota.resx">
+      <DependentUpon>RegistrarCuota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistrarEmpleado.resx">
       <DependentUpon>RegistrarEmpleado.cs</DependentUpon>
@@ -283,6 +312,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoMainBlue140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BCSoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BSNs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BSNOsocio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

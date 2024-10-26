@@ -1,5 +1,6 @@
 ﻿using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public Decimal TotalPagar;
         private bool EstadoPagado;
         Dictionary<string, decimal> preciosActividades;
+        
         public RegistrarPago()
         {
             InitializeComponent();
@@ -30,6 +32,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
             actividadRepository = new ActividadRepository();
             TotalPagar = 0;
             EstadoPagado = false;
+            dateFechaPago.Value = DateTime.Now;
+            dateDiaSeleccionado.Value = DateTime.Now;
+            btnPagar.Enabled = false;
+            btnComprobante.Enabled = false;
+            btnCalcular.Enabled = false;
         }
 
         private void ResetearRadioButtons()
@@ -92,8 +99,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 // Obtener la fecha seleccionada en el DateTimePicker
                 DateTime fechaPago = dateFechaPago.Value;
 
+                DateTime fechaSeleccionada = dateDiaSeleccionado.Value;
+
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaSeleccionada);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
@@ -118,9 +127,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtClienteID.Text = string.Empty;
+            Limpiar();
+        }
+
+        private void Limpiar()
+        {
             lblNombreApellido.Text = string.Empty;
             lblDNI.Text = string.Empty;
             dateFechaPago.Value = DateTime.Now;
+            dateDiaSeleccionado.Value = DateTime.Now;
             lblTotalPagar.Text = string.Empty;
             ResetearRadioButtons();
             ResetearCheckBox();
@@ -129,6 +144,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
             ClienteSeleccionado = null;
             dataGridResumen.Rows.Clear();
             EstadoPagado = false;
+            btnPagar.Enabled = false;
+            btnComprobante.Enabled = false;
+            btnCalcular.Enabled = false;
+            lblBuscarStatus.Text = string.Empty;
 
             if (preciosActividades != null && preciosActividades.Count > 0)
             {
@@ -138,11 +157,48 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            EstadoPagado = true;
+            if (ClienteSeleccionado == null)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente antes de realizar el pago.");
+                return;
+            }
+
+            if (TotalPagar <= 0)
+            {
+                MessageBox.Show("El monto a pagar debe ser mayor que cero.");
+                return;
+            }
+
+            try
+            {
+                PagoRepository pagoRepository = new PagoRepository();
+                pagoRepository.RegistrarPago(
+                    ClienteSeleccionado.Id,
+                    TotalPagar,
+                    FormaPago,
+                    dateFechaPago.Value,
+                    dateDiaSeleccionado.Value,
+                    null, // periodo_fin es null
+                    false,  // socio_al_pagar es false
+                    null // id_cuota no usado para no socios
+                );
+
+                EstadoPagado = true;
+
+                MessageBox.Show("Pago registrado exitosamente.");
+
+                btnComprobante.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar el pago: " + ex.Message);
+            }
         }
+
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            btnComprobante.Enabled = false;
             // Obtener las actividades seleccionadas
             ObtenerCheckBoxesSeleccionados();
 
@@ -181,11 +237,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             CargarDataGridView(preciosActividades);
 
-
+            btnPagar.Enabled = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            Limpiar();
             // Obtener el ID del cliente desde el TextBox
             if (int.TryParse(txtClienteID.Text, out int clienteId))
             {
@@ -199,12 +256,22 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                     if (cliente != null)
                     {
-                        // Mostrar los datos del cliente en los labels
-                        lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
-                        lblDNI.Text = cliente.Dni;
+                        if (!cliente.EsSocio)
+                        {
+                            // Mostrar los datos del cliente en los labels
+                            lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
+                            lblDNI.Text = cliente.Dni;
 
-                        // Almacenar el cliente en la propiedad ClienteSeleccionado
-                        ClienteSeleccionado = cliente;
+                            // Almacenar el cliente en la propiedad ClienteSeleccionado
+                            ClienteSeleccionado = cliente;
+                            btnCalcular.Enabled = true;
+                            lblBuscarStatus.Text = "Cliente encontrado con éxito";
+                        }
+                        else
+                        {
+                            lblBuscarStatus.Text = "El cliente esta registrado como socio";
+                            btnCalcular.Enabled = false;
+                        }
                     }
                     else
                     {
