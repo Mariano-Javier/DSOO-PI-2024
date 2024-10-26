@@ -14,11 +14,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
 {
     public partial class Carnet : Form
     {
-
+        public Cliente? ClienteSeleccionado { get; set; }
         public Carnet()
         {
             InitializeComponent();
             LimpiarCarnet();
+            btnGenerar.Enabled = false;
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -33,6 +34,26 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDniCarnet.ForeColor = Color.White;
             lblTelCarnet.ForeColor = Color.White;
             lblEmailCarnet.ForeColor = Color.White;
+        }
+
+        private void CarnetSocio()
+        {
+            panelCarnet.BackgroundImage = Properties.Resources.BCSoc;
+            lblNombreApellidoCarnet.ForeColor = Color.NavajoWhite;
+            lblIdCarnet.ForeColor = Color.NavajoWhite;
+            lblDniCarnet.ForeColor = Color.NavajoWhite;
+            lblTelCarnet.ForeColor = Color.NavajoWhite;
+            lblEmailCarnet.ForeColor = Color.NavajoWhite;
+        }
+
+        private void CarnetComun()
+        {
+            panelCarnet.BackgroundImage = Properties.Resources.BSNOsocio;
+            lblNombreApellidoCarnet.ForeColor = Color.Black;
+            lblIdCarnet.ForeColor = Color.Black;
+            lblDniCarnet.ForeColor = Color.Black;
+            lblTelCarnet.ForeColor = Color.Black;
+            lblEmailCarnet.ForeColor = Color.Black;
         }
 
 
@@ -66,6 +87,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            ClienteSeleccionado = null;
+            btnGenerar.Enabled = false;
             string input = txtClienteIDoDNI.Text;
             ClienteRepository clienteRepository = new ClienteRepository();
 
@@ -77,6 +100,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     if (cliente != null)
                     {
                         lblResultadoBusqueda.Text = "Cliente encontrado: " + cliente.Nombre + " " + cliente.Apellido;
+                        btnGenerar.Enabled = true;
+                        ClienteSeleccionado = cliente;
                     }
                     else
                     {
@@ -94,6 +119,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 if (cliente != null)
                 {
                     lblResultadoBusqueda.Text = "Cliente encontrado: " + cliente.Nombre + " " + cliente.Apellido;
+                    ClienteSeleccionado = cliente;
+                    btnGenerar.Enabled = true;
                 }
                 else
                 {
@@ -106,6 +133,55 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            LimpiarCarnet();
 
+            if (ClienteSeleccionado == null)
+            {
+                MessageBox.Show("No se ha seleccionado ningún cliente.");
+                return;
+            }
+
+            PagoRepository pagoRepository = new PagoRepository();
+            bool haPagado = pagoRepository.ClienteHaPagado(ClienteSeleccionado.Id);
+
+            if (!haPagado)
+            {
+                MessageBox.Show("El cliente no registra ningún pago.");
+                return;
+            }
+
+            if (ClienteSeleccionado.EsSocio)
+            {
+                // Generar tarjeta gold
+                lblNombreApellidoCarnet.Text = ClienteSeleccionado.Nombre + " " + ClienteSeleccionado.Apellido;
+                lblIdCarnet.Text = "ID: " + ClienteSeleccionado.Id.ToString();
+                lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
+                lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
+                lblEmailCarnet.Text = ClienteSeleccionado.Email;
+                CarnetSocio();
+            }
+            else
+            {
+                // Generar tarjeta común
+                lblNombreApellidoCarnet.Text = ClienteSeleccionado.Nombre + " " + ClienteSeleccionado.Apellido;
+                lblIdCarnet.Text = "ID: " + ClienteSeleccionado.Id.ToString();
+                lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
+                lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
+                lblEmailCarnet.Text = ClienteSeleccionado.Email;
+                CarnetComun();
+            }
+        }
+
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ClienteSeleccionado = null;
+            btnGenerar.Enabled = false;
+            LimpiarCarnet();
+            txtClienteIDoDNI.Clear();
+            lblResultadoBusqueda.Text = string.Empty;
+        }
     }
 }
