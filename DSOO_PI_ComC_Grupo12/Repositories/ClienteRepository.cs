@@ -153,6 +153,63 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
         }
 
+        public Cliente? BuscarClientePorDni(string dni)
+        {
+            MySqlConnection? conexionDb = null;
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = @"SELECT id, nombre, apellido, dni, email, telefono, fecha_nac, es_socio, es_apto
+                                    FROM cliente
+                                    WHERE dni = @dni";
+                    comando.Parameters.AddWithValue("@dni", dni);
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Cliente(
+                                id: reader.GetInt32(0),
+                                nombre: reader.GetString(1),
+                                apellido: reader.GetString(2),
+                                dni: reader.GetString(3),
+                                mail: reader.GetString(4),
+                                telefono: reader.GetString(5),
+                                fechaNacimiento: reader.GetDateTime(6),
+                                esSocio: reader.GetBoolean(7),
+                                esApto: reader.GetBoolean(8)
+                            );
+                        }
+                        else
+                        {
+                            return null; // No se encontró el cliente
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar cliente: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
+
 
     }
 }

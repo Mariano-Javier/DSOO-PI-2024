@@ -121,6 +121,12 @@
     <Compile Include="Views\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Carnet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Carnet.Designer.cs">
+      <DependentUpon>Carnet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Comprobante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     </Compile>
     <Compile Include="Views\ConfigurarBD.Designer.cs">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ListarCliente.Designer.cs">
+      <DependentUpon>ListarCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -182,11 +194,17 @@
     <EmbeddedResource Include="Views\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Carnet.resx">
+      <DependentUpon>Carnet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Comprobante.resx">
       <DependentUpon>Comprobante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfigurarBD.resx">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListarCliente.resx">
+      <DependentUpon>ListarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -294,6 +312,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoMainBlue140.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BCSoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BSNs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BSNOsocio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

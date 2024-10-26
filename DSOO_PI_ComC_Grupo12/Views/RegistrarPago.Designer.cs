@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupOpcionesPago = new System.Windows.Forms.GroupBox();
@@ -79,6 +79,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateDiaSeleccionado = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBuscarStatus = new System.Windows.Forms.Label();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -88,6 +91,7 @@
             this.panelBuscarCliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -482,7 +486,7 @@
             this.panelBuscar.BackColor = System.Drawing.Color.White;
             this.panelBuscar.Location = new System.Drawing.Point(15, 49);
             this.panelBuscar.Name = "panelBuscar";
-            this.panelBuscar.Size = new System.Drawing.Size(99, 30);
+            this.panelBuscar.Size = new System.Drawing.Size(172, 30);
             this.panelBuscar.TabIndex = 84;
             // 
             // btnBuscar
@@ -492,7 +496,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(120, 49);
+            this.btnBuscar.Location = new System.Drawing.Point(193, 49);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(95, 30);
             this.btnBuscar.TabIndex = 85;
@@ -516,7 +520,7 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblSubtitulo.Location = new System.Drawing.Point(302, 4);
+            this.lblSubtitulo.Location = new System.Drawing.Point(302, -1);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(140, 22);
             this.lblSubtitulo.TabIndex = 87;
@@ -526,16 +530,18 @@
             // 
             this.txtClienteID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtClienteID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClienteID.Location = new System.Drawing.Point(19, 56);
+            this.txtClienteID.Location = new System.Drawing.Point(18, 56);
             this.txtClienteID.Margin = new System.Windows.Forms.Padding(2);
             this.txtClienteID.Name = "txtClienteID";
-            this.txtClienteID.Size = new System.Drawing.Size(92, 16);
+            this.txtClienteID.Size = new System.Drawing.Size(166, 16);
             this.txtClienteID.TabIndex = 88;
             this.txtClienteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panelBuscarCliente
             // 
             this.panelBuscarCliente.BackColor = System.Drawing.SystemColors.Control;
+            this.panelBuscarCliente.Controls.Add(this.label4);
+            this.panelBuscarCliente.Controls.Add(this.panel2);
             this.panelBuscarCliente.Controls.Add(this.txtClienteID);
             this.panelBuscarCliente.Controls.Add(this.lblSubtitulo);
             this.panelBuscarCliente.Controls.Add(this.lblClienteID);
@@ -564,7 +570,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Location = new System.Drawing.Point(11, 34);
+            this.label2.Location = new System.Drawing.Point(11, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(720, 22);
             this.label2.TabIndex = 92;
@@ -591,26 +597,26 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Precio});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
@@ -663,6 +669,36 @@
             this.panel1.Size = new System.Drawing.Size(200, 30);
             this.panel1.TabIndex = 96;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(442, 29);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 17);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "Estado del Cliente";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblBuscarStatus);
+            this.panel2.Location = new System.Drawing.Point(440, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(281, 30);
+            this.panel2.TabIndex = 89;
+            // 
+            // lblBuscarStatus
+            // 
+            this.lblBuscarStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBuscarStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblBuscarStatus.Name = "lblBuscarStatus";
+            this.lblBuscarStatus.Size = new System.Drawing.Size(281, 30);
+            this.lblBuscarStatus.TabIndex = 0;
+            this.lblBuscarStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // RegistrarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,6 +743,7 @@
             this.panelBuscarCliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,5 +800,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateDiaSeleccionado;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblBuscarStatus;
     }
 }

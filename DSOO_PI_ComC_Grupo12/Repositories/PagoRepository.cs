@@ -50,5 +50,43 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 }
             }
         }
+
+        public bool ClienteHaPagado(int clienteId)
+        {
+            MySqlConnection? conexionDb = null;
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "SELECT COUNT(*) FROM pago WHERE id_cliente = @id_cliente";
+                    comando.Parameters.AddWithValue("@id_cliente", clienteId);
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+                    return cantidad > 0;  // Si el conteo es mayor a 0, el cliente ha realizado al menos un pago
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar pagos del cliente: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
+
+
+
     }
 }
