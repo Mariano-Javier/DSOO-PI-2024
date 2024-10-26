@@ -21,12 +21,17 @@ namespace DSOO_PI_ComC_Grupo12.Views
         Dictionary<string, decimal> preciosActividades;
         private List<Form> ventanasAbiertas;
 
+        public DateTime CantidadMesesPagos;
+        public int MesesSeleccionados;
+
         public RegistrarCuota()
         {
             InitializeComponent();
             dateFechaPago.Value = DateTime.Now;
             dateDiaInicio.Value = DateTime.Now;
-            dateDiaFin.Value = dateDiaInicio.Value.AddMonths(1);
+
+            CantidadMesesPagos = dateDiaInicio.Value.AddMonths(1);
+
             btnPagar.Enabled = false;
             btnComprobante.Enabled = false;
             TotalPagar = 0;
@@ -34,6 +39,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
             TipoCuota = 1;
             preciosActividades = new Dictionary<string, decimal>();
             ventanasAbiertas = new List<Form>();
+
+            comboBoxMesSus.SelectedIndex = 0;
+            MesesSeleccionados = 1;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -47,7 +55,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDNI.Text = string.Empty;
             dateFechaPago.Value = DateTime.Now;
             dateDiaInicio.Value = DateTime.Now;
-            dateDiaFin.Value = dateDiaInicio.Value.AddMonths(1);
+            //dateDiaFin.Value = dateDiaInicio.Value.AddMonths(1);
             lblTotalPagar.Text = string.Empty;
             ResetearRadioButtons();
             btnPagar.Enabled = false;
@@ -57,6 +65,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridResumen.Rows.Clear();
             preciosActividades.Clear();
             comboBoxTipoSocio.SelectedIndex = 0;
+            comboBoxMesSus.SelectedIndex = 0;
+            MesesSeleccionados = 1;
         }
 
         private void radioEfectivo_CheckedChanged(object sender, EventArgs e)
@@ -150,6 +160,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             TotalPagar = 0;
             preciosActividades.Clear();
             btnComprobante.Enabled = false;
+
+            CantidadMesesPagos = dateDiaInicio.Value.AddMonths(MesesSeleccionados);
             try
             {
                 // Obtener la cuota correspondiente al tipo de socio seleccionado
@@ -158,16 +170,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 if (!string.IsNullOrEmpty(descripcion) && monto > 0)
                 {
                     // Calcular el total a pagar
-                    TotalPagar = monto;
-
-
+                    TotalPagar = monto* MesesSeleccionados;
 
                     preciosActividades.Add("Cuota "+comboBoxTipoSocio.Text, TotalPagar);
 
 
                     var (totalConDescuento, montoDescuento) = TotalDescuento(TotalPagar, FormaPago);
-
-                    
 
                     // Mostrar el total
                     TotalPagar = totalConDescuento;
@@ -249,7 +257,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     FormaPago,
                     dateFechaPago.Value,
                     dateDiaInicio.Value,
-                    dateDiaFin.Value, // periodo_fin es null
+                    //dateDiaFin.Value, // periodo_fin es null
+                    CantidadMesesPagos,
                     true,  // socio_al_pagar es true
                     TipoCuota // id_cuota 
                 );
@@ -288,7 +297,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 // Obtener la fecha seleccionada en el DateTimePicker
                 DateTime fechaPago = dateFechaPago.Value;
                 DateTime fechaInicio = dateDiaInicio.Value;
-                DateTime fechaFin = dateDiaFin.Value;
+                DateTime fechaFin = CantidadMesesPagos;
 
                 // Crea y muestra la ventana emergente
                 Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaInicio,fechaFin);
@@ -305,6 +314,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 // Mostrar un mensaje de error si no se ha seleccionado un cliente
                 MessageBox.Show("Por favor, busque y seleccione un cliente antes de generar el comprobante.");
+            }
+        }
+
+        private void comboBoxMesSus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMesSus.SelectedItem != null)
+            {
+                MesesSeleccionados = Convert.ToInt32(comboBoxMesSus.SelectedItem.ToString());
+
             }
         }
     }

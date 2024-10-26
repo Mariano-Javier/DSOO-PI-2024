@@ -192,6 +192,7 @@
             this.btnCarnet.TabIndex = 1;
             this.btnCarnet.Text = "CARNET";
             this.btnCarnet.UseVisualStyleBackColor = true;
+            this.btnCarnet.Click += new System.EventHandler(this.btnCarnet_Click);
             // 
             // btnListarClientes
             // 

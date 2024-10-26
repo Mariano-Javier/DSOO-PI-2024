@@ -102,5 +102,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             FormHelper.OpenChildFormInPanel(new RegistrarCuota(), panelContenedor);
         }
+
+        private void btnCarnet_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new Carnet(), panelContenedor);
+        }
     }
 }
