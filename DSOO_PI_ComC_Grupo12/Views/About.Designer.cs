@@ -118,9 +118,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label5.Location = new System.Drawing.Point(255, 114);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(195, 22);
+            this.label5.Size = new System.Drawing.Size(186, 22);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Versión: alpha - 0.42";
+            this.label5.Text = "Versión: beta - 0.50";
             // 
             // label4
             // 

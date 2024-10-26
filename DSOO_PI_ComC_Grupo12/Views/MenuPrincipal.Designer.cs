@@ -38,7 +38,7 @@
             this.btnPagos = new System.Windows.Forms.Button();
             this.panelConsultasSM = new System.Windows.Forms.Panel();
             this.btnCarnet = new System.Windows.Forms.Button();
-            this.btnListarClientes = new System.Windows.Forms.Button();
+            this.btnListarSocios = new System.Windows.Forms.Button();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.panelRegistrosSM = new System.Windows.Forms.Panel();
             this.btnRegistrarCliente = new System.Windows.Forms.Button();
@@ -172,7 +172,7 @@
             // 
             this.panelConsultasSM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
             this.panelConsultasSM.Controls.Add(this.btnCarnet);
-            this.panelConsultasSM.Controls.Add(this.btnListarClientes);
+            this.panelConsultasSM.Controls.Add(this.btnListarSocios);
             this.panelConsultasSM.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelConsultasSM.Location = new System.Drawing.Point(0, 290);
             this.panelConsultasSM.Name = "panelConsultasSM";
@@ -194,20 +194,20 @@
             this.btnCarnet.UseVisualStyleBackColor = true;
             this.btnCarnet.Click += new System.EventHandler(this.btnCarnet_Click);
             // 
-            // btnListarClientes
+            // btnListarSocios
             // 
-            this.btnListarClientes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListarClientes.FlatAppearance.BorderSize = 0;
-            this.btnListarClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListarClientes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListarClientes.ForeColor = System.Drawing.Color.White;
-            this.btnListarClientes.Location = new System.Drawing.Point(0, 0);
-            this.btnListarClientes.Name = "btnListarClientes";
-            this.btnListarClientes.Size = new System.Drawing.Size(265, 45);
-            this.btnListarClientes.TabIndex = 0;
-            this.btnListarClientes.Text = "LISTAR CLIENTES";
-            this.btnListarClientes.UseVisualStyleBackColor = true;
-            this.btnListarClientes.Click += new System.EventHandler(this.btnListarClientes_Click);
+            this.btnListarSocios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListarSocios.FlatAppearance.BorderSize = 0;
+            this.btnListarSocios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListarSocios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListarSocios.ForeColor = System.Drawing.Color.White;
+            this.btnListarSocios.Location = new System.Drawing.Point(0, 0);
+            this.btnListarSocios.Name = "btnListarSocios";
+            this.btnListarSocios.Size = new System.Drawing.Size(265, 45);
+            this.btnListarSocios.TabIndex = 0;
+            this.btnListarSocios.Text = "LISTAR SOCIOS";
+            this.btnListarSocios.UseVisualStyleBackColor = true;
+            this.btnListarSocios.Click += new System.EventHandler(this.btnListarSocios_Click);
             // 
             // btnConsultas
             // 
@@ -442,7 +442,7 @@
 
         private System.Windows.Forms.Panel panelSideMenu;
         private System.Windows.Forms.Panel panelConsultasSM;
-        private System.Windows.Forms.Button btnListarClientes;
+        private System.Windows.Forms.Button btnListarSocios;
         private System.Windows.Forms.Button btnConsultas;
         private System.Windows.Forms.Panel panelRegistrosSM;
         private System.Windows.Forms.Button btnRegistrarCliente;
