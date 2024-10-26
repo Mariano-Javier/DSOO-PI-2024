@@ -1,6 +1,6 @@
 ﻿namespace DSOO_PI_ComC_Grupo12.Views
 {
-    partial class ListarCliente
+    partial class ListarSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridResumen = new System.Windows.Forms.DataGridView();
             this.panelBuscarCliente = new System.Windows.Forms.Panel();
+            this.btnProximosVen = new System.Windows.Forms.Button();
+            this.btnSinActividad = new System.Windows.Forms.Button();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.btnTodos = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -41,15 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.toolTipListado = new System.Windows.Forms.ToolTip(this.components);
             this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSinActividad = new System.Windows.Forms.Button();
-            this.btnProximosVen = new System.Windows.Forms.Button();
-            this.toolTipListado = new System.Windows.Forms.ToolTip(this.components);
+            this.Vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panelBuscarCliente.SuspendLayout();
             this.SuspendLayout();
@@ -60,30 +60,30 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Nombre,
             this.Apellido,
             this.Email,
-            this.Vencimiento,
-            this.Telefono});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Telefono,
+            this.Vencimiento});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridResumen.Location = new System.Drawing.Point(14, 192);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
@@ -102,6 +102,38 @@
             this.panelBuscarCliente.Name = "panelBuscarCliente";
             this.panelBuscarCliente.Size = new System.Drawing.Size(735, 91);
             this.panelBuscarCliente.TabIndex = 98;
+            // 
+            // btnProximosVen
+            // 
+            this.btnProximosVen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnProximosVen.FlatAppearance.BorderSize = 0;
+            this.btnProximosVen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProximosVen.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProximosVen.ForeColor = System.Drawing.Color.White;
+            this.btnProximosVen.Location = new System.Drawing.Point(304, 32);
+            this.btnProximosVen.Name = "btnProximosVen";
+            this.btnProximosVen.Size = new System.Drawing.Size(120, 47);
+            this.btnProximosVen.TabIndex = 90;
+            this.btnProximosVen.Text = "PRÓXIMOS A VENCER";
+            this.btnProximosVen.UseVisualStyleBackColor = false;
+            this.btnProximosVen.Click += new System.EventHandler(this.btnProximosVen_Click);
+            this.btnProximosVen.MouseHover += new System.EventHandler(this.btnProximosVen_MouseHover);
+            // 
+            // btnSinActividad
+            // 
+            this.btnSinActividad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnSinActividad.FlatAppearance.BorderSize = 0;
+            this.btnSinActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSinActividad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSinActividad.ForeColor = System.Drawing.Color.White;
+            this.btnSinActividad.Location = new System.Drawing.Point(430, 32);
+            this.btnSinActividad.Name = "btnSinActividad";
+            this.btnSinActividad.Size = new System.Drawing.Size(120, 47);
+            this.btnSinActividad.TabIndex = 88;
+            this.btnSinActividad.Text = "SIN ACTIVIDAD";
+            this.btnSinActividad.UseVisualStyleBackColor = false;
+            this.btnSinActividad.Click += new System.EventHandler(this.btnSinActividad_Click);
+            this.btnSinActividad.MouseHover += new System.EventHandler(this.btnSinActividad_MouseHover);
             // 
             // lblSubtitulo
             // 
@@ -127,6 +159,7 @@
             this.btnTodos.TabIndex = 85;
             this.btnTodos.Text = "TODOS";
             this.btnTodos.UseVisualStyleBackColor = false;
+            this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
             this.btnTodos.MouseHover += new System.EventHandler(this.btnTodos_MouseHover);
             // 
             // lblTitulo
@@ -226,13 +259,6 @@
             this.Email.ReadOnly = true;
             this.Email.Width = 170;
             // 
-            // Vencimiento
-            // 
-            this.Vencimiento.HeaderText = "Vencimiento";
-            this.Vencimiento.Name = "Vencimiento";
-            this.Vencimiento.ReadOnly = true;
-            this.Vencimiento.Width = 130;
-            // 
             // Telefono
             // 
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -240,37 +266,14 @@
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
-            // btnSinActividad
+            // Vencimiento
             // 
-            this.btnSinActividad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnSinActividad.FlatAppearance.BorderSize = 0;
-            this.btnSinActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSinActividad.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSinActividad.ForeColor = System.Drawing.Color.White;
-            this.btnSinActividad.Location = new System.Drawing.Point(430, 32);
-            this.btnSinActividad.Name = "btnSinActividad";
-            this.btnSinActividad.Size = new System.Drawing.Size(120, 47);
-            this.btnSinActividad.TabIndex = 88;
-            this.btnSinActividad.Text = "SIN ACTIVIDAD";
-            this.btnSinActividad.UseVisualStyleBackColor = false;
-            this.btnSinActividad.MouseHover += new System.EventHandler(this.btnSinActividad_MouseHover);
+            this.Vencimiento.HeaderText = "Vencimiento";
+            this.Vencimiento.Name = "Vencimiento";
+            this.Vencimiento.ReadOnly = true;
+            this.Vencimiento.Width = 130;
             // 
-            // btnProximosVen
-            // 
-            this.btnProximosVen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnProximosVen.FlatAppearance.BorderSize = 0;
-            this.btnProximosVen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProximosVen.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProximosVen.ForeColor = System.Drawing.Color.White;
-            this.btnProximosVen.Location = new System.Drawing.Point(304, 32);
-            this.btnProximosVen.Name = "btnProximosVen";
-            this.btnProximosVen.Size = new System.Drawing.Size(120, 47);
-            this.btnProximosVen.TabIndex = 90;
-            this.btnProximosVen.Text = "PRÓXIMOS A VENCER";
-            this.btnProximosVen.UseVisualStyleBackColor = false;
-            this.btnProximosVen.MouseHover += new System.EventHandler(this.btnProximosVen_MouseHover);
-            // 
-            // ListarCliente
+            // ListarSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,7 +287,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ListarCliente";
+            this.Name = "ListarSocio";
             this.Text = "ListarCliente";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.panelBuscarCliente.ResumeLayout(false);
@@ -306,14 +309,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnSinActividad;
+        private System.Windows.Forms.Button btnProximosVen;
+        private System.Windows.Forms.ToolTip toolTipListado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.Button btnSinActividad;
-        private System.Windows.Forms.Button btnProximosVen;
-        private System.Windows.Forms.ToolTip toolTipListado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vencimiento;
     }
 }

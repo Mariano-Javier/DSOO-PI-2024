@@ -110,7 +110,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnListarSocios_Click(object sender, EventArgs e)
         {
-            FormHelper.OpenChildFormInPanel(new ListarCliente(), panelContenedor);
+            FormHelper.OpenChildFormInPanel(new ListarSocio(), panelContenedor);
         }
     }
 }
