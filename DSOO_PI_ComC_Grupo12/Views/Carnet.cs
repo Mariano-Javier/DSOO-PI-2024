@@ -93,6 +93,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            LimpiarCarnet();
             ClienteSeleccionado = null;
             btnGenerar.Enabled = false;
             string input = txtClienteIDoDNI.Text;

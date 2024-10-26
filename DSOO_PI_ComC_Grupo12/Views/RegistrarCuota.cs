@@ -34,6 +34,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             btnPagar.Enabled = false;
             btnComprobante.Enabled = false;
+            btnCalcular.Enabled = false;
             TotalPagar = 0;
             comboBoxTipoSocio.SelectedIndex = 0; 
             TipoCuota = 1;
@@ -51,11 +52,16 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtClienteID.Text = string.Empty;
+            Limpiar();
+        }
+
+        private void Limpiar()
+        {
+            
             lblNombreApellido.Text = string.Empty;
             lblDNI.Text = string.Empty;
             dateFechaPago.Value = DateTime.Now;
             dateDiaInicio.Value = DateTime.Now;
-            //dateDiaFin.Value = dateDiaInicio.Value.AddMonths(1);
             lblTotalPagar.Text = string.Empty;
             ResetearRadioButtons();
             btnPagar.Enabled = false;
@@ -67,6 +73,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
             comboBoxTipoSocio.SelectedIndex = 0;
             comboBoxMesSus.SelectedIndex = 0;
             MesesSeleccionados = 1;
+            btnCalcular.Enabled = false;
+            lblBuscarStatus.Text = string.Empty;
         }
 
         private void radioEfectivo_CheckedChanged(object sender, EventArgs e)
@@ -102,6 +110,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            Limpiar();
             // Obtener el ID del cliente desde el TextBox
             if (int.TryParse(txtClienteID.Text, out int clienteId))
             {
@@ -115,12 +124,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                     if (cliente != null)
                     {
-                        // Mostrar los datos del cliente en los labels
-                        lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
-                        lblDNI.Text = cliente.Dni;
 
-                        // Almacenar el cliente en la propiedad ClienteSeleccionado
-                        ClienteSeleccionado = cliente;
+                        if (cliente.EsSocio)
+                        {
+                            // Mostrar los datos del cliente en los labels
+                            lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
+                            lblDNI.Text = cliente.Dni;
+
+                            // Almacenar el cliente en la propiedad ClienteSeleccionado
+                            ClienteSeleccionado = cliente;
+                            btnCalcular.Enabled = true;
+                            lblBuscarStatus.Text = "Cliente encontrado con éxito";
+                        }
+                        else
+                        {
+                            lblBuscarStatus.Text = "El cliente no esta registrado como socio";
+                            btnCalcular.Enabled = false;
+                        }
+
                     }
                     else
                     {
