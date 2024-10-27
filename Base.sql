@@ -111,5 +111,21 @@ INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, 
 (12, 40000.00, 'Tarjeta en 3 cuotas', '2023-08-01', '2023-08-01', '2023-11-01', TRUE, 2),
 (15, 35000.00, 'Efectivo', '2023-07-25', '2023-07-25', '2023-08-25', TRUE, 1);
 
+INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar, id_cuota) VALUES
+(2, 5000.00, 'Efectivo', '2024-10-01', '2024-10-01', NULL, FALSE, NULL),
+(5, 7000.00, 'Tarjeta en 3 cuotas', '2024-09-15', '2024-09-15', NULL, FALSE, NULL),
+(14, 7500.00, 'Tarjeta en 6 cuotas', '2024-07-30', '2024-07-30', NULL, FALSE, NULL),
+(12, 8000.00, 'Efectivo', '2024-06-25', '2024-06-25', NULL, FALSE, NULL),
+(5, 6800.00, 'Tarjeta en 3 cuotas', '2024-05-10', '2024-05-10', NULL, FALSE, NULL),
+(2, 5200.00, 'Efectivo', '2024-04-18', '2024-04-18', NULL, FALSE, NULL),
+(14, 7600.00, 'Tarjeta en 6 cuotas', '2024-03-22', '2024-03-22', NULL, FALSE, NULL),
+(5, 5900.00, 'Efectivo', '2024-02-15', '2024-02-15', NULL, FALSE, NULL),
+(2, 7200.00, 'Tarjeta en 3 cuotas', '2024-01-05', '2024-01-05', NULL, FALSE, NULL),
+(5, 4800.00, 'Efectivo', '2023-12-12', '2023-12-12', NULL, FALSE, NULL),
+(14, 6700.00, 'Tarjeta en 6 cuotas', '2023-11-30', '2023-11-30', NULL, FALSE, NULL),
+(2, 5300.00, 'Efectivo', '2023-10-20', '2023-10-20', NULL, FALSE, NULL),
+(5, 6900.00, 'Tarjeta en 3 cuotas', '2023-09-15', '2023-09-15', NULL, FALSE, NULL),
+(14, 6100.00, 'Efectivo', '2023-08-01', '2023-08-01', NULL, FALSE, NULL);
+
 
 

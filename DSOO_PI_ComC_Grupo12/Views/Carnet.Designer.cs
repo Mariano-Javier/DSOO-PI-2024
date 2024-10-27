@@ -60,6 +60,8 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblVencimiento = new System.Windows.Forms.Label();
             this.panelBuscar.SuspendLayout();
             this.groupOpcionesBusqueda.SuspendLayout();
             this.groupOpcionesCarnet.SuspendLayout();
@@ -70,6 +72,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -276,6 +279,7 @@
             // panelCarnet
             // 
             this.panelCarnet.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.BCSoc;
+            this.panelCarnet.Controls.Add(this.panel7);
             this.panelCarnet.Controls.Add(this.panel6);
             this.panelCarnet.Controls.Add(this.panel5);
             this.panelCarnet.Controls.Add(this.panel4);
@@ -415,6 +419,29 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
+            this.panel7.Controls.Add(this.lblVencimiento);
+            this.panel7.ForeColor = System.Drawing.Color.Transparent;
+            this.panel7.Location = new System.Drawing.Point(330, 175);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(241, 20);
+            this.panel7.TabIndex = 6;
+            // 
+            // lblVencimiento
+            // 
+            this.lblVencimiento.BackColor = System.Drawing.Color.Transparent;
+            this.lblVencimiento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVencimiento.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVencimiento.ForeColor = System.Drawing.Color.NavajoWhite;
+            this.lblVencimiento.Location = new System.Drawing.Point(0, 0);
+            this.lblVencimiento.Name = "lblVencimiento";
+            this.lblVencimiento.Size = new System.Drawing.Size(241, 20);
+            this.lblVencimiento.TabIndex = 0;
+            this.lblVencimiento.Text = "Vencimiento: 18/11/2026";
+            this.lblVencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Carnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,6 +471,7 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +510,7 @@
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblVencimiento;
     }
 }

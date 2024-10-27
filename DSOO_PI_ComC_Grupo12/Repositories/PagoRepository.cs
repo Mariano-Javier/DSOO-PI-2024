@@ -85,8 +85,41 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 }
             }
         }
+        public DateTime? ObtenerPeriodoFin(int clienteId)
+        {
+            MySqlConnection? conexionDb = null;
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
 
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "SELECT MAX(periodo_fin) FROM pago WHERE id_cliente = @id_cliente";
+                    comando.Parameters.AddWithValue("@id_cliente", clienteId);
 
+                    object result = comando.ExecuteScalar();
+                    return result != DBNull.Value ? (DateTime?)result : null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el periodo_fin del cliente: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
 
     }
 }

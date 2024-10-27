@@ -39,6 +39,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDniCarnet.ForeColor = Color.White;
             lblTelCarnet.ForeColor = Color.White;
             lblEmailCarnet.ForeColor = Color.White;
+            lblVencimiento.ForeColor = Color.White;
             btnImprimir.Enabled = false;
         }
 
@@ -50,6 +51,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDniCarnet.ForeColor = Color.NavajoWhite;
             lblTelCarnet.ForeColor = Color.NavajoWhite;
             lblEmailCarnet.ForeColor = Color.NavajoWhite;
+            lblVencimiento.ForeColor = Color.NavajoWhite;
         }
 
         private void CarnetComun()
@@ -159,6 +161,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 return;
             }
 
+            DateTime? periodoFin = pagoRepository.ObtenerPeriodoFin(ClienteSeleccionado.Id);
+
             if (ClienteSeleccionado.EsSocio)
             {
                 // Generar tarjeta gold
@@ -167,6 +171,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
                 lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
                 lblEmailCarnet.Text = ClienteSeleccionado.Email;
+                lblVencimiento.Text = periodoFin.HasValue ? "Vencimiento: " + periodoFin.Value.ToString("dd/MM/yyyy") : "Vencimiento: No disponible";
                 CarnetSocio();
                 btnImprimir.Enabled = true;
             }
@@ -182,6 +187,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 btnImprimir.Enabled = true;
             }
         }
+
 
 
         private void btnLimpiar_Click(object sender, EventArgs e)
