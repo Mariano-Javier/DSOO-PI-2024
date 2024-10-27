@@ -50,15 +50,16 @@ INSERT INTO cliente (nombre, apellido, dni, email, telefono, fecha_nac, es_socio
 ('José', 'Torres', '44455667N', 'jose.torres@example.com', '644556677', '1991-03-15', FALSE, TRUE),
 ('Patricia', 'Gómez', '55566778O', 'patricia.gomez@example.com', '655667788', '1992-09-05', TRUE, TRUE);
 
-
-CREATE TABLE pago (
+CREATE TABLE cuota_socio (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT NOT NULL,
-    monto DECIMAL(10, 2) NOT NULL,
-    medio_de_pago VARCHAR(50) NOT NULL,
-    fecha_pago DATE NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id)
+    descripcion VARCHAR(50) NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL
 );
+
+INSERT INTO cuota_socio (descripcion, monto)
+VALUES 
+('Regular', 35000.00),
+('Premium', 40000.00);
 
 CREATE TABLE actividad (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -78,3 +79,37 @@ VALUES
 ('Tenis', 6700.00),
 ('Acquagym', 9300.00),
 ('Nutrición', 5500.00);
+
+CREATE TABLE pago (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
+    medio_de_pago VARCHAR(50) NOT NULL,
+    fecha_pago DATE NOT NULL,
+    periodo_inicio DATE NOT NULL, 
+    periodo_fin DATE,    
+    socio_al_pagar BOOLEAN NOT NULL, 
+    id_cuota INT,  
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_cuota) REFERENCES cuota_socio(id)
+);
+
+INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar, id_cuota) VALUES
+(1, 35000.00, 'Efectivo', '2024-09-15', '2024-09-15', '2024-10-15', TRUE, 1),
+(3, 40000.00, 'Tarjeta en 3 cuotas', '2024-08-10', '2024-08-10', '2024-11-10', TRUE, 2),
+(4, 35000.00, 'Efectivo', '2024-07-05', '2024-07-05', '2024-08-05', TRUE, 1),
+(6, 40000.00, 'Tarjeta en 6 cuotas', '2024-06-20', '2024-06-20', '2024-12-20', TRUE, 2),
+(9, 35000.00, 'Efectivo', '2024-05-25', '2024-05-25', '2024-06-25', TRUE, 1),
+(10, 40000.00, 'Tarjeta en 3 cuotas', '2024-04-30', '2024-04-30', '2024-07-30', TRUE, 2),
+(12, 35000.00, 'Efectivo', '2024-03-15', '2024-03-15', '2024-04-15', TRUE, 1),
+(15, 40000.00, 'Tarjeta en 6 cuotas', '2024-02-10', '2024-02-10', '2024-08-10', TRUE, 2),
+(1, 35000.00, 'Efectivo', '2024-01-05', '2024-01-05', '2024-02-05', TRUE, 1),
+(3, 40000.00, 'Tarjeta en 3 cuotas', '2023-12-20', '2023-12-20', '2024-03-20', TRUE, 2),
+(6, 35000.00, 'Efectivo', '2023-11-15', '2023-11-15', '2023-12-15', TRUE, 1),
+(9, 40000.00, 'Tarjeta en 6 cuotas', '2023-10-10', '2023-10-10', '2024-04-10', TRUE, 2),
+(10, 35000.00, 'Efectivo', '2023-09-05', '2023-09-05', '2023-10-05', TRUE, 1),
+(12, 40000.00, 'Tarjeta en 3 cuotas', '2023-08-01', '2023-08-01', '2023-11-01', TRUE, 2),
+(15, 35000.00, 'Efectivo', '2023-07-25', '2023-07-25', '2023-08-25', TRUE, 1);
+
+
+

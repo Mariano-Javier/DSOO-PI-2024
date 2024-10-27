@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfiguracionBD.cs" />
+    <Compile Include="DTO\SocioConPagoDTO.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
     <Compile Include="Interfaces\IRegistrar.cs" />
@@ -139,11 +140,11 @@
     <Compile Include="Views\ConfigurarBD.Designer.cs">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListarCliente.cs">
+    <Compile Include="Views\ListarSocio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ListarCliente.Designer.cs">
-      <DependentUpon>ListarCliente.cs</DependentUpon>
+    <Compile Include="Views\ListarSocio.Designer.cs">
+      <DependentUpon>ListarSocio.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.cs">
       <SubType>Form</SubType>
@@ -203,8 +204,8 @@
     <EmbeddedResource Include="Views\ConfigurarBD.resx">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListarCliente.resx">
-      <DependentUpon>ListarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ListarSocio.resx">
+      <DependentUpon>ListarSocio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
