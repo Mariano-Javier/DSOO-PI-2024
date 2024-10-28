@@ -112,5 +112,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             FormHelper.OpenChildFormInPanel(new ListarSocio(), panelContenedor);
         }
+
+        private void picLogOut_MouseHover(object sender, EventArgs e)
+        {
+            picLogOut.Image = Properties.Resources.log_off340;
+        }
+
+        private void picLogOut_MouseLeave(object sender, EventArgs e)
+        {
+            picLogOut.Image = Properties.Resources.log_off40;
+        }
     }
 }

@@ -59,6 +59,7 @@
             // panelCreditos
             // 
             this.panelCreditos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelCreditos.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.BGIzq;
             this.panelCreditos.Controls.Add(this.btnInfo);
             this.panelCreditos.Controls.Add(this.lblDescripcion2);
             this.panelCreditos.Controls.Add(this.lblDescripcion1);
@@ -89,6 +90,7 @@
             // lblDescripcion2
             // 
             this.lblDescripcion2.AutoSize = true;
+            this.lblDescripcion2.BackColor = System.Drawing.Color.Transparent;
             this.lblDescripcion2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion2.ForeColor = System.Drawing.Color.White;
             this.lblDescripcion2.Location = new System.Drawing.Point(95, 345);
@@ -100,6 +102,7 @@
             // lblDescripcion1
             // 
             this.lblDescripcion1.AutoSize = true;
+            this.lblDescripcion1.BackColor = System.Drawing.Color.Transparent;
             this.lblDescripcion1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcion1.ForeColor = System.Drawing.Color.White;
             this.lblDescripcion1.Location = new System.Drawing.Point(53, 315);
@@ -110,6 +113,7 @@
             // 
             // picLogoMain
             // 
+            this.picLogoMain.BackColor = System.Drawing.Color.Transparent;
             this.picLogoMain.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.LogoMainV4;
             this.picLogoMain.Location = new System.Drawing.Point(45, 26);
             this.picLogoMain.Name = "picLogoMain";

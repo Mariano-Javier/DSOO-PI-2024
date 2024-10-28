@@ -329,5 +329,32 @@
   <ItemGroup>
     <None Include="Resources\blank.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBGD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBGI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginBGIp3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainRM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGPN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGIzq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-off240.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-off340.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -127,6 +127,15 @@
   <data name="BCSoc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BCSoc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BGder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BGIzq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGIzq.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BGPN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGPN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,6 +159,15 @@
   </data>
   <data name="lock44" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lock44.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBGD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBGD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBGI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBGI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LoginBGIp3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoginBGIp3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logoMain120" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoMain120.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +196,17 @@
   <data name="logoMovie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoMovie.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="log_off240" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\log-off240.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="log_off340" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\log-off340.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="log_off40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\log-off40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainRM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainRM.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="searcher30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\searcher30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
