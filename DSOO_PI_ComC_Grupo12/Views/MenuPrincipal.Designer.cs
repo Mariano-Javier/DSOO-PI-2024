@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picLogoMain = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblPrecios = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panelPagosSM.SuspendLayout();
@@ -121,7 +122,7 @@
             this.panelPagosSM.Controls.Add(this.btnNoSocios);
             this.panelPagosSM.Controls.Add(this.btnCuotaSocios);
             this.panelPagosSM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPagosSM.Location = new System.Drawing.Point(0, 430);
+            this.panelPagosSM.Location = new System.Drawing.Point(0, 475);
             this.panelPagosSM.Name = "panelPagosSM";
             this.panelPagosSM.Size = new System.Drawing.Size(265, 90);
             this.panelPagosSM.TabIndex = 6;
@@ -165,7 +166,7 @@
             this.btnPagos.ForeColor = System.Drawing.Color.White;
             this.btnPagos.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.expense30;
             this.btnPagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPagos.Location = new System.Drawing.Point(0, 380);
+            this.btnPagos.Location = new System.Drawing.Point(0, 425);
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnPagos.Size = new System.Drawing.Size(265, 50);
@@ -177,12 +178,13 @@
             // panelConsultasSM
             // 
             this.panelConsultasSM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
+            this.panelConsultasSM.Controls.Add(this.lblPrecios);
             this.panelConsultasSM.Controls.Add(this.btnCarnet);
             this.panelConsultasSM.Controls.Add(this.btnListarSocios);
             this.panelConsultasSM.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelConsultasSM.Location = new System.Drawing.Point(0, 290);
             this.panelConsultasSM.Name = "panelConsultasSM";
-            this.panelConsultasSM.Size = new System.Drawing.Size(265, 90);
+            this.panelConsultasSM.Size = new System.Drawing.Size(265, 135);
             this.panelConsultasSM.TabIndex = 4;
             // 
             // btnCarnet
@@ -435,6 +437,21 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblPrecios
+            // 
+            this.lblPrecios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPrecios.FlatAppearance.BorderSize = 0;
+            this.lblPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPrecios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecios.ForeColor = System.Drawing.Color.White;
+            this.lblPrecios.Location = new System.Drawing.Point(0, 90);
+            this.lblPrecios.Name = "lblPrecios";
+            this.lblPrecios.Size = new System.Drawing.Size(265, 45);
+            this.lblPrecios.TabIndex = 2;
+            this.lblPrecios.Text = "PRECIOS";
+            this.lblPrecios.UseVisualStyleBackColor = true;
+            this.lblPrecios.Click += new System.EventHandler(this.lblPrecios_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,5 +512,6 @@
         private System.Windows.Forms.Panel panelControlNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button lblPrecios;
     }
 }

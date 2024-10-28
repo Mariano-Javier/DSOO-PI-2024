@@ -122,5 +122,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             picLogOut.Image = Properties.Resources.log_off40;
         }
+
+        private void lblPrecios_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new VerPrecios(), panelContenedor);
+        }
     }
 }

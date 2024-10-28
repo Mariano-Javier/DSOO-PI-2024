@@ -58,5 +58,53 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             return precios;
         }
 
+
+        public List<(int Id, string Nombre, decimal Precio)> ObtenerPreciosActividades()
+        {
+            List<(int Id, string Nombre, decimal Precio)> precios = new List<(int Id, string Nombre, decimal Precio)>();
+            MySqlConnection? conexionDb = null;
+
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "SELECT id, nombre, precio FROM actividad";
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string nombre = reader.GetString(1);
+                            decimal precio = reader.GetDecimal(2);
+                            precios.Add((id, nombre, precio));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener precios de actividades: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+
+            return precios;
+        }
+
     }
 }
