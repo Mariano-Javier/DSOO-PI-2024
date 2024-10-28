@@ -46,6 +46,8 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.panelCarnet = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblVencimiento = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblDniCarnet = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -60,19 +62,21 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.pageSetupDialog = new System.Windows.Forms.PageSetupDialog();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.lblVencimiento = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblEstadoCarnet = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelBuscar.SuspendLayout();
             this.groupOpcionesBusqueda.SuspendLayout();
             this.groupOpcionesCarnet.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelCarnet.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -285,10 +289,33 @@
             this.panelCarnet.Controls.Add(this.panel4);
             this.panelCarnet.Controls.Add(this.panel3);
             this.panelCarnet.Controls.Add(this.panel2);
-            this.panelCarnet.Location = new System.Drawing.Point(13, 216);
+            this.panelCarnet.Location = new System.Drawing.Point(13, 231);
             this.panelCarnet.Name = "panelCarnet";
             this.panelCarnet.Size = new System.Drawing.Size(710, 350);
             this.panelCarnet.TabIndex = 103;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
+            this.panel7.Controls.Add(this.lblVencimiento);
+            this.panel7.ForeColor = System.Drawing.Color.Transparent;
+            this.panel7.Location = new System.Drawing.Point(330, 175);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(241, 20);
+            this.panel7.TabIndex = 6;
+            // 
+            // lblVencimiento
+            // 
+            this.lblVencimiento.BackColor = System.Drawing.Color.Transparent;
+            this.lblVencimiento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVencimiento.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVencimiento.ForeColor = System.Drawing.Color.NavajoWhite;
+            this.lblVencimiento.Location = new System.Drawing.Point(0, 0);
+            this.lblVencimiento.Name = "lblVencimiento";
+            this.lblVencimiento.Size = new System.Drawing.Size(241, 20);
+            this.lblVencimiento.TabIndex = 0;
+            this.lblVencimiento.Text = "Vencimiento: 18/11/2026";
+            this.lblVencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel6
             // 
@@ -419,34 +446,43 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
-            // panel7
+            // panel8
             // 
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.Controls.Add(this.lblVencimiento);
-            this.panel7.ForeColor = System.Drawing.Color.Transparent;
-            this.panel7.Location = new System.Drawing.Point(330, 175);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(241, 20);
-            this.panel7.TabIndex = 6;
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.lblEstadoCarnet);
+            this.panel8.Location = new System.Drawing.Point(198, 176);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(338, 30);
+            this.panel8.TabIndex = 104;
             // 
-            // lblVencimiento
+            // lblEstadoCarnet
             // 
-            this.lblVencimiento.BackColor = System.Drawing.Color.Transparent;
-            this.lblVencimiento.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblVencimiento.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVencimiento.ForeColor = System.Drawing.Color.NavajoWhite;
-            this.lblVencimiento.Location = new System.Drawing.Point(0, 0);
-            this.lblVencimiento.Name = "lblVencimiento";
-            this.lblVencimiento.Size = new System.Drawing.Size(241, 20);
-            this.lblVencimiento.TabIndex = 0;
-            this.lblVencimiento.Text = "Vencimiento: 18/11/2026";
-            this.lblVencimiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEstadoCarnet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEstadoCarnet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoCarnet.Location = new System.Drawing.Point(0, 0);
+            this.lblEstadoCarnet.Name = "lblEstadoCarnet";
+            this.lblEstadoCarnet.Size = new System.Drawing.Size(338, 30);
+            this.lblEstadoCarnet.TabIndex = 0;
+            this.lblEstadoCarnet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label1.Location = new System.Drawing.Point(9, 195);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(720, 22);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "_______________________________________________________________________";
             // 
             // Carnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panelCarnet);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCerrar);
@@ -456,6 +492,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Carnet";
             this.Text = "Carnet";
@@ -466,12 +503,13 @@
             this.groupOpcionesCarnet.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelCarnet.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,5 +550,8 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblVencimiento;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblEstadoCarnet;
+        private System.Windows.Forms.Label label1;
     }
 }

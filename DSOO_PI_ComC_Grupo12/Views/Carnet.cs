@@ -16,6 +16,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
     public partial class Carnet : Form
     {
         public Cliente? ClienteSeleccionado { get; set; }
+        private DateTime? FechaHoy;
         public Carnet()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblEmailCarnet.ForeColor = Color.White;
             lblVencimiento.ForeColor = Color.White;
             btnImprimir.Enabled = false;
+            lblEstadoCarnet.Text = string.Empty;
         }
 
         private void CarnetSocio()
@@ -145,6 +147,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             LimpiarCarnet();
+            FechaHoy = DateTime.Now;
 
             if (ClienteSeleccionado == null)
             {
@@ -174,6 +177,18 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblVencimiento.Text = periodoFin.HasValue ? "Vencimiento: " + periodoFin.Value.ToString("dd/MM/yyyy") : "Vencimiento: No disponible";
                 CarnetSocio();
                 btnImprimir.Enabled = true;
+
+                if (periodoFin.HasValue && periodoFin.Value < FechaHoy)
+                {
+                    lblEstadoCarnet.Text = "CARNET VENCIDO";
+                    lblEstadoCarnet.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblEstadoCarnet.Text = "CARNET ACTIVO";
+                    lblEstadoCarnet.ForeColor = Color.Green;
+                }
+
             }
             else
             {
