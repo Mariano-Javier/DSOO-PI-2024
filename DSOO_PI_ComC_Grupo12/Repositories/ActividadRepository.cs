@@ -149,6 +149,42 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
 
             return actividades;
         }
+        public void RegistrarActividad(string nombre, decimal precio)
+        {
+            MySqlConnection? conexionDb = null;
+
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "INSERT INTO actividad (nombre, precio) VALUES (@nombre, @precio)";
+                    comando.Parameters.AddWithValue("@nombre", nombre);
+                    comando.Parameters.AddWithValue("@precio", precio);
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al registrar la actividad: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
 
     }
 }

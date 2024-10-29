@@ -45,6 +45,8 @@
             this.lblNombreApellido = new System.Windows.Forms.Label();
             this.groupActividades = new System.Windows.Forms.GroupBox();
             this.dataGridSelecActi = new System.Windows.Forms.DataGridView();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFechaPago = new System.Windows.Forms.Label();
             this.lblTituloDNI = new System.Windows.Forms.Label();
             this.lblTituloNombre = new System.Windows.Forms.Label();
@@ -76,8 +78,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
@@ -261,6 +261,20 @@
             this.dataGridSelecActi.RowHeadersVisible = false;
             this.dataGridSelecActi.Size = new System.Drawing.Size(417, 130);
             this.dataGridSelecActi.TabIndex = 95;
+            // 
+            // Seleccion
+            // 
+            this.Seleccion.HeaderText = "Selección";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 80;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lblFechaPago
             // 
@@ -633,20 +647,6 @@
             this.label7.Size = new System.Drawing.Size(94, 22);
             this.label7.TabIndex = 98;
             this.label7.Text = "Resumen";
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.HeaderText = "Selección";
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.Width = 80;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RegistrarPago
             // 

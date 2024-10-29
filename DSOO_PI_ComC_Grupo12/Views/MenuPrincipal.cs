@@ -127,5 +127,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             FormHelper.OpenChildFormInPanel(new VerPrecios(), panelContenedor);
         }
+
+        private void btnRegistrarActividad_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new RegistrarActividad(), panelContenedor);
+        }
     }
 }

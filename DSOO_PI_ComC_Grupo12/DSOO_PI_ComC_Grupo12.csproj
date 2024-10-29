@@ -158,6 +158,12 @@
     <Compile Include="Views\MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RegistrarActividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrarActividad.Designer.cs">
+      <DependentUpon>RegistrarActividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RegistrarActividad.resx">
+      <DependentUpon>RegistrarActividad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegistrarCliente.resx">
       <DependentUpon>RegistrarCliente.cs</DependentUpon>

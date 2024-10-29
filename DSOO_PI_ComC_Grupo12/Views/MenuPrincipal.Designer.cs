@@ -37,6 +37,7 @@
             this.btnCuotaSocios = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
             this.panelConsultasSM = new System.Windows.Forms.Panel();
+            this.lblPrecios = new System.Windows.Forms.Button();
             this.btnCarnet = new System.Windows.Forms.Button();
             this.btnListarSocios = new System.Windows.Forms.Button();
             this.btnConsultas = new System.Windows.Forms.Button();
@@ -57,7 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picLogoMain = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.lblPrecios = new System.Windows.Forms.Button();
+            this.btnRegistrarActividad = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panelPagosSM.SuspendLayout();
@@ -122,7 +123,7 @@
             this.panelPagosSM.Controls.Add(this.btnNoSocios);
             this.panelPagosSM.Controls.Add(this.btnCuotaSocios);
             this.panelPagosSM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPagosSM.Location = new System.Drawing.Point(0, 475);
+            this.panelPagosSM.Location = new System.Drawing.Point(0, 519);
             this.panelPagosSM.Name = "panelPagosSM";
             this.panelPagosSM.Size = new System.Drawing.Size(265, 90);
             this.panelPagosSM.TabIndex = 6;
@@ -166,7 +167,7 @@
             this.btnPagos.ForeColor = System.Drawing.Color.White;
             this.btnPagos.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.expense30;
             this.btnPagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPagos.Location = new System.Drawing.Point(0, 425);
+            this.btnPagos.Location = new System.Drawing.Point(0, 469);
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnPagos.Size = new System.Drawing.Size(265, 50);
@@ -182,10 +183,25 @@
             this.panelConsultasSM.Controls.Add(this.btnCarnet);
             this.panelConsultasSM.Controls.Add(this.btnListarSocios);
             this.panelConsultasSM.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelConsultasSM.Location = new System.Drawing.Point(0, 290);
+            this.panelConsultasSM.Location = new System.Drawing.Point(0, 334);
             this.panelConsultasSM.Name = "panelConsultasSM";
             this.panelConsultasSM.Size = new System.Drawing.Size(265, 135);
             this.panelConsultasSM.TabIndex = 4;
+            // 
+            // lblPrecios
+            // 
+            this.lblPrecios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPrecios.FlatAppearance.BorderSize = 0;
+            this.lblPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPrecios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecios.ForeColor = System.Drawing.Color.White;
+            this.lblPrecios.Location = new System.Drawing.Point(0, 90);
+            this.lblPrecios.Name = "lblPrecios";
+            this.lblPrecios.Size = new System.Drawing.Size(265, 45);
+            this.lblPrecios.TabIndex = 2;
+            this.lblPrecios.Text = "PRECIOS";
+            this.lblPrecios.UseVisualStyleBackColor = true;
+            this.lblPrecios.Click += new System.EventHandler(this.lblPrecios_Click);
             // 
             // btnCarnet
             // 
@@ -226,7 +242,7 @@
             this.btnConsultas.ForeColor = System.Drawing.Color.White;
             this.btnConsultas.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.searcher30;
             this.btnConsultas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultas.Location = new System.Drawing.Point(0, 240);
+            this.btnConsultas.Location = new System.Drawing.Point(0, 284);
             this.btnConsultas.Name = "btnConsultas";
             this.btnConsultas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnConsultas.Size = new System.Drawing.Size(265, 50);
@@ -238,11 +254,12 @@
             // panelRegistrosSM
             // 
             this.panelRegistrosSM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
+            this.panelRegistrosSM.Controls.Add(this.btnRegistrarActividad);
             this.panelRegistrosSM.Controls.Add(this.btnRegistrarCliente);
             this.panelRegistrosSM.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRegistrosSM.Location = new System.Drawing.Point(0, 195);
             this.panelRegistrosSM.Name = "panelRegistrosSM";
-            this.panelRegistrosSM.Size = new System.Drawing.Size(265, 45);
+            this.panelRegistrosSM.Size = new System.Drawing.Size(265, 89);
             this.panelRegistrosSM.TabIndex = 2;
             // 
             // btnRegistrarCliente
@@ -437,20 +454,20 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // lblPrecios
+            // btnRegistrarActividad
             // 
-            this.lblPrecios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblPrecios.FlatAppearance.BorderSize = 0;
-            this.lblPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPrecios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecios.ForeColor = System.Drawing.Color.White;
-            this.lblPrecios.Location = new System.Drawing.Point(0, 90);
-            this.lblPrecios.Name = "lblPrecios";
-            this.lblPrecios.Size = new System.Drawing.Size(265, 45);
-            this.lblPrecios.TabIndex = 2;
-            this.lblPrecios.Text = "PRECIOS";
-            this.lblPrecios.UseVisualStyleBackColor = true;
-            this.lblPrecios.Click += new System.EventHandler(this.lblPrecios_Click);
+            this.btnRegistrarActividad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegistrarActividad.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarActividad.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarActividad.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrarActividad.Location = new System.Drawing.Point(0, 45);
+            this.btnRegistrarActividad.Name = "btnRegistrarActividad";
+            this.btnRegistrarActividad.Size = new System.Drawing.Size(265, 45);
+            this.btnRegistrarActividad.TabIndex = 1;
+            this.btnRegistrarActividad.Text = "REGISTRAR ACTIVIDAD";
+            this.btnRegistrarActividad.UseVisualStyleBackColor = true;
+            this.btnRegistrarActividad.Click += new System.EventHandler(this.btnRegistrarActividad_Click);
             // 
             // MenuPrincipal
             // 
@@ -513,5 +530,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button lblPrecios;
+        private System.Windows.Forms.Button btnRegistrarActividad;
     }
 }
