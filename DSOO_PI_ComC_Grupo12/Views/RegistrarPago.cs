@@ -1,6 +1,5 @@
 ﻿using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
-using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,7 +16,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public Decimal TotalPagar;
         private bool EstadoPagado;
         Dictionary<string, decimal> preciosActividades;
-        
+
         public RegistrarPago()
         {
             InitializeComponent();
@@ -31,29 +30,25 @@ namespace DSOO_PI_ComC_Grupo12.Views
             btnPagar.Enabled = false;
             btnComprobante.Enabled = false;
             btnCalcular.Enabled = false;
+
+            // Cargar las actividades en el DataGridView
+            CargarActividadesEnDataGrid();
         }
 
         private void ResetearRadioButtons()
         {
             radioEfectivo.Checked = true;
-            // Restablecer el valor de la variable  a su valor original
+            // Restablecer el valor de la variable a su valor original
             FormaPago = "Efectivo";
         }
-
-        private void ResetearCheckBox()
+        private void ResetearCheckBoxes()
         {
-            checkBoxFutbol.CheckState = CheckState.Unchecked;
-            checkBoxAcquagym.CheckState = CheckState.Unchecked;
-            checkBoxBasket.CheckState = CheckState.Unchecked;
-            checkBoxFutsal.CheckState = CheckState.Unchecked;
-            checkBoxGimnasio.CheckState = CheckState.Unchecked;
-            checkBoxNatacion.CheckState = CheckState.Unchecked;
-            checkBoxNutricion.CheckState = CheckState.Unchecked;
-            checkBoxPilates.CheckState = CheckState.Unchecked;
-            checkBoxTenis.CheckState = CheckState.Unchecked;
-            checkBoxVoley.CheckState = CheckState.Unchecked;
+            foreach (DataGridViewRow row in dataGridSelecActi.Rows)
+            {
+                // Establecer el valor de la columna "Seleccion" a false
+                row.Cells["Seleccion"].Value = false;
+            }
         }
-
         private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
@@ -80,7 +75,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 ventanasAbiertas.Clear();
                 foreach (Form form in Application.OpenForms)
                 {
-                    if (form != this && !(form is Login)) // Omitimos la ventana actual y la ventana de Login
+                    if (form != this && !(form is Login)) // Se omite la ventana actual y la ventana de Login
                     {
                         ventanasAbiertas.Add(form);
                         form.Hide();
@@ -132,7 +127,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dateDiaSeleccionado.Value = DateTime.Now;
             lblTotalPagar.Text = string.Empty;
             ResetearRadioButtons();
-            ResetearCheckBox();
             actividadesSeleccionadas.Clear();
             TotalPagar = 0;
             ClienteSeleccionado = null;
@@ -142,6 +136,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             btnComprobante.Enabled = false;
             btnCalcular.Enabled = false;
             lblBuscarStatus.Text = string.Empty;
+            ResetearCheckBoxes();
 
             if (preciosActividades != null && preciosActividades.Count > 0)
             {
@@ -189,12 +184,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             btnComprobante.Enabled = false;
             // Obtener las actividades seleccionadas
-            ObtenerCheckBoxesSeleccionados();
+            ObtenerActividadesSeleccionadas();
 
             // Verificar si hay actividades seleccionadas
             if (actividadesSeleccionadas.Count == 0)
@@ -220,11 +214,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             // Mostrar el total
             TotalPagar = totalConDescuento;
-            lblTotalPagar.Text = TotalPagar.ToString()+" $";
+            lblTotalPagar.Text = TotalPagar.ToString() + " $";
 
             // Cargar los datos en el DataGridView
-            
-
             if (preciosActividades.Count > 0)
             {
                 preciosActividades.Add("Descuento:", -montoDescuento);
@@ -283,7 +275,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 // Mostrar un mensaje de error si el ID no es un número válido
                 MessageBox.Show("Por favor, ingrese un ID de cliente válido.");
             }
-
         }
 
         private void radioEfectivo_CheckedChanged(object sender, EventArgs e)
@@ -330,35 +321,33 @@ namespace DSOO_PI_ComC_Grupo12.Views
             return (TotalConDescuento, MontoDescuento);
         }
 
-
-
-        private void ObtenerCheckBoxesSeleccionados()
+        private void CargarActividadesEnDataGrid()
         {
-            actividadesSeleccionadas.Clear();
-            // Diccionario para mapear los checkboxes con sus valores string
-            Dictionary<CheckBox, string> actividades = new Dictionary<CheckBox, string>()
-        {
-            { checkBoxFutbol, "Fútbol" },
-            { checkBoxVoley, "Voley" },
-            { checkBoxNatacion, "Natación" },
-            { checkBoxGimnasio, "Gimnasio" },
-            { checkBoxPilates, "Pilates" },
-            { checkBoxFutsal, "Futsal" },
-            { checkBoxBasket, "Basket" },
-            { checkBoxTenis, "Tenis" },
-            { checkBoxAcquagym, "Acquagym" },
-            { checkBoxNutricion, "Nutrición" }
-        };
+            // Obtener las actividades desde el repositorio
+            var actividades = actividadRepository.ObtenerActividades();
 
-            // Iterar a través del diccionario para ver qué checkboxes están seleccionados
+            // Limpiar el DataGridView antes de cargar nuevos datos
+            dataGridSelecActi.Rows.Clear();
+
+            // Iterar a través de las actividades y agregar filas al DataGridView
             foreach (var actividad in actividades)
             {
-                if (actividad.Key.Checked) // Si el checkbox está marcado
+                dataGridSelecActi.Rows.Add(false, actividad);
+            }
+        }
+
+        private void ObtenerActividadesSeleccionadas()
+        {
+            actividadesSeleccionadas.Clear();
+
+            // Iterar a través de las filas del DataGridView
+            foreach (DataGridViewRow row in dataGridSelecActi.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Seleccion"].Value))
                 {
-                    actividadesSeleccionadas.Add(actividad.Value); // Añadir la actividad seleccionada a la lista
+                    actividadesSeleccionadas.Add(row.Cells["Nombre"].Value.ToString());
                 }
             }
-
         }
     }
 }

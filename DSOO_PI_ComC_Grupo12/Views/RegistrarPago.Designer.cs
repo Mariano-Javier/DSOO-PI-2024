@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.groupOpcionesPago = new System.Windows.Forms.GroupBox();
@@ -43,16 +44,7 @@
             this.panelNombreApellido = new System.Windows.Forms.Panel();
             this.lblNombreApellido = new System.Windows.Forms.Label();
             this.groupActividades = new System.Windows.Forms.GroupBox();
-            this.checkBoxAcquagym = new System.Windows.Forms.CheckBox();
-            this.checkBoxNutricion = new System.Windows.Forms.CheckBox();
-            this.checkBoxNatacion = new System.Windows.Forms.CheckBox();
-            this.checkBoxBasket = new System.Windows.Forms.CheckBox();
-            this.checkBoxFutsal = new System.Windows.Forms.CheckBox();
-            this.checkBoxPilates = new System.Windows.Forms.CheckBox();
-            this.checkBoxGimnasio = new System.Windows.Forms.CheckBox();
-            this.checkBoxTenis = new System.Windows.Forms.CheckBox();
-            this.checkBoxVoley = new System.Windows.Forms.CheckBox();
-            this.checkBoxFutbol = new System.Windows.Forms.CheckBox();
+            this.dataGridSelecActi = new System.Windows.Forms.DataGridView();
             this.lblFechaPago = new System.Windows.Forms.Label();
             this.lblTituloDNI = new System.Windows.Forms.Label();
             this.lblTituloNombre = new System.Windows.Forms.Label();
@@ -70,6 +62,9 @@
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.txtClienteID = new System.Windows.Forms.TextBox();
             this.panelBuscarCliente = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBuscarStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -79,19 +74,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateDiaSeleccionado = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblBuscarStatus = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupOpcionesPago.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panelDNI.SuspendLayout();
             this.panelNombreApellido.SuspendLayout();
             this.groupActividades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelecActi)).BeginInit();
             this.panelTotal.SuspendLayout();
             this.panelBuscarCliente.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -126,9 +123,9 @@
             this.groupOpcionesPago.Controls.Add(this.radioEfectivo);
             this.groupOpcionesPago.Controls.Add(this.radioCuota3);
             this.groupOpcionesPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupOpcionesPago.Location = new System.Drawing.Point(12, 372);
+            this.groupOpcionesPago.Location = new System.Drawing.Point(15, 302);
             this.groupOpcionesPago.Name = "groupOpcionesPago";
-            this.groupOpcionesPago.Size = new System.Drawing.Size(711, 50);
+            this.groupOpcionesPago.Size = new System.Drawing.Size(271, 97);
             this.groupOpcionesPago.TabIndex = 78;
             this.groupOpcionesPago.TabStop = false;
             this.groupOpcionesPago.Text = "Opciones de Pago";
@@ -136,7 +133,7 @@
             // radioCuota6
             // 
             this.radioCuota6.AutoSize = true;
-            this.radioCuota6.Location = new System.Drawing.Point(433, 19);
+            this.radioCuota6.Location = new System.Drawing.Point(9, 67);
             this.radioCuota6.Margin = new System.Windows.Forms.Padding(2);
             this.radioCuota6.Name = "radioCuota6";
             this.radioCuota6.Size = new System.Drawing.Size(131, 21);
@@ -150,7 +147,7 @@
             // 
             this.radioEfectivo.AutoSize = true;
             this.radioEfectivo.Checked = true;
-            this.radioEfectivo.Location = new System.Drawing.Point(158, 19);
+            this.radioEfectivo.Location = new System.Drawing.Point(9, 19);
             this.radioEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.radioEfectivo.Name = "radioEfectivo";
             this.radioEfectivo.Size = new System.Drawing.Size(78, 21);
@@ -163,7 +160,7 @@
             // radioCuota3
             // 
             this.radioCuota3.AutoSize = true;
-            this.radioCuota3.Location = new System.Drawing.Point(269, 19);
+            this.radioCuota3.Location = new System.Drawing.Point(9, 42);
             this.radioCuota3.Margin = new System.Windows.Forms.Padding(2);
             this.radioCuota3.Name = "radioCuota3";
             this.radioCuota3.Size = new System.Drawing.Size(131, 21);
@@ -177,7 +174,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.dateFechaPago);
-            this.panel6.Location = new System.Drawing.Point(440, 216);
+            this.panel6.Location = new System.Drawing.Point(440, 198);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(283, 30);
             this.panel6.TabIndex = 77;
@@ -196,7 +193,7 @@
             // 
             this.panelDNI.BackColor = System.Drawing.Color.White;
             this.panelDNI.Controls.Add(this.lblDNI);
-            this.panelDNI.Location = new System.Drawing.Point(294, 216);
+            this.panelDNI.Location = new System.Drawing.Point(294, 198);
             this.panelDNI.Name = "panelDNI";
             this.panelDNI.Size = new System.Drawing.Size(140, 30);
             this.panelDNI.TabIndex = 74;
@@ -215,7 +212,7 @@
             // 
             this.panelNombreApellido.BackColor = System.Drawing.Color.White;
             this.panelNombreApellido.Controls.Add(this.lblNombreApellido);
-            this.panelNombreApellido.Location = new System.Drawing.Point(15, 216);
+            this.panelNombreApellido.Location = new System.Drawing.Point(15, 198);
             this.panelNombreApellido.Name = "panelNombreApellido";
             this.panelNombreApellido.Size = new System.Drawing.Size(273, 30);
             this.panelNombreApellido.TabIndex = 72;
@@ -232,129 +229,44 @@
             // 
             // groupActividades
             // 
-            this.groupActividades.Controls.Add(this.checkBoxAcquagym);
-            this.groupActividades.Controls.Add(this.checkBoxNutricion);
-            this.groupActividades.Controls.Add(this.checkBoxNatacion);
-            this.groupActividades.Controls.Add(this.checkBoxBasket);
-            this.groupActividades.Controls.Add(this.checkBoxFutsal);
-            this.groupActividades.Controls.Add(this.checkBoxPilates);
-            this.groupActividades.Controls.Add(this.checkBoxGimnasio);
-            this.groupActividades.Controls.Add(this.checkBoxTenis);
-            this.groupActividades.Controls.Add(this.checkBoxVoley);
-            this.groupActividades.Controls.Add(this.checkBoxFutbol);
+            this.groupActividades.Controls.Add(this.dataGridSelecActi);
             this.groupActividades.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupActividades.Location = new System.Drawing.Point(222, 268);
+            this.groupActividades.Location = new System.Drawing.Point(292, 238);
             this.groupActividades.Name = "groupActividades";
-            this.groupActividades.Size = new System.Drawing.Size(501, 100);
+            this.groupActividades.Size = new System.Drawing.Size(431, 161);
             this.groupActividades.TabIndex = 71;
             this.groupActividades.TabStop = false;
-            this.groupActividades.Text = "Actividades";
+            this.groupActividades.Text = "Actividades a Pagar";
             // 
-            // checkBoxAcquagym
+            // dataGridSelecActi
             // 
-            this.checkBoxAcquagym.AutoSize = true;
-            this.checkBoxAcquagym.Location = new System.Drawing.Point(111, 58);
-            this.checkBoxAcquagym.Name = "checkBoxAcquagym";
-            this.checkBoxAcquagym.Size = new System.Drawing.Size(98, 21);
-            this.checkBoxAcquagym.TabIndex = 9;
-            this.checkBoxAcquagym.Text = "Acquagym";
-            this.checkBoxAcquagym.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNutricion
-            // 
-            this.checkBoxNutricion.AutoSize = true;
-            this.checkBoxNutricion.Location = new System.Drawing.Point(214, 58);
-            this.checkBoxNutricion.Name = "checkBoxNutricion";
-            this.checkBoxNutricion.Size = new System.Drawing.Size(85, 21);
-            this.checkBoxNutricion.TabIndex = 8;
-            this.checkBoxNutricion.Text = "Nutrición";
-            this.checkBoxNutricion.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNatacion
-            // 
-            this.checkBoxNatacion.AutoSize = true;
-            this.checkBoxNatacion.Location = new System.Drawing.Point(214, 31);
-            this.checkBoxNatacion.Name = "checkBoxNatacion";
-            this.checkBoxNatacion.Size = new System.Drawing.Size(88, 21);
-            this.checkBoxNatacion.TabIndex = 7;
-            this.checkBoxNatacion.Text = "Natación";
-            this.checkBoxNatacion.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxBasket
-            // 
-            this.checkBoxBasket.AutoSize = true;
-            this.checkBoxBasket.Location = new System.Drawing.Point(407, 58);
-            this.checkBoxBasket.Name = "checkBoxBasket";
-            this.checkBoxBasket.Size = new System.Drawing.Size(68, 21);
-            this.checkBoxBasket.TabIndex = 6;
-            this.checkBoxBasket.Text = "Basket";
-            this.checkBoxBasket.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFutsal
-            // 
-            this.checkBoxFutsal.AutoSize = true;
-            this.checkBoxFutsal.Location = new System.Drawing.Point(407, 31);
-            this.checkBoxFutsal.Name = "checkBoxFutsal";
-            this.checkBoxFutsal.Size = new System.Drawing.Size(63, 21);
-            this.checkBoxFutsal.TabIndex = 5;
-            this.checkBoxFutsal.Text = "Futsal";
-            this.checkBoxFutsal.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxPilates
-            // 
-            this.checkBoxPilates.AutoSize = true;
-            this.checkBoxPilates.Location = new System.Drawing.Point(313, 58);
-            this.checkBoxPilates.Name = "checkBoxPilates";
-            this.checkBoxPilates.Size = new System.Drawing.Size(68, 21);
-            this.checkBoxPilates.TabIndex = 4;
-            this.checkBoxPilates.Text = "Pilates";
-            this.checkBoxPilates.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxGimnasio
-            // 
-            this.checkBoxGimnasio.AutoSize = true;
-            this.checkBoxGimnasio.Location = new System.Drawing.Point(313, 31);
-            this.checkBoxGimnasio.Name = "checkBoxGimnasio";
-            this.checkBoxGimnasio.Size = new System.Drawing.Size(88, 21);
-            this.checkBoxGimnasio.TabIndex = 3;
-            this.checkBoxGimnasio.Text = "Gimnasio";
-            this.checkBoxGimnasio.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxTenis
-            // 
-            this.checkBoxTenis.AutoSize = true;
-            this.checkBoxTenis.Location = new System.Drawing.Point(24, 58);
-            this.checkBoxTenis.Name = "checkBoxTenis";
-            this.checkBoxTenis.Size = new System.Drawing.Size(56, 21);
-            this.checkBoxTenis.TabIndex = 2;
-            this.checkBoxTenis.Text = "Tenis";
-            this.checkBoxTenis.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxVoley
-            // 
-            this.checkBoxVoley.AutoSize = true;
-            this.checkBoxVoley.Location = new System.Drawing.Point(111, 31);
-            this.checkBoxVoley.Name = "checkBoxVoley";
-            this.checkBoxVoley.Size = new System.Drawing.Size(62, 21);
-            this.checkBoxVoley.TabIndex = 1;
-            this.checkBoxVoley.Text = "Voley";
-            this.checkBoxVoley.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxFutbol
-            // 
-            this.checkBoxFutbol.AutoSize = true;
-            this.checkBoxFutbol.Location = new System.Drawing.Point(24, 31);
-            this.checkBoxFutbol.Name = "checkBoxFutbol";
-            this.checkBoxFutbol.Size = new System.Drawing.Size(67, 21);
-            this.checkBoxFutbol.TabIndex = 0;
-            this.checkBoxFutbol.Text = "Fútbol";
-            this.checkBoxFutbol.UseVisualStyleBackColor = true;
+            this.dataGridSelecActi.AllowUserToAddRows = false;
+            this.dataGridSelecActi.AllowUserToDeleteRows = false;
+            this.dataGridSelecActi.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridSelecActi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridSelecActi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridSelecActi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSelecActi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccion,
+            this.Nombre});
+            this.dataGridSelecActi.Location = new System.Drawing.Point(7, 22);
+            this.dataGridSelecActi.Name = "dataGridSelecActi";
+            this.dataGridSelecActi.RowHeadersVisible = false;
+            this.dataGridSelecActi.Size = new System.Drawing.Size(417, 130);
+            this.dataGridSelecActi.TabIndex = 95;
             // 
             // lblFechaPago
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaPago.Location = new System.Drawing.Point(440, 196);
+            this.lblFechaPago.Location = new System.Drawing.Point(440, 178);
             this.lblFechaPago.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(107, 17);
@@ -365,7 +277,7 @@
             // 
             this.lblTituloDNI.AutoSize = true;
             this.lblTituloDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDNI.Location = new System.Drawing.Point(291, 196);
+            this.lblTituloDNI.Location = new System.Drawing.Point(291, 178);
             this.lblTituloDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloDNI.Name = "lblTituloDNI";
             this.lblTituloDNI.Size = new System.Drawing.Size(31, 17);
@@ -376,7 +288,7 @@
             // 
             this.lblTituloNombre.AutoSize = true;
             this.lblTituloNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloNombre.Location = new System.Drawing.Point(17, 196);
+            this.lblTituloNombre.Location = new System.Drawing.Point(17, 178);
             this.lblTituloNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTituloNombre.Name = "lblTituloNombre";
             this.lblTituloNombre.Size = new System.Drawing.Size(128, 17);
@@ -433,7 +345,7 @@
             this.lblDetalle.AutoSize = true;
             this.lblDetalle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblDetalle.Location = new System.Drawing.Point(291, 156);
+            this.lblDetalle.Location = new System.Drawing.Point(291, 144);
             this.lblDetalle.Name = "lblDetalle";
             this.lblDetalle.Size = new System.Drawing.Size(168, 22);
             this.lblDetalle.TabIndex = 82;
@@ -484,7 +396,7 @@
             // panelBuscar
             // 
             this.panelBuscar.BackColor = System.Drawing.Color.White;
-            this.panelBuscar.Location = new System.Drawing.Point(15, 49);
+            this.panelBuscar.Location = new System.Drawing.Point(15, 46);
             this.panelBuscar.Name = "panelBuscar";
             this.panelBuscar.Size = new System.Drawing.Size(172, 30);
             this.panelBuscar.TabIndex = 84;
@@ -496,7 +408,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(193, 49);
+            this.btnBuscar.Location = new System.Drawing.Point(193, 46);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(95, 30);
             this.btnBuscar.TabIndex = 85;
@@ -508,7 +420,7 @@
             // 
             this.lblClienteID.AutoSize = true;
             this.lblClienteID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClienteID.Location = new System.Drawing.Point(17, 29);
+            this.lblClienteID.Location = new System.Drawing.Point(17, 26);
             this.lblClienteID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClienteID.Name = "lblClienteID";
             this.lblClienteID.Size = new System.Drawing.Size(71, 17);
@@ -530,7 +442,7 @@
             // 
             this.txtClienteID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtClienteID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClienteID.Location = new System.Drawing.Point(18, 56);
+            this.txtClienteID.Location = new System.Drawing.Point(18, 53);
             this.txtClienteID.Margin = new System.Windows.Forms.Padding(2);
             this.txtClienteID.Name = "txtClienteID";
             this.txtClienteID.Size = new System.Drawing.Size(166, 16);
@@ -549,8 +461,38 @@
             this.panelBuscarCliente.Controls.Add(this.panelBuscar);
             this.panelBuscarCliente.Location = new System.Drawing.Point(0, 54);
             this.panelBuscarCliente.Name = "panelBuscarCliente";
-            this.panelBuscarCliente.Size = new System.Drawing.Size(735, 91);
+            this.panelBuscarCliente.Size = new System.Drawing.Size(735, 84);
             this.panelBuscarCliente.TabIndex = 86;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(442, 26);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 17);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "Estado del Cliente";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblBuscarStatus);
+            this.panel2.Location = new System.Drawing.Point(440, 46);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(281, 30);
+            this.panel2.TabIndex = 89;
+            // 
+            // lblBuscarStatus
+            // 
+            this.lblBuscarStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBuscarStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscarStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblBuscarStatus.Name = "lblBuscarStatus";
+            this.lblBuscarStatus.Size = new System.Drawing.Size(281, 30);
+            this.lblBuscarStatus.TabIndex = 0;
+            this.lblBuscarStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -558,7 +500,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label1.Location = new System.Drawing.Point(10, 126);
+            this.label1.Location = new System.Drawing.Point(10, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(720, 22);
             this.label1.TabIndex = 91;
@@ -597,31 +539,31 @@
             this.dataGridResumen.AllowUserToDeleteRows = false;
             this.dataGridResumen.BackgroundColor = System.Drawing.Color.White;
             this.dataGridResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridResumen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Actividad,
             this.Precio});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridResumen.Location = new System.Drawing.Point(12, 434);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridResumen.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridResumen.Location = new System.Drawing.Point(12, 443);
             this.dataGridResumen.Name = "dataGridResumen";
             this.dataGridResumen.ReadOnly = true;
             this.dataGridResumen.RowHeadersVisible = false;
-            this.dataGridResumen.Size = new System.Drawing.Size(422, 150);
+            this.dataGridResumen.Size = new System.Drawing.Size(422, 141);
             this.dataGridResumen.TabIndex = 94;
             // 
             // Actividad
@@ -642,7 +584,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 268);
+            this.label3.Location = new System.Drawing.Point(16, 238);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 17);
@@ -653,10 +595,10 @@
             // 
             this.dateDiaSeleccionado.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateDiaSeleccionado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDiaSeleccionado.Location = new System.Drawing.Point(6, 4);
+            this.dateDiaSeleccionado.Location = new System.Drawing.Point(5, 4);
             this.dateDiaSeleccionado.Margin = new System.Windows.Forms.Padding(2);
             this.dateDiaSeleccionado.Name = "dateDiaSeleccionado";
-            this.dateDiaSeleccionado.Size = new System.Drawing.Size(189, 22);
+            this.dateDiaSeleccionado.Size = new System.Drawing.Size(263, 22);
             this.dateDiaSeleccionado.TabIndex = 53;
             this.dateDiaSeleccionado.Value = new System.DateTime(2024, 10, 19, 2, 59, 15, 0);
             // 
@@ -664,46 +606,54 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.dateDiaSeleccionado);
-            this.panel1.Location = new System.Drawing.Point(15, 288);
+            this.panel1.Location = new System.Drawing.Point(15, 258);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 30);
+            this.panel1.Size = new System.Drawing.Size(271, 30);
             this.panel1.TabIndex = 96;
             // 
-            // label4
+            // label6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(442, 29);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 17);
-            this.label4.TabIndex = 90;
-            this.label4.Text = "Estado del Cliente";
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label6.Location = new System.Drawing.Point(11, 385);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(720, 22);
+            this.label6.TabIndex = 97;
+            this.label6.Text = "_______________________________________________________________________";
             // 
-            // panel2
+            // label7
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.lblBuscarStatus);
-            this.panel2.Location = new System.Drawing.Point(440, 49);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(281, 30);
-            this.panel2.TabIndex = 89;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label7.Location = new System.Drawing.Point(326, 407);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 22);
+            this.label7.TabIndex = 98;
+            this.label7.Text = "Resumen";
             // 
-            // lblBuscarStatus
+            // Seleccion
             // 
-            this.lblBuscarStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBuscarStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscarStatus.Location = new System.Drawing.Point(0, 0);
-            this.lblBuscarStatus.Name = "lblBuscarStatus";
-            this.lblBuscarStatus.Size = new System.Drawing.Size(281, 30);
-            this.lblBuscarStatus.TabIndex = 0;
-            this.lblBuscarStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Seleccion.HeaderText = "Selección";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.Width = 80;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RegistrarPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridResumen);
@@ -728,6 +678,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistrarPago";
             this.Text = "Registrar Pago";
@@ -737,13 +688,13 @@
             this.panelDNI.ResumeLayout(false);
             this.panelNombreApellido.ResumeLayout(false);
             this.groupActividades.ResumeLayout(false);
-            this.groupActividades.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelecActi)).EndInit();
             this.panelTotal.ResumeLayout(false);
             this.panelBuscarCliente.ResumeLayout(false);
             this.panelBuscarCliente.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridResumen)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -771,16 +722,6 @@
         private System.Windows.Forms.Label lblDetalle;
         private System.Windows.Forms.Panel panelTotal;
         private System.Windows.Forms.Label lblTituloTotal;
-        private System.Windows.Forms.CheckBox checkBoxFutbol;
-        private System.Windows.Forms.CheckBox checkBoxAcquagym;
-        private System.Windows.Forms.CheckBox checkBoxNutricion;
-        private System.Windows.Forms.CheckBox checkBoxNatacion;
-        private System.Windows.Forms.CheckBox checkBoxBasket;
-        private System.Windows.Forms.CheckBox checkBoxFutsal;
-        private System.Windows.Forms.CheckBox checkBoxPilates;
-        private System.Windows.Forms.CheckBox checkBoxGimnasio;
-        private System.Windows.Forms.CheckBox checkBoxTenis;
-        private System.Windows.Forms.CheckBox checkBoxVoley;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblNombreApellido;
         private System.Windows.Forms.Label lblDNI;
@@ -803,5 +744,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblBuscarStatus;
+        private System.Windows.Forms.DataGridView dataGridSelecActi;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
     }
 }
