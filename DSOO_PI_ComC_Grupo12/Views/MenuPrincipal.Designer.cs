@@ -81,7 +81,7 @@
             // panelSideMenu
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panelSideMenu.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.LoginBGIp3;
+            this.panelSideMenu.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.LoginBGIp4;
             this.panelSideMenu.Controls.Add(this.panelActualizarSM);
             this.panelSideMenu.Controls.Add(this.btnActualizar);
             this.panelSideMenu.Controls.Add(this.lblLogout);
@@ -121,7 +121,7 @@
             this.btnActualizarActividades.Name = "btnActualizarActividades";
             this.btnActualizarActividades.Size = new System.Drawing.Size(265, 45);
             this.btnActualizarActividades.TabIndex = 1;
-            this.btnActualizarActividades.Text = "ACTIVIDADES";
+            this.btnActualizarActividades.Text = "ACTIVIDADES / CUOTAS";
             this.btnActualizarActividades.UseVisualStyleBackColor = true;
             this.btnActualizarActividades.Click += new System.EventHandler(this.btnActualizarActividades_Click);
             // 

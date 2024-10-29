@@ -89,5 +89,78 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
 
             return precios;
         }
+        public void ActualizarCuota(int id, string descripcion, decimal monto)
+        {
+            MySqlConnection? conexionDb = null;
+
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "UPDATE cuota_socio SET descripcion = @descripcion, monto = @monto WHERE id = @id";
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.Parameters.AddWithValue("@descripcion", descripcion);
+                    comando.Parameters.AddWithValue("@monto", monto);
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar la cuota: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
+
+        public void EliminarCuota(int id)
+        {
+            MySqlConnection? conexionDb = null;
+
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "DELETE FROM cuota_socio WHERE id = @id";
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar la cuota: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
     }
 }

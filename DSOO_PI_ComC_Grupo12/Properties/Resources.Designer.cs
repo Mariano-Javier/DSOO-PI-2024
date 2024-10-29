@@ -263,6 +263,16 @@ namespace DSOO_PI_ComC_Grupo12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LoginBGIp4 {
+            get {
+                object obj = ResourceManager.GetObject("LoginBGIp4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoMain120 {
             get {
                 object obj = ResourceManager.GetObject("logoMain120", resourceCulture);
