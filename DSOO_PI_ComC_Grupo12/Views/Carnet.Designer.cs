@@ -65,6 +65,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblEstadoCarnet = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lblEsApto = new System.Windows.Forms.Label();
             this.panelBuscar.SuspendLayout();
             this.groupOpcionesBusqueda.SuspendLayout();
             this.groupOpcionesCarnet.SuspendLayout();
@@ -77,6 +79,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -283,6 +286,7 @@
             // panelCarnet
             // 
             this.panelCarnet.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.BCSoc;
+            this.panelCarnet.Controls.Add(this.panel9);
             this.panelCarnet.Controls.Add(this.panel7);
             this.panelCarnet.Controls.Add(this.panel6);
             this.panelCarnet.Controls.Add(this.panel5);
@@ -299,7 +303,7 @@
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.Controls.Add(this.lblVencimiento);
             this.panel7.ForeColor = System.Drawing.Color.Transparent;
-            this.panel7.Location = new System.Drawing.Point(330, 175);
+            this.panel7.Location = new System.Drawing.Point(330, 165);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(241, 20);
             this.panel7.TabIndex = 6;
@@ -322,7 +326,7 @@
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.lblDniCarnet);
             this.panel6.ForeColor = System.Drawing.Color.Transparent;
-            this.panel6.Location = new System.Drawing.Point(330, 198);
+            this.panel6.Location = new System.Drawing.Point(330, 188);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(241, 20);
             this.panel6.TabIndex = 5;
@@ -345,7 +349,7 @@
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.Controls.Add(this.lblEmailCarnet);
             this.panel5.ForeColor = System.Drawing.Color.Transparent;
-            this.panel5.Location = new System.Drawing.Point(330, 242);
+            this.panel5.Location = new System.Drawing.Point(330, 256);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(241, 20);
             this.panel5.TabIndex = 4;
@@ -368,7 +372,7 @@
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.lblTelCarnet);
             this.panel4.ForeColor = System.Drawing.Color.Transparent;
-            this.panel4.Location = new System.Drawing.Point(330, 220);
+            this.panel4.Location = new System.Drawing.Point(330, 210);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(241, 20);
             this.panel4.TabIndex = 3;
@@ -477,6 +481,29 @@
             this.label1.TabIndex = 105;
             this.label1.Text = "_______________________________________________________________________";
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.Transparent;
+            this.panel9.Controls.Add(this.lblEsApto);
+            this.panel9.ForeColor = System.Drawing.Color.Transparent;
+            this.panel9.Location = new System.Drawing.Point(330, 233);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(241, 20);
+            this.panel9.TabIndex = 7;
+            // 
+            // lblEsApto
+            // 
+            this.lblEsApto.BackColor = System.Drawing.Color.Transparent;
+            this.lblEsApto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblEsApto.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEsApto.ForeColor = System.Drawing.Color.NavajoWhite;
+            this.lblEsApto.Location = new System.Drawing.Point(0, 0);
+            this.lblEsApto.Name = "lblEsApto";
+            this.lblEsApto.Size = new System.Drawing.Size(241, 20);
+            this.lblEsApto.TabIndex = 0;
+            this.lblEsApto.Text = "Apto Físico: Si";
+            this.lblEsApto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Carnet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +537,7 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,5 +581,7 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblEstadoCarnet;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label lblEsApto;
     }
 }

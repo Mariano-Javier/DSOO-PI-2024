@@ -41,6 +41,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblTelCarnet.ForeColor = Color.White;
             lblEmailCarnet.ForeColor = Color.White;
             lblVencimiento.ForeColor = Color.White;
+            lblEsApto.ForeColor = Color.White;
             btnImprimir.Enabled = false;
             lblEstadoCarnet.Text = string.Empty;
         }
@@ -54,6 +55,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblTelCarnet.ForeColor = Color.NavajoWhite;
             lblEmailCarnet.ForeColor = Color.NavajoWhite;
             lblVencimiento.ForeColor = Color.NavajoWhite;
+            lblEsApto.ForeColor = Color.NavajoWhite;
         }
 
         private void CarnetComun()
@@ -64,6 +66,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblDniCarnet.ForeColor = Color.Black;
             lblTelCarnet.ForeColor = Color.Black;
             lblEmailCarnet.ForeColor = Color.Black;
+            lblEsApto.ForeColor = Color.Black;
         }
 
 
@@ -175,6 +178,16 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
                 lblEmailCarnet.Text = ClienteSeleccionado.Email;
                 lblVencimiento.Text = periodoFin.HasValue ? "Vencimiento: " + periodoFin.Value.ToString("dd/MM/yyyy") : "Vencimiento: No disponible";
+
+                if (ClienteSeleccionado.EsApto)
+                {
+                    lblEsApto.Text = "Apto Físico: Si";
+                }
+                else 
+                {
+                    lblEsApto.Text = "Apto Físico: No";
+                }
+
                 CarnetSocio();
                 btnImprimir.Enabled = true;
 
@@ -198,6 +211,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
                 lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
                 lblEmailCarnet.Text = ClienteSeleccionado.Email;
+                if (ClienteSeleccionado.EsApto)
+                {
+                    lblEsApto.Text = "Apto Físico: Si";
+                }
+                else
+                {
+                    lblEsApto.Text = "Apto Físico: No";
+                }
                 CarnetComun();
                 btnImprimir.Enabled = true;
             }
