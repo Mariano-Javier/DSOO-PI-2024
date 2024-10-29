@@ -384,6 +384,59 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             return socios;
         }
+        public bool ActualizarCliente(Cliente cliente)
+        {
+            MySqlConnection? conexionDb = null;
+            try
+            {
+                conexionDb = Conexion.getInstancia(
+                    ConfiguracionBD.NombreBase,
+                    ConfiguracionBD.Servidor,
+                    ConfiguracionBD.Puerto,
+                    ConfiguracionBD.Usuario,
+                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb.Open();
+
+                using (MySqlCommand comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = @"UPDATE cliente
+                                   SET nombre = @nombre,
+                                       apellido = @apellido,
+                                       dni = @dni,
+                                       email = @email,
+                                       telefono = @telefono,
+                                       fecha_nac = @fecha_nac,
+                                       es_socio = @es_socio,
+                                       es_apto = @es_apto
+                                   WHERE id = @id";
+
+                    comando.Parameters.AddWithValue("@id", cliente.Id);
+                    comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                    comando.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                    comando.Parameters.AddWithValue("@dni", cliente.Dni);
+                    comando.Parameters.AddWithValue("@email", cliente.Email);
+                    comando.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                    comando.Parameters.AddWithValue("@fecha_nac", cliente.FechaNacimiento);
+                    comando.Parameters.AddWithValue("@es_socio", cliente.EsSocio);
+                    comando.Parameters.AddWithValue("@es_apto", cliente.EsApto);
+
+                    int filasAfectadas = comando.ExecuteNonQuery();
+                    return filasAfectadas > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar cliente: " + ex.Message);
+            }
+            finally
+            {
+                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
+                {
+                    conexionDb.Close();
+                }
+            }
+        }
 
 
     }

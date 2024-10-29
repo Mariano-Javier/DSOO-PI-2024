@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panelActualizarSM = new System.Windows.Forms.Panel();
+            this.btnActualizarActividades = new System.Windows.Forms.Button();
+            this.btnActualizarClientes = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.lblLogout = new System.Windows.Forms.Label();
             this.picLogOut = new System.Windows.Forms.PictureBox();
             this.panelPagosSM = new System.Windows.Forms.Panel();
@@ -42,6 +46,7 @@
             this.btnListarSocios = new System.Windows.Forms.Button();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.panelRegistrosSM = new System.Windows.Forms.Panel();
+            this.btnRegistrarActividad = new System.Windows.Forms.Button();
             this.btnRegistrarCliente = new System.Windows.Forms.Button();
             this.btnRegistros = new System.Windows.Forms.Button();
             this.panelLogoSide = new System.Windows.Forms.Panel();
@@ -58,8 +63,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picLogoMain = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnRegistrarActividad = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
+            this.panelActualizarSM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.panelPagosSM.SuspendLayout();
             this.panelConsultasSM.SuspendLayout();
@@ -77,6 +82,8 @@
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.panelSideMenu.BackgroundImage = global::DSOO_PI_ComC_Grupo12.Properties.Resources.LoginBGIp3;
+            this.panelSideMenu.Controls.Add(this.panelActualizarSM);
+            this.panelSideMenu.Controls.Add(this.btnActualizar);
             this.panelSideMenu.Controls.Add(this.lblLogout);
             this.panelSideMenu.Controls.Add(this.picLogOut);
             this.panelSideMenu.Controls.Add(this.panelPagosSM);
@@ -91,6 +98,64 @@
             this.panelSideMenu.Name = "panelSideMenu";
             this.panelSideMenu.Size = new System.Drawing.Size(265, 650);
             this.panelSideMenu.TabIndex = 2;
+            // 
+            // panelActualizarSM
+            // 
+            this.panelActualizarSM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(97)))), ((int)(((byte)(141)))));
+            this.panelActualizarSM.Controls.Add(this.btnActualizarActividades);
+            this.panelActualizarSM.Controls.Add(this.btnActualizarClientes);
+            this.panelActualizarSM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActualizarSM.Location = new System.Drawing.Point(0, 659);
+            this.panelActualizarSM.Name = "panelActualizarSM";
+            this.panelActualizarSM.Size = new System.Drawing.Size(265, 90);
+            this.panelActualizarSM.TabIndex = 14;
+            // 
+            // btnActualizarActividades
+            // 
+            this.btnActualizarActividades.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnActualizarActividades.FlatAppearance.BorderSize = 0;
+            this.btnActualizarActividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarActividades.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarActividades.ForeColor = System.Drawing.Color.White;
+            this.btnActualizarActividades.Location = new System.Drawing.Point(0, 45);
+            this.btnActualizarActividades.Name = "btnActualizarActividades";
+            this.btnActualizarActividades.Size = new System.Drawing.Size(265, 45);
+            this.btnActualizarActividades.TabIndex = 1;
+            this.btnActualizarActividades.Text = "ACTIVIDADES";
+            this.btnActualizarActividades.UseVisualStyleBackColor = true;
+            // 
+            // btnActualizarClientes
+            // 
+            this.btnActualizarClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnActualizarClientes.FlatAppearance.BorderSize = 0;
+            this.btnActualizarClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarClientes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarClientes.ForeColor = System.Drawing.Color.White;
+            this.btnActualizarClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnActualizarClientes.Name = "btnActualizarClientes";
+            this.btnActualizarClientes.Size = new System.Drawing.Size(265, 45);
+            this.btnActualizarClientes.TabIndex = 0;
+            this.btnActualizarClientes.Text = "CLIENTES";
+            this.btnActualizarClientes.UseVisualStyleBackColor = true;
+            this.btnActualizarClientes.Click += new System.EventHandler(this.btnActualizarClientes_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.expense30;
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizar.Location = new System.Drawing.Point(0, 609);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnActualizar.Size = new System.Drawing.Size(265, 50);
+            this.btnActualizar.TabIndex = 13;
+            this.btnActualizar.Text = "ACTUALIZAR";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // lblLogout
             // 
@@ -261,6 +326,21 @@
             this.panelRegistrosSM.Name = "panelRegistrosSM";
             this.panelRegistrosSM.Size = new System.Drawing.Size(265, 89);
             this.panelRegistrosSM.TabIndex = 2;
+            // 
+            // btnRegistrarActividad
+            // 
+            this.btnRegistrarActividad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegistrarActividad.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarActividad.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarActividad.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrarActividad.Location = new System.Drawing.Point(0, 45);
+            this.btnRegistrarActividad.Name = "btnRegistrarActividad";
+            this.btnRegistrarActividad.Size = new System.Drawing.Size(265, 45);
+            this.btnRegistrarActividad.TabIndex = 1;
+            this.btnRegistrarActividad.Text = "REGISTRAR ACTIVIDAD";
+            this.btnRegistrarActividad.UseVisualStyleBackColor = true;
+            this.btnRegistrarActividad.Click += new System.EventHandler(this.btnRegistrarActividad_Click);
             // 
             // btnRegistrarCliente
             // 
@@ -454,21 +534,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnRegistrarActividad
-            // 
-            this.btnRegistrarActividad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegistrarActividad.FlatAppearance.BorderSize = 0;
-            this.btnRegistrarActividad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarActividad.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarActividad.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarActividad.Location = new System.Drawing.Point(0, 45);
-            this.btnRegistrarActividad.Name = "btnRegistrarActividad";
-            this.btnRegistrarActividad.Size = new System.Drawing.Size(265, 45);
-            this.btnRegistrarActividad.TabIndex = 1;
-            this.btnRegistrarActividad.Text = "REGISTRAR ACTIVIDAD";
-            this.btnRegistrarActividad.UseVisualStyleBackColor = true;
-            this.btnRegistrarActividad.Click += new System.EventHandler(this.btnRegistrarActividad_Click);
-            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +548,7 @@
             this.Text = "Club Deportivo - Menu";
             this.panelSideMenu.ResumeLayout(false);
             this.panelSideMenu.PerformLayout();
+            this.panelActualizarSM.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.panelPagosSM.ResumeLayout(false);
             this.panelConsultasSM.ResumeLayout(false);
@@ -531,5 +597,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button lblPrecios;
         private System.Windows.Forms.Button btnRegistrarActividad;
+        private System.Windows.Forms.Panel panelActualizarSM;
+        private System.Windows.Forms.Button btnActualizarActividades;
+        private System.Windows.Forms.Button btnActualizarClientes;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

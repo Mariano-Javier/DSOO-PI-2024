@@ -22,6 +22,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             hideSubMenu(panelRegistrosSM);
             hideSubMenu(panelConsultasSM);
             hideSubMenu(panelPagosSM);
+            hideSubMenu(panelActualizarSM);
         }
 
         //Oculto todos los sub-menu de la barra de menus izquierda
@@ -62,6 +63,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             hideSubMenu(panelConsultasSM);
             hideSubMenu(panelPagosSM);
+            hideSubMenu(panelActualizarSM);
             showSubMenu(panelRegistrosSM);
         }
 
@@ -73,6 +75,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             hideSubMenu(panelRegistrosSM);
             hideSubMenu(panelPagosSM);
+            hideSubMenu(panelActualizarSM);
             showSubMenu(panelConsultasSM);
         }
 
@@ -84,7 +87,28 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             hideSubMenu(panelRegistrosSM);
             hideSubMenu(panelConsultasSM);
+            hideSubMenu(panelActualizarSM);
             showSubMenu(panelPagosSM);
+        }
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (FormHelper.activeForm != null)
+            {
+                FormHelper.activeForm.Close();
+            }
+            hideSubMenu(panelRegistrosSM);
+            hideSubMenu(panelConsultasSM);
+            hideSubMenu(panelPagosSM);
+            showSubMenu(panelActualizarSM);
+        }
+        private void picLogOut_MouseLeave(object sender, EventArgs e)
+        {
+            picLogOut.Image = Properties.Resources.log_off40;
+        }
+
+        private void picLogOut_MouseHover(object sender, EventArgs e)
+        {
+            picLogOut.Image = Properties.Resources.log_off340;
         }
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
@@ -113,16 +137,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             FormHelper.OpenChildFormInPanel(new ListarSocio(), panelContenedor);
         }
 
-        private void picLogOut_MouseHover(object sender, EventArgs e)
-        {
-            picLogOut.Image = Properties.Resources.log_off340;
-        }
-
-        private void picLogOut_MouseLeave(object sender, EventArgs e)
-        {
-            picLogOut.Image = Properties.Resources.log_off40;
-        }
-
         private void lblPrecios_Click(object sender, EventArgs e)
         {
             FormHelper.OpenChildFormInPanel(new VerPrecios(), panelContenedor);
@@ -131,6 +145,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnRegistrarActividad_Click(object sender, EventArgs e)
         {
             FormHelper.OpenChildFormInPanel(new RegistrarActividad(), panelContenedor);
+        }
+
+        private void btnActualizarClientes_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new ActualizarCliente(), panelContenedor);
         }
     }
 }
