@@ -17,6 +17,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             InitializeComponent();
             _clienteRepository = new ClienteRepository();
+            dateFechaNac.Value = DateTime.Now;
         }
 
         //Metodos de ayuda

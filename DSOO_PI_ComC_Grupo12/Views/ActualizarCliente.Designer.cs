@@ -156,6 +156,7 @@
             // 
             // dateFechaNac
             // 
+            this.dateFechaNac.Enabled = false;
             this.dateFechaNac.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFechaNac.Location = new System.Drawing.Point(8, 7);
             this.dateFechaNac.Margin = new System.Windows.Forms.Padding(2);
@@ -200,7 +201,7 @@
             this.txtEmail.Location = new System.Drawing.Point(6, 9);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(213, 16);
+            this.txtEmail.Size = new System.Drawing.Size(447, 16);
             this.txtEmail.TabIndex = 49;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -216,6 +217,7 @@
             // txtDNI
             // 
             this.txtDNI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDNI.Enabled = false;
             this.txtDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDNI.Location = new System.Drawing.Point(5, 9);
             this.txtDNI.Margin = new System.Windows.Forms.Padding(2);

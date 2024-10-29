@@ -123,6 +123,7 @@
             this.btnActualizarActividades.TabIndex = 1;
             this.btnActualizarActividades.Text = "ACTIVIDADES";
             this.btnActualizarActividades.UseVisualStyleBackColor = true;
+            this.btnActualizarActividades.Click += new System.EventHandler(this.btnActualizarActividades_Click);
             // 
             // btnActualizarClientes
             // 
@@ -146,7 +147,7 @@
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.expense30;
+            this.btnActualizar.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.update30;
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActualizar.Location = new System.Drawing.Point(0, 609);
             this.btnActualizar.Name = "btnActualizar";

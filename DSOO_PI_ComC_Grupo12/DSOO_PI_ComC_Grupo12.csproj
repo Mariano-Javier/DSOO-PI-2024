@@ -122,6 +122,12 @@
     <Compile Include="Views\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ActualizarActividades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ActualizarActividades.Designer.cs">
+      <DependentUpon>ActualizarActividades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ActualizarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="Views\ConfigurarBD.Designer.cs">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarActividadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditarActividadForm.Designer.cs">
+      <DependentUpon>EditarActividadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ListarSocio.cs">
       <SubType>Form</SubType>
@@ -213,6 +225,9 @@
     <EmbeddedResource Include="Views\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ActualizarActividades.resx">
+      <DependentUpon>ActualizarActividades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ActualizarCliente.resx">
       <DependentUpon>ActualizarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConfigurarBD.resx">
       <DependentUpon>ConfigurarBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditarActividadForm.resx">
+      <DependentUpon>EditarActividadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ListarSocio.resx">
       <DependentUpon>ListarSocio.cs</DependentUpon>
@@ -382,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\log-off340.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

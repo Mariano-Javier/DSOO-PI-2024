@@ -151,5 +151,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             FormHelper.OpenChildFormInPanel(new ActualizarCliente(), panelContenedor);
         }
+
+        private void btnActualizarActividades_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenChildFormInPanel(new ActualizarActividades(), panelContenedor);
+        }
     }
 }

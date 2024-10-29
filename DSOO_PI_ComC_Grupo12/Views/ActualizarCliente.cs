@@ -1,6 +1,7 @@
 ﻿using DSOO_PI_ComC_Grupo12.Helpers;
 using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public Cliente? ClienteSeleccionado { get; set; }
         public ActualizarCliente()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
         public void Limpiar()
         {
@@ -147,6 +148,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             ClienteSeleccionado = null;
 
+
             string input = txtClienteIDoDNI.Text;
             ClienteRepository clienteRepository = new ClienteRepository();
 
@@ -206,8 +208,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     txtEmail.Text = cliente.Email;
                     txtTelefono.Text = cliente.Telefono;
                     dateFechaNac.Value = cliente.FechaNacimiento;
-                    radioSocio.Checked = cliente.EsSocio;
-                    radioAptoFisicoSi.Checked = cliente.EsApto;
+
                     if (cliente.EsSocio)
                     {
                         radioSocio.Checked = true;
