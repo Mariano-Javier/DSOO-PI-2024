@@ -1,46 +1,40 @@
-﻿using DSOO_PI_ComC_Grupo12.Config;
-using DSOO_PI_ComC_Grupo12.Services;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
+using DSOO_PI_ComC_Grupo12.Helpers;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
-    internal class AutenticacionRepository
+    internal class AutenticacionRepository : BaseRepository
     {
         public bool AutenticarUsuario(string usuario, string contrasenia, out string nombre, out string apellido, out string email, out string rol)
         {
+            // Inicializar los valores de salida
             nombre = string.Empty;
             apellido = string.Empty;
             email = string.Empty;
             rol = string.Empty;
 
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
+
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
+                conexionDb = ObtenerConexion();
 
-                conexionDb.Open();
-
-                using (MySqlCommand mySqlCommand = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
-                    mySqlCommand.Connection = conexionDb;
-                    mySqlCommand.CommandText = "SELECT nombre, apellido, email, rol FROM empleado WHERE usuario = @usuario AND contrasenia = @contrasenia";
-                    mySqlCommand.Parameters.AddWithValue("@usuario", usuario);
-                    mySqlCommand.Parameters.AddWithValue("@contrasenia", contrasenia);
+                    comando.Connection = conexionDb;
+                    comando.CommandText = "SELECT nombre, apellido, email, rol FROM empleado WHERE usuario = @usuario AND contrasenia = @contrasenia";
+                    comando.Parameters.AddWithValue("@usuario", usuario);
+                    comando.Parameters.AddWithValue("@contrasenia", contrasenia);
 
-                    using (MySqlDataReader leer = mySqlCommand.ExecuteReader())
+                    using (var reader = comando.ExecuteReader())
                     {
-                        if (leer.Read())
+                        if (reader.Read())
                         {
-                            nombre = leer["nombre"].ToString();
-                            apellido = leer["apellido"].ToString();
-                            email = leer["email"].ToString();
-                            rol = leer["rol"].ToString();
+                            nombre = reader["nombre"].ToString();
+                            apellido = reader["apellido"].ToString();
+                            email = reader["email"].ToString();
+                            rol = reader["rol"].ToString();
                             return true;
                         }
                     }
@@ -48,16 +42,14 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al conectar con la base de datos: " + ex.Message);
+                throw new Exception("Error al autenticar el usuario: " + ex.Message);
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
-            return false;
+
+            return false; // Retorna false si el usuario no fue autenticado
         }
     }
 }

@@ -32,7 +32,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,18 +92,6 @@
             this.label8.TabIndex = 58;
             this.label8.Text = "• Choqui Perez, Mariano Javier";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(168, 337);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(328, 22);
-            this.label7.TabIndex = 57;
-            this.label7.Text = "• Buscema Caceres, Blas Francisco";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -127,7 +114,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 22);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Versión: RC 0.77";
+            this.label5.Text = "Versión: RC 0.78";
             // 
             // label4
             // 
@@ -226,7 +213,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -251,7 +237,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

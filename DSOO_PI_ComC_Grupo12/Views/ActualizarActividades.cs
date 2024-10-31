@@ -113,13 +113,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 if (dataGridActividades.Columns[e.ColumnIndex].Name == "ActualizarActividad")
                 {
-                    // Lógica para actualizar la fila de actividades
+                    // Obtengo los valores de las celdas
                     int id = (int)dataGridActividades.Rows[e.RowIndex].Cells["ID"].Value;
                     string nombre = dataGridActividades.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
                     decimal precio = decimal.Parse(dataGridActividades.Rows[e.RowIndex].Cells["Precio"].Value.ToString());
 
-                    // Aquí puedes abrir un formulario de edición o actualizar directamente
-                    // Por ejemplo, abrir un formulario de edición
+                    // Abro un formulario para editar
                     EditarActividadForm editarForm = new EditarActividadForm(id, nombre, precio);
                     if (editarForm.ShowDialog() == DialogResult.OK)
                     {
@@ -130,11 +129,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 }
                 else if (dataGridActividades.Columns[e.ColumnIndex].Name == "EliminarActividad")
                 {
-                    // Lógica para eliminar la fila de actividades
+                    // Obtengo los valores de la celda
                     int id = (int)dataGridActividades.Rows[e.RowIndex].Cells["ID"].Value;
                     string nombre = dataGridActividades.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
 
-                    // Verificar si hay al menos una actividad en el DataGridView
+                    // Verifico si hay al menos una actividad en el DataGridView para evitar tener problemas a la hora de facturar.
                     if (dataGridActividades.Rows.Count > 1)
                     {
                         DialogResult result = MessageBox.Show($"¿Estás seguro de que deseas eliminar la actividad: ID={id}, Nombre={nombre}?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -166,13 +165,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 if (dataGridCuota.Columns[e.ColumnIndex].Name == "ActualizarCuota")
                 {
-                    // Lógica para actualizar la fila de cuotas
+                    // Obtengo valores de las variables de la celda
                     int id = (int)dataGridCuota.Rows[e.RowIndex].Cells["IDCuota"].Value;
                     string descripcion = dataGridCuota.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
                     decimal monto = decimal.Parse(dataGridCuota.Rows[e.RowIndex].Cells["Monto"].Value.ToString());
 
-                    // Aquí puedes abrir un formulario de edición o actualizar directamente
-                    // Por ejemplo, abrir un formulario de edición
+                    // Abro un formulario para editar
                     EditarCuotaForm editarForm = new EditarCuotaForm(id, descripcion, monto);
                     if (editarForm.ShowDialog() == DialogResult.OK)
                     {

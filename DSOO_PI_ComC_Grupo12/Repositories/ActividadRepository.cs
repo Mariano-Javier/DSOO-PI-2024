@@ -1,38 +1,30 @@
-﻿using DSOO_PI_ComC_Grupo12.Config;
-using DSOO_PI_ComC_Grupo12.Services;
+﻿using DSOO_PI_ComC_Grupo12.Helpers;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
-    internal class ActividadRepository
+    internal class ActividadRepository : BaseRepository
     {
         public Dictionary<string, decimal> ObtenerPreciosActividades(List<string> actividades)
         {
-            Dictionary<string, decimal> precios = new Dictionary<string, decimal>();
-            MySqlConnection? conexionDb = null;
+            var precios = new Dictionary<string, decimal>();
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "SELECT nombre, precio FROM actividad WHERE nombre IN (@actividades)";
 
-                    // Crear una cadena de parámetros para la consulta
                     string parametros = string.Join(",", actividades.ConvertAll(a => $"'{a}'"));
                     comando.CommandText = comando.CommandText.Replace("@actividades", parametros);
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    using (var reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -49,37 +41,27 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
 
             return precios;
         }
 
-
         public List<(int Id, string Nombre, decimal Precio)> ObtenerPreciosActividades()
         {
-            List<(int Id, string Nombre, decimal Precio)> precios = new List<(int Id, string Nombre, decimal Precio)>();
-            MySqlConnection? conexionDb = null;
+            var precios = new List<(int Id, string Nombre, decimal Precio)>();
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "SELECT id, nombre, precio FROM actividad";
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    using (var reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -97,40 +79,31 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
 
             return precios;
         }
+
         public List<string> ObtenerActividades()
         {
-            List<string> actividades = new List<string>();
-            MySqlConnection? conexionDb = null;
+            var actividades = new List<string>();
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "SELECT nombre FROM actividad";
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    using (var reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            string nombre = reader.GetString(0);
-                            actividades.Add(nombre);
+                            actividades.Add(reader.GetString(0));
                         }
                     }
                 }
@@ -141,29 +114,21 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
 
             return actividades;
         }
+
         public void RegistrarActividad(string nombre, decimal precio)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "INSERT INTO actividad (nombre, precio) VALUES (@nombre, @precio)";
@@ -179,27 +144,19 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
+
         public void ActualizarActividad(int id, string nombre, decimal precio)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "UPDATE actividad SET nombre = @nombre, precio = @precio WHERE id = @id";
@@ -216,28 +173,19 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
 
         public void EliminarActividad(int id)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "DELETE FROM actividad WHERE id = @id";
@@ -252,12 +200,8 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
-
     }
 }

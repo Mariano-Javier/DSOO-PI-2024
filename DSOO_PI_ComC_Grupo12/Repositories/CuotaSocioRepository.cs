@@ -1,36 +1,24 @@
-﻿using DSOO_PI_ComC_Grupo12.Config;
-using DSOO_PI_ComC_Grupo12.Services;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using DSOO_PI_ComC_Grupo12.Helpers;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
-    public class CuotaSocioRepository
+    public class CuotaSocioRepository : BaseRepository
     {
-        private readonly Conexion _conexion;
-
-        public CuotaSocioRepository()
+        public (string Descripcion, decimal Monto) ObtenerCuotaPorId(int id)
         {
-            _conexion = Conexion.getInstancia(
-                ConfiguracionBD.NombreBase,
-                ConfiguracionBD.Servidor,
-                ConfiguracionBD.Puerto,
-                ConfiguracionBD.Usuario,
-                ConfiguracionBD.Contrasenia
-            );
-        }
-
-        public (string, decimal) ObtenerCuotaPorId(int id)
-        {
-            using (var conexion = _conexion.CrearConexion())
+            MySqlConnection conexionDb = null;
+            try
             {
-                conexion.Open();
+                conexionDb = ObtenerConexion();
+
                 string query = "SELECT descripcion, monto FROM cuota_socio WHERE id = @id";
-                using (var cmd = new MySqlCommand(query, conexion))
+                using (var comando = new MySqlCommand(query, conexionDb))
                 {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    using (var reader = cmd.ExecuteReader())
+                    comando.Parameters.AddWithValue("@id", id);
+                    using (var reader = comando.ExecuteReader())
                     {
                         if (reader.Read())
                         {
@@ -41,29 +29,32 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     }
                 }
             }
-            return (string.Empty, 0m); // Devolver un valor por defecto si no se encuentra la cuota
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la cuota por ID: " + ex.Message);
+            }
+            finally
+            {
+                CerrarConexion(conexionDb);
+            }
+            return (string.Empty, 0m); // Valor por defecto si no se encuentra la cuota
         }
+
         public List<(int Id, string Descripcion, decimal Monto)> ObtenerPreciosCuotas()
         {
-            List<(int Id, string Descripcion, decimal Monto)> precios = new List<(int Id, string Descripcion, decimal Monto)>();
-            MySqlConnection? conexionDb = null;
+            var precios = new List<(int Id, string Descripcion, decimal Monto)>();
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "SELECT id, descripcion, monto FROM cuota_socio";
 
-                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    using (var reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -81,29 +72,21 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
 
             return precios;
         }
+
         public void ActualizarCuota(int id, string descripcion, decimal monto)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "UPDATE cuota_socio SET descripcion = @descripcion, monto = @monto WHERE id = @id";
@@ -120,28 +103,19 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
 
         public void EliminarCuota(int id)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
 
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "DELETE FROM cuota_socio WHERE id = @id";
@@ -156,10 +130,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
     }

@@ -214,7 +214,7 @@
             this.txtContrasenia.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContrasenia.Location = new System.Drawing.Point(69, 13);
             this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(549, 30);
+            this.txtContrasenia.Size = new System.Drawing.Size(569, 30);
             this.txtContrasenia.TabIndex = 2;
             this.txtContrasenia.UseSystemPasswordChar = true;
             // 
@@ -244,7 +244,7 @@
             this.txtUsuario.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(69, 13);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(549, 30);
+            this.txtUsuario.Size = new System.Drawing.Size(569, 30);
             this.txtUsuario.TabIndex = 1;
             // 
             // picUsuario

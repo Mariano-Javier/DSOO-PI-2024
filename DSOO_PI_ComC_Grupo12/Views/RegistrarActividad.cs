@@ -35,6 +35,8 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                     MessageBox.Show("Actividad registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarActividadesEnDataGrid();
+                    txtNombre.Text = string.Empty;
+                    txtPrecio.Text = string.Empty;
                 }
                 catch (Exception ex)
                 {

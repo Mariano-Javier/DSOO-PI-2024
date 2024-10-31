@@ -131,10 +131,10 @@
             // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefono.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(89, 10);
+            this.txtTelefono.Location = new System.Drawing.Point(8, 10);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(267, 16);
+            this.txtTelefono.Size = new System.Drawing.Size(440, 16);
             this.txtTelefono.TabIndex = 51;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -153,10 +153,10 @@
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(89, 10);
+            this.txtEmail.Location = new System.Drawing.Point(8, 10);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(267, 16);
+            this.txtEmail.Size = new System.Drawing.Size(440, 16);
             this.txtEmail.TabIndex = 49;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -175,10 +175,10 @@
             // 
             this.txtDNI.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDNI.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDNI.Location = new System.Drawing.Point(89, 10);
+            this.txtDNI.Location = new System.Drawing.Point(6, 10);
             this.txtDNI.Margin = new System.Windows.Forms.Padding(2);
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(267, 16);
+            this.txtDNI.Size = new System.Drawing.Size(442, 16);
             this.txtDNI.TabIndex = 47;
             this.txtDNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -197,10 +197,10 @@
             // 
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtApellido.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApellido.Location = new System.Drawing.Point(89, 10);
+            this.txtApellido.Location = new System.Drawing.Point(5, 10);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(267, 16);
+            this.txtApellido.Size = new System.Drawing.Size(443, 16);
             this.txtApellido.TabIndex = 45;
             this.txtApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -219,10 +219,10 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(89, 10);
+            this.txtNombre.Location = new System.Drawing.Point(5, 10);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(267, 16);
+            this.txtNombre.Size = new System.Drawing.Size(443, 16);
             this.txtNombre.TabIndex = 43;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

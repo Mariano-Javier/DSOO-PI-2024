@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Config\ConfiguracionBD.cs" />
     <Compile Include="DTO\SocioConPagoDTO.cs" />
+    <Compile Include="Helpers\BaseRepository.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
     <Compile Include="Interfaces\IRegistrar.cs" />

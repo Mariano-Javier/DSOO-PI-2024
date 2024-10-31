@@ -1,33 +1,26 @@
-﻿using DSOO_PI_ComC_Grupo12.Config;
-using DSOO_PI_ComC_Grupo12.Models;
-using DSOO_PI_ComC_Grupo12.Services;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
+using DSOO_PI_ComC_Grupo12.Models;
+using DSOO_PI_ComC_Grupo12.Helpers;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
-    internal class EmpleadoRepository
+    internal class EmpleadoRepository : BaseRepository
     {
         public bool ExisteUsuario(string usuario)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = "SELECT COUNT(*) FROM empleado WHERE usuario = @usuario";
                     comando.Parameters.AddWithValue("@usuario", usuario);
                     int cantidad = Convert.ToInt32(comando.ExecuteScalar());
-                    return cantidad > 0;  // Si el conteo es mayor a 0, ya existe un empleado con ese usuario
+                    return cantidad > 0;  // Devuelve true si el usuario ya existe
                 }
             }
             catch (Exception ex)
@@ -36,32 +29,23 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
         }
 
         public long RegistrarEmpleado(Empleado empleado)
         {
-            MySqlConnection? conexionDb = null;
+            MySqlConnection conexionDb = null;
             try
             {
-                conexionDb = Conexion.getInstancia(
-                    ConfiguracionBD.NombreBase,
-                    ConfiguracionBD.Servidor,
-                    ConfiguracionBD.Puerto,
-                    ConfiguracionBD.Usuario,
-                    ConfiguracionBD.Contrasenia).CrearConexion();
-                conexionDb.Open();
+                conexionDb = ObtenerConexion();
 
-                using (MySqlCommand comando = new MySqlCommand())
+                using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = @"INSERT INTO empleado
-                (nombre, apellido, dni, email, telefono, fecha_nac, rol, usuario, contrasenia)
-                VALUES (@nombre, @apellido, @dni, @email, @telefono, @fecha_nac, @rol, @usuario, @contrasenia)";
+                                            (nombre, apellido, dni, email, telefono, fecha_nac, rol, usuario, contrasenia)
+                                            VALUES (@nombre, @apellido, @dni, @email, @telefono, @fecha_nac, @rol, @usuario, @contrasenia)";
 
                     comando.Parameters.AddWithValue("@nombre", empleado.Nombre);
                     comando.Parameters.AddWithValue("@apellido", empleado.Apellido);
@@ -74,14 +58,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     comando.Parameters.AddWithValue("@contrasenia", empleado.Contrasenia);
 
                     int filasAfectadas = comando.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                    {
-                        return comando.LastInsertedId;
-                    }
-                    else
-                    {
-                        return -1; // Indica que no se insertó ningún registro
-                    }
+                    return filasAfectadas > 0 ? comando.LastInsertedId : -1; // Devuelve el ID insertado o -1 si no se insertó
                 }
             }
             catch (Exception ex)
@@ -90,11 +67,8 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             finally
             {
-                if (conexionDb != null && conexionDb.State == System.Data.ConnectionState.Open)
-                {
-                    conexionDb.Close();
-                }
+                CerrarConexion(conexionDb);
             }
-        }
+        }        
     }
 }

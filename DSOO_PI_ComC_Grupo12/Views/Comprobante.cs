@@ -64,16 +64,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             CargarDataGridViewS(preciosActividades);
             printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
-
         }
-
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        //modificar: poner en una clase estatica:-> RegistrarPago y Comprobante
         private void CargarDataGridViewNS(Dictionary<string, decimal> preciosActividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
@@ -103,9 +100,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), FechaFin.ToString("dd/MM/yyyy"));
         }
-
-
-
 
         //----------------------------------IMPRESION----------------------------------
         private void btnImprimir_Click(object sender, EventArgs e)

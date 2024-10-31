@@ -99,7 +99,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos: " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

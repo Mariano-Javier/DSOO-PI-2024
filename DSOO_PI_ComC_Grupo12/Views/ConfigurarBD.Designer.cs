@@ -68,10 +68,10 @@
             // 
             this.txtNombreBD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreBD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreBD.Location = new System.Drawing.Point(177, 141);
+            this.txtNombreBD.Location = new System.Drawing.Point(105, 141);
             this.txtNombreBD.Multiline = true;
             this.txtNombreBD.Name = "txtNombreBD";
-            this.txtNombreBD.Size = new System.Drawing.Size(300, 20);
+            this.txtNombreBD.Size = new System.Drawing.Size(444, 20);
             this.txtNombreBD.TabIndex = 26;
             this.txtNombreBD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -90,9 +90,9 @@
             // 
             this.txtContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContrasenia.Location = new System.Drawing.Point(72, 12);
+            this.txtContrasenia.Location = new System.Drawing.Point(3, 12);
             this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(300, 19);
+            this.txtContrasenia.Size = new System.Drawing.Size(444, 19);
             this.txtContrasenia.TabIndex = 24;
             this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtContrasenia.UseSystemPasswordChar = true;
@@ -101,10 +101,10 @@
             // 
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(72, 11);
+            this.txtUsuario.Location = new System.Drawing.Point(3, 11);
             this.txtUsuario.Multiline = true;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(300, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(444, 20);
             this.txtUsuario.TabIndex = 23;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -134,9 +134,9 @@
             // 
             this.txtPuerto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPuerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPuerto.Location = new System.Drawing.Point(72, 11);
+            this.txtPuerto.Location = new System.Drawing.Point(3, 11);
             this.txtPuerto.Name = "txtPuerto";
-            this.txtPuerto.Size = new System.Drawing.Size(300, 19);
+            this.txtPuerto.Size = new System.Drawing.Size(444, 19);
             this.txtPuerto.TabIndex = 20;
             this.txtPuerto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -174,10 +174,10 @@
             // 
             this.txtServidor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServidor.Location = new System.Drawing.Point(72, 12);
+            this.txtServidor.Location = new System.Drawing.Point(3, 12);
             this.txtServidor.Multiline = true;
             this.txtServidor.Name = "txtServidor";
-            this.txtServidor.Size = new System.Drawing.Size(300, 20);
+            this.txtServidor.Size = new System.Drawing.Size(444, 20);
             this.txtServidor.TabIndex = 19;
             this.txtServidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
