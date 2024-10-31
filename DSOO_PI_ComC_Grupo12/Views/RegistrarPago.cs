@@ -1,4 +1,5 @@
-﻿using DSOO_PI_ComC_Grupo12.Models;
+﻿using DSOO_PI_ComC_Grupo12.Interfaces;
+using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
-    public partial class RegistrarPago : Form
+    public partial class RegistrarPago : Form , IPago,ILimpiezaForm
     {
         public Cliente? ClienteSeleccionado { get; set; }
         public string FormaPago = "Efectivo";
@@ -61,7 +62,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-        private void btnComprobante_Click(object sender, EventArgs e)
+        public void btnComprobante_Click(object sender, EventArgs e)
         {
             if (EstadoPagado == false)
             {
@@ -113,7 +114,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             Close();
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        public void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtClienteID.Text = string.Empty;
             Limpiar();
@@ -144,7 +145,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-        private void btnPagar_Click(object sender, EventArgs e)
+        public void btnPagar_Click(object sender, EventArgs e)
         {
             if (ClienteSeleccionado == null)
             {
@@ -184,7 +185,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
+        public void btnCalcular_Click(object sender, EventArgs e)
         {
             btnComprobante.Enabled = false;
             // Obtener las actividades seleccionadas

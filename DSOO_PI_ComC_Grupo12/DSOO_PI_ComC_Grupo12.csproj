@@ -104,6 +104,8 @@
     <Compile Include="Helpers\BaseRepository.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
+    <Compile Include="Interfaces\ILimpiezaForm.cs" />
+    <Compile Include="Interfaces\IPago.cs" />
     <Compile Include="Interfaces\IRegistrar.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Empleado.cs" />
