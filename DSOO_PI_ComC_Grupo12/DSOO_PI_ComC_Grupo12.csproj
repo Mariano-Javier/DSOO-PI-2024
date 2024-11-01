@@ -109,8 +109,10 @@
     <Compile Include="Interfaces\ILimpiezaForm.cs" />
     <Compile Include="Interfaces\IPago.cs" />
     <Compile Include="Interfaces\IRegistrar.cs" />
+    <Compile Include="Models\Actividad.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

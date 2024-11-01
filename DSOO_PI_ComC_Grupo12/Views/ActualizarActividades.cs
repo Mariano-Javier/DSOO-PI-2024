@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
 
 namespace DSOO_PI_ComC_Grupo12.Views
@@ -163,7 +164,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     if (editarForm.ShowDialog() == DialogResult.OK)
                     {
                         // Actualizar la actividad en la base de datos
-                        actividadRepository.ActualizarActividad(id, editarForm.Nombre, editarForm.Precio);
+                        var actividad = new Actividad
+                        {
+                            Id = id,
+                            Nombre = editarForm.Nombre,
+                            Precio = editarForm.Precio
+                        };
+                        actividadRepository.ActualizarActividad(actividad);
                         CargarActividadesEnDataGrid();
                     }
                 }
@@ -221,6 +228,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 }
             }
         }
+
         private void DataGridDescuentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -247,12 +255,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-
         private void CargarActividadesEnDataGrid()
         {
             try
             {
-                var actividades = actividadRepository.ObtenerPreciosActividades();
+                var actividades = actividadRepository.ObtenerActividades();
                 dataGridActividades.Rows.Clear(); // Limpiar las filas existentes
 
                 foreach (var actividad in actividades)
@@ -283,6 +290,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Error al cargar las cuotas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void CargarDescuentosEnDataGrid()
         {
             try
@@ -304,7 +312,5 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Error al cargar los descuentos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
     }
 }

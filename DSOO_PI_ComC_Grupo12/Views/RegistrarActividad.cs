@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
+using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
 
 namespace DSOO_PI_ComC_Grupo12.Views
@@ -31,7 +31,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     string nombre = txtNombre.Text;
                     decimal precio = decimal.Parse(txtPrecio.Text);
 
-                    actividadRepository.RegistrarActividad(nombre, precio);
+                    var actividad = new Actividad
+                    {
+                        Nombre = nombre,
+                        Precio = precio
+                    };
+
+                    actividadRepository.RegistrarActividad(actividad);
 
                     MessageBox.Show("Actividad registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarActividadesEnDataGrid();
@@ -71,14 +77,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = string.Empty;
-            txtPrecio.Text = string.Empty; 
-
+            txtPrecio.Text = string.Empty;
         }
+
         private void CargarActividadesEnDataGrid()
         {
             try
             {
-                var actividades = actividadRepository.ObtenerPreciosActividades();
+                var actividades = actividadRepository.ObtenerActividades();
                 dataGridActividades.Rows.Clear(); // Limpiar las filas existentes
 
                 foreach (var actividad in actividades)

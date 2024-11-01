@@ -1,4 +1,5 @@
-﻿using DSOO_PI_ComC_Grupo12.Repositories;
+﻿using DSOO_PI_ComC_Grupo12.Models;
+using DSOO_PI_ComC_Grupo12.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -21,9 +22,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void CargarDatosActividades()
         {
-            List<(int Id, string Nombre, decimal Precio)> preciosActividades = actividadRepository.ObtenerPreciosActividades();
+            List<Actividad> actividades = actividadRepository.ObtenerActividades();
 
-            foreach (var actividad in preciosActividades)
+            foreach (var actividad in actividades)
             {
                 dataGridActividades.Rows.Add(actividad.Id, actividad.Nombre, actividad.Precio);
             }

@@ -19,14 +19,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private Cliente? Cliente { get; set; }
         private DateTime FechaPago { get; set; }
         private DateTime FechaInicio { get; set; }
-        private DateTime FechaFin {  get; set; }
+        private DateTime FechaFin { get; set; }
 
-        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades, DateTime fechaInicio)
+        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, List<Actividad> actividades, DateTime fechaInicio)
         {
             InitializeComponent();
             Cliente = cliente;
             FechaPago = fechaPago;
-            FechaInicio = fechaInicio; 
+            FechaInicio = fechaInicio;
 
             lblNombreApellido.Text = $"{cliente.Nombre} {cliente.Apellido}";
             lblDNI.Text = cliente.Dni;
@@ -39,11 +39,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridFechas.DefaultCellStyle.SelectionBackColor = Color.White;
             dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            CargarDataGridViewNS(preciosActividades);
+            CargarDataGridViewNS(actividades);
             printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
         }
 
-        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, Dictionary<String, decimal> preciosActividades, DateTime fechaInicio, DateTime fechaFin)
+        public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, List<Actividad> actividades, DateTime fechaInicio, DateTime fechaFin)
         {
             InitializeComponent();
             Cliente = cliente;
@@ -62,7 +62,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridFechas.DefaultCellStyle.SelectionBackColor = Color.White;
             dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
 
-            CargarDataGridViewS(preciosActividades);
+            CargarDataGridViewS(actividades);
             printComprobante.PrintPage += new PrintPageEventHandler(printComprobante_PrintPage);
         }
 
@@ -71,31 +71,31 @@ namespace DSOO_PI_ComC_Grupo12.Views
             Close();
         }
 
-        private void CargarDataGridViewNS(Dictionary<string, decimal> preciosActividades)
+        private void CargarDataGridViewNS(List<Actividad> actividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
             dataGridFechas.Rows.Clear();
 
-            // Iterar a través del diccionario y agregar filas al DataGridView
-            foreach (var actividad in preciosActividades)
+            // Iterar a través de la lista de actividades y agregar filas al DataGridView
+            foreach (var actividad in actividades)
             {
-                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+                dataGridResumen.Rows.Add(actividad.Nombre, actividad.Precio);
             }
 
             dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), "Válido solo por el día abonado");
         }
 
-        private void CargarDataGridViewS(Dictionary<string, decimal> preciosActividades)
+        private void CargarDataGridViewS(List<Actividad> actividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
             dataGridFechas.Rows.Clear();
 
-            // Iterar a través del diccionario y agregar filas al DataGridView
-            foreach (var actividad in preciosActividades)
+            // Iterar a través de la lista de actividades y agregar filas al DataGridView
+            foreach (var actividad in actividades)
             {
-                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+                dataGridResumen.Rows.Add(actividad.Nombre, actividad.Precio);
             }
 
             dataGridFechas.Rows.Add(FechaInicio.ToString("dd/MM/yyyy"), FechaFin.ToString("dd/MM/yyyy"));

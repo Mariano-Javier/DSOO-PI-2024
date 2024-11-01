@@ -1,12 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using DSOO_PI_ComC_Grupo12.Helpers;
+using DSOO_PI_ComC_Grupo12.Models;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
     internal class PagoRepository : BaseRepository
     {
-        public void RegistrarPago(int idCliente, decimal monto, string medioPago, DateTime fechaPago, DateTime periodoInicio, DateTime? periodoFin, bool socioAlPagar, int? idCuota)
+        public void RegistrarPago(Pago pago)
         {
             MySqlConnection conexionDb = null;
 
@@ -17,18 +18,18 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
-                    comando.CommandText = @"INSERT INTO pago 
-                                            (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar, id_cuota) 
+                    comando.CommandText = @"INSERT INTO pago
+                                            (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, periodo_fin, socio_al_pagar, id_cuota)
                                             VALUES (@idCliente, @monto, @medioPago, @fechaPago, @periodoInicio, @periodoFin, @socioAlPagar, @idCuota)";
 
-                    comando.Parameters.AddWithValue("@idCliente", idCliente);
-                    comando.Parameters.AddWithValue("@monto", monto);
-                    comando.Parameters.AddWithValue("@medioPago", medioPago);
-                    comando.Parameters.AddWithValue("@fechaPago", fechaPago);
-                    comando.Parameters.AddWithValue("@periodoInicio", periodoInicio);
-                    comando.Parameters.AddWithValue("@periodoFin", periodoFin ?? (object)DBNull.Value);
-                    comando.Parameters.AddWithValue("@socioAlPagar", socioAlPagar);
-                    comando.Parameters.AddWithValue("@idCuota", idCuota ?? (object)DBNull.Value);
+                    comando.Parameters.AddWithValue("@idCliente", pago.IdCliente);
+                    comando.Parameters.AddWithValue("@monto", pago.Monto);
+                    comando.Parameters.AddWithValue("@medioPago", pago.MedioDePago);
+                    comando.Parameters.AddWithValue("@fechaPago", pago.FechaPago);
+                    comando.Parameters.AddWithValue("@periodoInicio", pago.PeriodoInicio);
+                    comando.Parameters.AddWithValue("@periodoFin", pago.PeriodoFin ?? (object)DBNull.Value);
+                    comando.Parameters.AddWithValue("@socioAlPagar", pago.SocioAlPagar);
+                    comando.Parameters.AddWithValue("@idCuota", pago.IdCuota ?? (object)DBNull.Value);
 
                     comando.ExecuteNonQuery();
                 }

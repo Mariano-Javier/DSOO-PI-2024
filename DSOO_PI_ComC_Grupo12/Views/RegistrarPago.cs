@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
-    public partial class RegistrarPago : Form , IPago,ILimpiezaForm
+    public partial class RegistrarPago : Form, IPago, ILimpiezaForm
     {
         public Cliente? ClienteSeleccionado { get; set; }
         public string FormaPago = "Efectivo";
@@ -17,7 +17,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private ActividadRepository actividadRepository;
         public Decimal TotalPagar;
         private bool EstadoPagado;
-        Dictionary<string, decimal> preciosActividades;
+        private List<Actividad> actividades;
 
         public RegistrarPago()
         {
@@ -43,6 +43,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Restablecer el valor de la variable a su valor original
             FormaPago = "Efectivo";
         }
+
         private void ResetearCheckBoxes()
         {
             foreach (DataGridViewRow row in dataGridSelecActi.Rows)
@@ -51,15 +52,16 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 row.Cells["Seleccion"].Value = false;
             }
         }
-        private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
+
+        private void CargarDataGridView(List<Actividad> actividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
 
-            // Iterar a través del diccionario y agregar filas al DataGridView
-            foreach (var actividad in preciosActividades)
+            // Iterar a través de la lista de actividades y agregar filas al DataGridView
+            foreach (var actividad in actividades)
             {
-                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+                dataGridResumen.Rows.Add(actividad.Nombre, actividad.Precio);
             }
         }
 
@@ -93,7 +95,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 DateTime fechaSeleccionada = dateDiaSeleccionado.Value;
 
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaSeleccionada);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, actividades, fechaSeleccionada);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
@@ -140,9 +142,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblBuscarStatus.Text = string.Empty;
             ResetearCheckBoxes();
 
-            if (preciosActividades != null && preciosActividades.Count > 0)
+            if (actividades != null && actividades.Count > 0)
             {
-                preciosActividades.Clear();
+                actividades.Clear();
             }
         }
 
@@ -162,8 +164,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             try
             {
-                PagoRepository pagoRepository = new PagoRepository();
-                pagoRepository.RegistrarPago(
+                Pago pago = new Pago(
                     ClienteSeleccionado.Id,
                     TotalPagar,
                     FormaPago,
@@ -173,6 +174,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     false,  // socio_al_pagar es false
                     null // id_cuota no usado para no socios
                 );
+
+                PagoRepository pagoRepository = new PagoRepository();
+                pagoRepository.RegistrarPago(pago);
 
                 EstadoPagado = true;
 
@@ -205,16 +209,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
 
             // Obtener los precios de las actividades seleccionadas
-            preciosActividades = actividadRepository.ObtenerPreciosActividades(actividadesSeleccionadas);
+            actividades = actividadRepository.ObtenerActividades().FindAll(a => actividadesSeleccionadas.Contains(a.Nombre));
 
             // Calcular el total
             TotalPagar = 0;
-            foreach (var actividad in actividadesSeleccionadas)
+            foreach (var actividad in actividades)
             {
-                if (preciosActividades.TryGetValue(actividad, out decimal precio))
-                {
-                    TotalPagar += precio;
-                }
+                TotalPagar += actividad.Precio;
             }
 
             // Usar DescuentoUtils para calcular el total con descuento aplicando los valores recién cargados
@@ -225,15 +226,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
             lblTotalPagar.Text = TotalPagar.ToString("C2") + " $";
 
             // Cargar los datos en el DataGridView
-            if (preciosActividades.Count > 0)
+            if (actividades.Count > 0)
             {
-                preciosActividades.Add("Descuento:", -montoDescuento);
+                actividades.Add(new Actividad { Nombre = "Descuento:", Precio = -montoDescuento });
             }
-            CargarDataGridView(preciosActividades);
+            CargarDataGridView(actividades);
 
             btnPagar.Enabled = true;
         }
-
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -321,7 +321,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Iterar a través de las actividades y agregar filas al DataGridView
             foreach (var actividad in actividades)
             {
-                dataGridSelecActi.Rows.Add(false, actividad);
+                dataGridSelecActi.Rows.Add(false, actividad.Nombre, actividad.Precio);
             }
         }
 

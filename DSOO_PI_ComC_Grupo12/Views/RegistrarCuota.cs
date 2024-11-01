@@ -4,12 +4,6 @@ using DSOO_PI_ComC_Grupo12.Repositories;
 using DSOO_PI_ComC_Grupo12.Utils;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSOO_PI_ComC_Grupo12.Views
@@ -20,7 +14,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public string FormaPago = "Efectivo";
         public Decimal TotalPagar;
         public int TipoCuota;
-        Dictionary<string, decimal> preciosActividades;
+        private List<Actividad> actividades;
         private List<Form> ventanasAbiertas;
 
         public DateTime CantidadMesesPagos;
@@ -38,9 +32,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
             btnComprobante.Enabled = false;
             btnCalcular.Enabled = false;
             TotalPagar = 0;
-            comboBoxTipoSocio.SelectedIndex = 0; 
+            comboBoxTipoSocio.SelectedIndex = 0;
             TipoCuota = 1;
-            preciosActividades = new Dictionary<string, decimal>();
+            actividades = new List<Actividad>();
             ventanasAbiertas = new List<Form>();
 
             comboBoxMesSus.SelectedIndex = 0;
@@ -59,7 +53,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void Limpiar()
         {
-            
             lblNombreApellido.Text = string.Empty;
             lblDNI.Text = string.Empty;
             dateFechaPago.Value = DateTime.Now;
@@ -71,7 +64,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             TotalPagar = 0;
             ClienteSeleccionado = null;
             dataGridResumen.Rows.Clear();
-            preciosActividades.Clear();
+            actividades.Clear();
             comboBoxTipoSocio.SelectedIndex = 0;
             comboBoxMesSus.SelectedIndex = 0;
             MesesSeleccionados = 1;
@@ -106,7 +99,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void ResetearRadioButtons()
         {
             radioEfectivo.Checked = true;
-            // Restablecer el valor de la variable  a su valor original
+            // Restablecer el valor de la variable a su valor original
             FormaPago = "Efectivo";
         }
 
@@ -126,7 +119,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                     if (cliente != null)
                     {
-
                         if (cliente.EsSocio)
                         {
                             // Mostrar los datos del cliente en los labels
@@ -143,7 +135,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
                             lblBuscarStatus.Text = "El cliente no esta registrado como socio";
                             btnCalcular.Enabled = false;
                         }
-
                     }
                     else
                     {
@@ -185,7 +176,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             // Crear una instancia del repositorio de cuotas
             CuotaSocioRepository cuotaSocioRepository = new CuotaSocioRepository();
             TotalPagar = 0;
-            preciosActividades.Clear();
+            actividades.Clear();
             btnComprobante.Enabled = false;
 
             // Actualizar la fecha de fin del periodo de acuerdo a la selección de meses
@@ -200,7 +191,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 {
                     // Calcular el total a pagar
                     TotalPagar = monto * MesesSeleccionados;
-                    preciosActividades.Add("Cuota " + comboBoxTipoSocio.Text, TotalPagar);
+                    actividades.Add(new Actividad { Nombre = "Cuota " + comboBoxTipoSocio.Text, Precio = TotalPagar });
 
                     // Aplicar el descuento usando los valores actualizados
                     var (totalConDescuento, montoDescuento) = DescuentoUtils.TotalDescuento(TotalPagar, FormaPago);
@@ -211,11 +202,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                     if (TotalPagar > 0)
                     {
-                        preciosActividades.Add("Descuento:", -montoDescuento);
+                        actividades.Add(new Actividad { Nombre = "Descuento:", Precio = -montoDescuento });
                     }
 
                     // Cargar los datos en el DataGridView
-                    CargarDataGridView(preciosActividades);
+                    CargarDataGridView(actividades);
 
                     btnPagar.Enabled = true;
                 }
@@ -230,16 +221,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-
-        private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
+        private void CargarDataGridView(List<Actividad> actividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
             dataGridResumen.Rows.Clear();
 
-            // Iterar a través del diccionario y agregar filas al DataGridView
-            foreach (var actividad in preciosActividades)
+            // Iterar a través de la lista de actividades y agregar filas al DataGridView
+            foreach (var actividad in actividades)
             {
-                dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
+                dataGridResumen.Rows.Add(actividad.Nombre, actividad.Precio);
             }
         }
 
@@ -259,20 +249,19 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             try
             {
-                PagoRepository pagoRepository = new PagoRepository();
-                pagoRepository.RegistrarPago(
+                Pago pago = new Pago(
                     ClienteSeleccionado.Id,
                     TotalPagar,
                     FormaPago,
                     dateFechaPago.Value,
                     dateDiaInicio.Value,
-                    //dateDiaFin.Value, // periodo_fin es null
                     CantidadMesesPagos,
                     true,  // socio_al_pagar es true
-                    TipoCuota // id_cuota 
+                    TipoCuota // id_cuota
                 );
 
-                
+                PagoRepository pagoRepository = new PagoRepository();
+                pagoRepository.RegistrarPago(pago);
 
                 MessageBox.Show("Pago registrado exitosamente.");
 
@@ -309,7 +298,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 DateTime fechaFin = CantidadMesesPagos;
 
                 // Crea y muestra la ventana emergente
-                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, preciosActividades, fechaInicio,fechaFin);
+                Comprobante comprobante = new Comprobante(ClienteSeleccionado, fechaPago, FormaPago, TotalPagar, actividades, fechaInicio, fechaFin);
                 comprobante.ShowDialog(); // Mostrar como ventana modal
 
                 // Cuando la ventana emergente se cierra, volvemos a mostrar todas las ventanas ocultas
@@ -331,7 +320,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             if (comboBoxMesSus.SelectedItem != null)
             {
                 MesesSeleccionados = Convert.ToInt32(comboBoxMesSus.SelectedItem.ToString());
-
             }
         }
     }
