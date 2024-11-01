@@ -32,7 +32,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void CargarDatosCuotas()
         {
-            List<(int Id, string Descripcion, decimal Monto)> preciosCuotas = cuotaSocioRepository.ObtenerPreciosCuotas();
+            List<Cuota> preciosCuotas = cuotaSocioRepository.ObtenerPreciosCuotas();
 
             foreach (var cuota in preciosCuotas)
             {

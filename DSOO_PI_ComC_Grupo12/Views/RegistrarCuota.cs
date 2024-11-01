@@ -185,12 +185,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
             try
             {
                 // Obtener la cuota correspondiente al tipo de socio seleccionado
-                var (descripcion, monto) = cuotaSocioRepository.ObtenerCuotaPorId(TipoCuota);
+                Cuota cuota = cuotaSocioRepository.ObtenerCuotaPorId(TipoCuota);
 
-                if (!string.IsNullOrEmpty(descripcion) && monto > 0)
+                if (cuota != null && cuota.Monto > 0)
                 {
                     // Calcular el total a pagar
-                    TotalPagar = monto * MesesSeleccionados;
+                    TotalPagar = cuota.Monto * MesesSeleccionados;
                     actividades.Add(new Actividad { Nombre = "Cuota " + comboBoxTipoSocio.Text, Precio = TotalPagar });
 
                     // Aplicar el descuento usando los valores actualizados

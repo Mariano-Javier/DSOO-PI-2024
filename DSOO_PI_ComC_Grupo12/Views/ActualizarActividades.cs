@@ -222,7 +222,13 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     if (editarForm.ShowDialog() == DialogResult.OK)
                     {
                         // Actualizar la cuota en la base de datos
-                        cuotaSocioRepository.ActualizarCuota(id, editarForm.Descripcion, editarForm.Monto);
+                        Cuota cuota = new Cuota
+                        {
+                            Id = id,
+                            Descripcion = editarForm.Descripcion,
+                            Monto = editarForm.Monto
+                        };
+                        cuotaSocioRepository.ActualizarCuota(cuota);
                         CargarCuotasEnDataGrid();
                     }
                 }
