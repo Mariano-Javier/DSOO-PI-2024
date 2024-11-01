@@ -87,13 +87,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 Name = "Descripcion",
                 HeaderText = "Descripción",
                 DataPropertyName = "Descripcion",
-                Width = 450
+                Width = 420
             });
             dataGridCuota.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Monto",
                 HeaderText = "Monto",
-                DataPropertyName = "Monto"
+                DataPropertyName = "Monto",
+                Width = 130
             });
 
             // Agregar solo la columna de botones "Actualizar" para cuotas
@@ -122,13 +123,14 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 Name = "Tipo",
                 HeaderText = "Tipo",
                 DataPropertyName = "Tipo",
-                Width = 450
+                Width = 420
             });
             dataGridDescuentos.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Descuento",
-                HeaderText = "Descuento",
-                DataPropertyName = "Descuento"
+                HeaderText = "Descuento %",
+                DataPropertyName = "Descuento",
+                Width = 130
             });
 
             // Agregar columna de botones para actualizar descuentos
@@ -230,6 +232,9 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     string tipo = dataGridDescuentos.Rows[e.RowIndex].Cells["Tipo"].Value.ToString();
                     decimal descuento = decimal.Parse(dataGridDescuentos.Rows[e.RowIndex].Cells["Descuento"].Value.ToString());
 
+                    // Convertir el valor de descuento a porcentaje
+                    descuento = descuento / 100;
+
                     // Abro un formulario para editar
                     EditarDescuentoForm editarForm = new EditarDescuentoForm(id, tipo, descuento);
                     if (editarForm.ShowDialog() == DialogResult.OK)
@@ -287,7 +292,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
                 foreach (var descuento in descuentos)
                 {
-                    dataGridDescuentos.Rows.Add(descuento.Id, descuento.Tipo, descuento.Descuento);
+                    // Convertir el valor de descuento a porcentaje
+                    decimal porcentajeDescuento = descuento.Descuento * 100;
+
+                    // Agregar los datos al DataGridView con el porcentaje formateado
+                    dataGridDescuentos.Rows.Add(descuento.Id, descuento.Tipo, porcentajeDescuento.ToString("0.##"));
                 }
             }
             catch (Exception ex)
