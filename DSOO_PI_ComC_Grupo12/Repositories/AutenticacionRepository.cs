@@ -1,19 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using DSOO_PI_ComC_Grupo12.Helpers;
+using DSOO_PI_ComC_Grupo12.Models;
 
 namespace DSOO_PI_ComC_Grupo12.Repositories
 {
     internal class AutenticacionRepository : BaseRepository
     {
-        public bool AutenticarUsuario(string usuario, string contrasenia, out string nombre, out string apellido, out string email, out string rol)
+        public Empleado AutenticarUsuario(string usuario, string contrasenia)
         {
-            // Inicializar los valores de salida
-            nombre = string.Empty;
-            apellido = string.Empty;
-            email = string.Empty;
-            rol = string.Empty;
-
             MySqlConnection conexionDb = null;
 
             try
@@ -23,7 +18,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 using (var comando = new MySqlCommand())
                 {
                     comando.Connection = conexionDb;
-                    comando.CommandText = "SELECT nombre, apellido, email, rol FROM empleado WHERE usuario = @usuario AND contrasenia = @contrasenia";
+                    comando.CommandText = "SELECT id, nombre, apellido, dni, email, telefono, fecha_nac, rol FROM empleado WHERE usuario = @usuario AND contrasenia = @contrasenia";
                     comando.Parameters.AddWithValue("@usuario", usuario);
                     comando.Parameters.AddWithValue("@contrasenia", contrasenia);
 
@@ -31,11 +26,18 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     {
                         if (reader.Read())
                         {
-                            nombre = reader["nombre"].ToString();
-                            apellido = reader["apellido"].ToString();
-                            email = reader["email"].ToString();
-                            rol = reader["rol"].ToString();
-                            return true;
+                            return new Empleado(
+                                reader.GetInt32("id"),
+                                reader.GetString("nombre"),
+                                reader.GetString("apellido"),
+                                reader.GetString("dni"),
+                                reader.GetString("email"),
+                                reader.GetString("telefono"),
+                                reader.GetDateTime("fecha_nac"),
+                                reader.GetString("rol"),
+                                usuario,
+                                contrasenia
+                            );
                         }
                     }
                 }
@@ -49,7 +51,7 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 CerrarConexion(conexionDb);
             }
 
-            return false; // Retorna false si el usuario no fue autenticado
+            return null; // Retorna null si el usuario no fue autenticado
         }
     }
 }

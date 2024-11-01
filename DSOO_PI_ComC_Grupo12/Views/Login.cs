@@ -3,6 +3,7 @@ using DSOO_PI_ComC_Grupo12.Helpers;
 using System;
 using System.Windows.Forms;
 using DSOO_PI_ComC_Grupo12.Interfaces;
+using DSOO_PI_ComC_Grupo12.Models;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
@@ -81,10 +82,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             try
             {
-                string nombre, apellido, email, rol;
-                if (_autenticacionRepository.AutenticarUsuario(txtUsuario.Text, txtContrasenia.Text, out nombre, out apellido, out email, out rol))
+                Empleado empleado = _autenticacionRepository.AutenticarUsuario(txtUsuario.Text, txtContrasenia.Text);
+                if (empleado != null)
                 {
-                    MenuPrincipal menuPrincipal = new MenuPrincipal(this, nombre, apellido, email, rol);
+                    MenuPrincipal menuPrincipal = new MenuPrincipal(this, empleado.Nombre, empleado.Apellido, empleado.Email, empleado.Rol);
                     menuPrincipal.Show();
                     this.Hide();
                     txtUsuario.Clear();
