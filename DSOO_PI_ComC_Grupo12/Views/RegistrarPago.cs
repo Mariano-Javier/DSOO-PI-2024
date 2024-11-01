@@ -1,6 +1,7 @@
 ﻿using DSOO_PI_ComC_Grupo12.Interfaces;
 using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using DSOO_PI_ComC_Grupo12.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -188,6 +189,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public void btnCalcular_Click(object sender, EventArgs e)
         {
             btnComprobante.Enabled = false;
+
+            // Actualizar los valores de descuento desde la base de datos
+            var descuentosRepo = new DescuentosRepository();
+            descuentosRepo.CargarDescuentos();
+
             // Obtener las actividades seleccionadas
             ObtenerActividadesSeleccionadas();
 
@@ -211,11 +217,12 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 }
             }
 
-            var (totalConDescuento, montoDescuento) = TotalDescuento(TotalPagar, FormaPago);
+            // Usar DescuentoUtils para calcular el total con descuento aplicando los valores recién cargados
+            var (totalConDescuento, montoDescuento) = DescuentoUtils.TotalDescuento(TotalPagar, FormaPago);
 
-            // Mostrar el total
+            // Mostrar el total actualizado
             TotalPagar = totalConDescuento;
-            lblTotalPagar.Text = TotalPagar.ToString() + " $";
+            lblTotalPagar.Text = TotalPagar.ToString("C2") + " $";
 
             // Cargar los datos en el DataGridView
             if (preciosActividades.Count > 0)
@@ -226,6 +233,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             btnPagar.Enabled = true;
         }
+
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -300,26 +308,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 FormaPago = "Tarjeta en 6 cuotas";
             }
-        }
-
-        private (decimal TotalConDescuento, decimal MontoDescuento) TotalDescuento(decimal Total, string FormaPago)
-        {
-            decimal TotalConDescuento = Total;
-            decimal MontoDescuento = 0m;
-
-            if (FormaPago == "Tarjeta en 3 cuotas")
-            {
-                MontoDescuento = Math.Round(Total * 0.10m, 2);  // 10% de descuento, redondeado a 2 decimales
-                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
-            }
-            else if (FormaPago == "Tarjeta en 6 cuotas")
-            {
-                MontoDescuento = Math.Round(Total * 0.15m, 2);  // 15% de descuento, redondeado a 2 decimales
-                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
-            }
-            // Si es en efectivo o cualquier otra forma de pago, no hay descuento
-
-            return (TotalConDescuento, MontoDescuento);
         }
 
         private void CargarActividadesEnDataGrid()

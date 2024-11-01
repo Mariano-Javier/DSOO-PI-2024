@@ -100,8 +100,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfiguracionBD.cs" />
+    <Compile Include="Config\ConfiguracionDescuentos.cs" />
     <Compile Include="DTO\SocioConPagoDTO.cs" />
     <Compile Include="Helpers\BaseRepository.cs" />
+    <Compile Include="Helpers\DescuentoUtils.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
     <Compile Include="Interfaces\ILimpiezaForm.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Repositories\AutenticacionRepository.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\CuotaSocioRepository.cs" />
+    <Compile Include="Repositories\DescuentosRepository.cs" />
     <Compile Include="Repositories\EmpleadoRepository.cs" />
     <Compile Include="Repositories\PagoRepository.cs" />
     <Compile Include="Services\Conexion.cs" />
@@ -166,6 +169,12 @@
     </Compile>
     <Compile Include="Views\EditarCuotaForm.Designer.cs">
       <DependentUpon>EditarCuotaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarDescuentoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditarDescuentoForm.Designer.cs">
+      <DependentUpon>EditarDescuentoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ListarSocio.cs">
       <SubType>Form</SubType>
@@ -254,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditarCuotaForm.resx">
       <DependentUpon>EditarCuotaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditarDescuentoForm.resx">
+      <DependentUpon>EditarDescuentoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ListarSocio.resx">
       <DependentUpon>ListarSocio.cs</DependentUpon>

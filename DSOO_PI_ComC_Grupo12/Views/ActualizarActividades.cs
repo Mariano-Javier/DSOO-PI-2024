@@ -9,15 +9,18 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         private ActividadRepository actividadRepository;
         private CuotaSocioRepository cuotaSocioRepository;
+        private DescuentosRepository descuentosRepository;
 
         public ActualizarActividades()
         {
             InitializeComponent();
             actividadRepository = new ActividadRepository();
             cuotaSocioRepository = new CuotaSocioRepository();
+            descuentosRepository = new DescuentosRepository();
             ConfigurarDataGridView();
             CargarActividadesEnDataGrid();
             CargarCuotasEnDataGrid();
+            CargarDescuentosEnDataGrid();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -105,6 +108,41 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
             // Manejar el evento de clic de las celdas para cuotas
             dataGridCuota.CellClick += DataGridCuota_CellClick;
+
+            // Configurar las columnas del DataGridView para descuentos
+            dataGridDescuentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "IDDescuento",
+                HeaderText = "ID",
+                DataPropertyName = "IDDescuento",
+                Width = 30
+            });
+            dataGridDescuentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Tipo",
+                HeaderText = "Tipo",
+                DataPropertyName = "Tipo",
+                Width = 450
+            });
+            dataGridDescuentos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Descuento",
+                HeaderText = "Descuento",
+                DataPropertyName = "Descuento"
+            });
+
+            // Agregar columna de botones para actualizar descuentos
+            DataGridViewButtonColumn btnActualizarDescuento = new DataGridViewButtonColumn
+            {
+                Name = "ActualizarDescuento",
+                HeaderText = "Actualizar",
+                Text = "Actualizar",
+                UseColumnTextForButtonValue = true
+            };
+            dataGridDescuentos.Columns.Add(btnActualizarDescuento);
+
+            // Manejar el evento de clic de las celdas para descuentos
+            dataGridDescuentos.CellClick += DataGridDescuentos_CellClick;
         }
 
         private void DataGridActividades_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -181,6 +219,29 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 }
             }
         }
+        private void DataGridDescuentos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dataGridDescuentos.Columns[e.ColumnIndex].Name == "ActualizarDescuento")
+                {
+                    // Obtengo los valores de las celdas
+                    int id = (int)dataGridDescuentos.Rows[e.RowIndex].Cells["IDDescuento"].Value;
+                    string tipo = dataGridDescuentos.Rows[e.RowIndex].Cells["Tipo"].Value.ToString();
+                    decimal descuento = decimal.Parse(dataGridDescuentos.Rows[e.RowIndex].Cells["Descuento"].Value.ToString());
+
+                    // Abro un formulario para editar
+                    EditarDescuentoForm editarForm = new EditarDescuentoForm(id, tipo, descuento);
+                    if (editarForm.ShowDialog() == DialogResult.OK)
+                    {
+                        // Actualizar el descuento en la base de datos
+                        descuentosRepository.ActualizarDescuento(id, editarForm.Tipo, editarForm.Descuento);
+                        CargarDescuentosEnDataGrid();
+                    }
+                }
+            }
+        }
+
 
         private void CargarActividadesEnDataGrid()
         {
@@ -217,5 +278,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Error al cargar las cuotas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void CargarDescuentosEnDataGrid()
+        {
+            try
+            {
+                var descuentos = descuentosRepository.ObtenerDescuentos();
+                dataGridDescuentos.Rows.Clear(); // Limpiar las filas existentes
+
+                foreach (var descuento in descuentos)
+                {
+                    dataGridDescuentos.Rows.Add(descuento.Id, descuento.Tipo, descuento.Descuento);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los descuentos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

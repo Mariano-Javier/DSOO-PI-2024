@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridActividades = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -40,8 +42,11 @@
             this.dataGridCuota = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridDescuentos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActividades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCuota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDescuentos)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridActividades
@@ -71,7 +76,7 @@
             this.dataGridActividades.Name = "dataGridActividades";
             this.dataGridActividades.ReadOnly = true;
             this.dataGridActividades.RowHeadersVisible = false;
-            this.dataGridActividades.Size = new System.Drawing.Size(707, 311);
+            this.dataGridActividades.Size = new System.Drawing.Size(707, 179);
             this.dataGridActividades.TabIndex = 128;
             // 
             // label3
@@ -91,11 +96,11 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.lblTitulo.Location = new System.Drawing.Point(187, 5);
+            this.lblTitulo.Location = new System.Drawing.Point(90, 4);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(369, 33);
+            this.lblTitulo.Size = new System.Drawing.Size(548, 33);
             this.lblTitulo.TabIndex = 119;
-            this.lblTitulo.Text = "Editar Actividades /Cuotas";
+            this.lblTitulo.Text = "Editar Actividades /Cuotas / Descuentos";
             // 
             // label6
             // 
@@ -147,11 +152,11 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridCuota.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridCuota.Location = new System.Drawing.Point(12, 441);
+            this.dataGridCuota.Location = new System.Drawing.Point(12, 314);
             this.dataGridCuota.Name = "dataGridCuota";
             this.dataGridCuota.ReadOnly = true;
             this.dataGridCuota.RowHeadersVisible = false;
-            this.dataGridCuota.Size = new System.Drawing.Size(707, 142);
+            this.dataGridCuota.Size = new System.Drawing.Size(707, 104);
             this.dataGridCuota.TabIndex = 130;
             // 
             // label1
@@ -170,17 +175,60 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.label2.Location = new System.Drawing.Point(12, 410);
+            this.label2.Location = new System.Drawing.Point(12, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(225, 22);
             this.label2.TabIndex = 132;
             this.label2.Text = "Cuota Mensual (Precio)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.label4.Location = new System.Drawing.Point(12, 438);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(203, 22);
+            this.label4.TabIndex = 134;
+            this.label4.Text = "Descuentos Vigentes";
+            // 
+            // dataGridDescuentos
+            // 
+            this.dataGridDescuentos.AllowUserToAddRows = false;
+            this.dataGridDescuentos.AllowUserToDeleteRows = false;
+            this.dataGridDescuentos.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridDescuentos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridDescuentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridDescuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridDescuentos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridDescuentos.Location = new System.Drawing.Point(12, 469);
+            this.dataGridDescuentos.Name = "dataGridDescuentos";
+            this.dataGridDescuentos.ReadOnly = true;
+            this.dataGridDescuentos.RowHeadersVisible = false;
+            this.dataGridDescuentos.Size = new System.Drawing.Size(707, 104);
+            this.dataGridDescuentos.TabIndex = 133;
             // 
             // ActualizarActividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 650);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dataGridDescuentos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridCuota);
@@ -194,6 +242,7 @@
             this.Text = "ActualizarActividades";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActividades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCuota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDescuentos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +258,7 @@
         private System.Windows.Forms.DataGridView dataGridCuota;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridDescuentos;
     }
 }

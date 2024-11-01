@@ -121,7 +121,7 @@
             this.btnActualizarActividades.Name = "btnActualizarActividades";
             this.btnActualizarActividades.Size = new System.Drawing.Size(265, 45);
             this.btnActualizarActividades.TabIndex = 1;
-            this.btnActualizarActividades.Text = "ACTIVIDADES / CUOTAS";
+            this.btnActualizarActividades.Text = "ACTIVIDADES / PRECIOS";
             this.btnActualizarActividades.UseVisualStyleBackColor = true;
             this.btnActualizarActividades.Click += new System.EventHandler(this.btnActualizarActividades_Click);
             // 

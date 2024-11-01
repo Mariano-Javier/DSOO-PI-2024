@@ -1,6 +1,7 @@
 ﻿using DSOO_PI_ComC_Grupo12.Interfaces;
 using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using DSOO_PI_ComC_Grupo12.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -177,13 +178,19 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         public void btnCalcular_Click(object sender, EventArgs e)
         {
+            // Crear una instancia del repositorio de descuentos y actualizar los valores desde la base de datos
+            var descuentosRepo = new DescuentosRepository();
+            descuentosRepo.CargarDescuentos();  // Actualiza los valores en ConfiguracionDescuentos
+
             // Crear una instancia del repositorio de cuotas
             CuotaSocioRepository cuotaSocioRepository = new CuotaSocioRepository();
             TotalPagar = 0;
             preciosActividades.Clear();
             btnComprobante.Enabled = false;
 
+            // Actualizar la fecha de fin del periodo de acuerdo a la selección de meses
             CantidadMesesPagos = dateDiaInicio.Value.AddMonths(MesesSeleccionados);
+
             try
             {
                 // Obtener la cuota correspondiente al tipo de socio seleccionado
@@ -192,26 +199,25 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 if (!string.IsNullOrEmpty(descripcion) && monto > 0)
                 {
                     // Calcular el total a pagar
-                    TotalPagar = monto* MesesSeleccionados;
+                    TotalPagar = monto * MesesSeleccionados;
+                    preciosActividades.Add("Cuota " + comboBoxTipoSocio.Text, TotalPagar);
 
-                    preciosActividades.Add("Cuota "+comboBoxTipoSocio.Text, TotalPagar);
+                    // Aplicar el descuento usando los valores actualizados
+                    var (totalConDescuento, montoDescuento) = DescuentoUtils.TotalDescuento(TotalPagar, FormaPago);
 
-
-                    var (totalConDescuento, montoDescuento) = TotalDescuento(TotalPagar, FormaPago);
-
-                    // Mostrar el total
+                    // Mostrar el total con descuento
                     TotalPagar = totalConDescuento;
-                    lblTotalPagar.Text = TotalPagar.ToString() + " $";
+                    lblTotalPagar.Text = TotalPagar.ToString("C2") + " $";
 
                     if (TotalPagar > 0)
                     {
                         preciosActividades.Add("Descuento:", -montoDescuento);
                     }
 
+                    // Cargar los datos en el DataGridView
                     CargarDataGridView(preciosActividades);
 
                     btnPagar.Enabled = true;
-
                 }
                 else
                 {
@@ -224,6 +230,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
+
         private void CargarDataGridView(Dictionary<string, decimal> preciosActividades)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
@@ -234,26 +241,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             {
                 dataGridResumen.Rows.Add(actividad.Key, actividad.Value);
             }
-        }
-
-        private (decimal TotalConDescuento, decimal MontoDescuento) TotalDescuento(decimal Total, string FormaPago)
-        {
-            decimal TotalConDescuento = Total;
-            decimal MontoDescuento = 0m;
-
-            if (FormaPago == "Tarjeta en 3 cuotas")
-            {
-                MontoDescuento = Math.Round(Total * 0.10m, 2);  // 10% de descuento, redondeado a 2 decimales
-                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
-            }
-            else if (FormaPago == "Tarjeta en 6 cuotas")
-            {
-                MontoDescuento = Math.Round(Total * 0.15m, 2);  // 15% de descuento, redondeado a 2 decimales
-                TotalConDescuento = Math.Round(Total - MontoDescuento, 2);  // Total con descuento redondeado
-            }
-            // Si es en efectivo o cualquier otra forma de pago, no hay descuento
-
-            return (TotalConDescuento, MontoDescuento);
         }
 
         public void btnPagar_Click(object sender, EventArgs e)

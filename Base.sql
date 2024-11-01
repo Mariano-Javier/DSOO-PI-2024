@@ -127,5 +127,14 @@ INSERT INTO pago (id_cliente, monto, medio_de_pago, fecha_pago, periodo_inicio, 
 (5, 6900.00, 'Tarjeta en 3 cuotas', '2023-09-15', '2023-09-15', NULL, FALSE, NULL),
 (14, 6100.00, 'Efectivo', '2023-08-01', '2023-08-01', NULL, FALSE, NULL);
 
+CREATE TABLE descuentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo_pago VARCHAR(50) NOT NULL,
+    valor_descuento DECIMAL(5, 2) NOT NULL
+);
 
+INSERT INTO descuentos (tipo_pago, valor_descuento) VALUES 
+    ('Tarjeta en 3 cuotas', 0.10),
+    ('Tarjeta en 6 cuotas', 0.05),
+    ('Efectivo', 0.20);
 

@@ -9,14 +9,15 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         private ActividadRepository actividadRepository;
         private CuotaSocioRepository cuotaSocioRepository;
+        private DescuentosRepository descuentosRepository;
 
         public VerPrecios()
         {
             InitializeComponent();
             actividadRepository = new ActividadRepository();
             cuotaSocioRepository = new CuotaSocioRepository();
+            descuentosRepository = new DescuentosRepository();
         }
-
 
         private void CargarDatosActividades()
         {
@@ -38,6 +39,23 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
+        private void CargarDatosDescuentos()
+        {
+            List<(int Id, string Tipo, decimal Descuento)> descuentos = descuentosRepository.ObtenerDescuentos();
+
+            foreach (var descuento in descuentos)
+            {
+                // Convertir el valor de descuento a porcentaje
+                decimal porcentajeDescuento = descuento.Descuento * 100;
+
+                // Formatear el porcentaje para eliminar los ceros decimales
+                string porcentajeFormateado = porcentajeDescuento.ToString("0.##") + "%";
+
+                // Agregar los datos al DataGridView con el porcentaje formateado
+                dataGridDescuento.Rows.Add(descuento.Id, descuento.Tipo, porcentajeFormateado);
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -47,6 +65,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             CargarDatosActividades();
             CargarDatosCuotas();
+            CargarDatosDescuentos();
         }
     }
 }

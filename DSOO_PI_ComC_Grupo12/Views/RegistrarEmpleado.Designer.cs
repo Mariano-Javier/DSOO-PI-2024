@@ -362,6 +362,7 @@
             this.txtContrasenia.Size = new System.Drawing.Size(200, 16);
             this.txtContrasenia.TabIndex = 43;
             this.txtContrasenia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtContrasenia.UseSystemPasswordChar = true;
             // 
             // lblContrasenia
             // 
