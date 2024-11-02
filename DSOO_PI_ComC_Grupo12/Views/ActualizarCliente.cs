@@ -215,7 +215,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     }
                     else
                     {
-                        radioSocio.Checked = false;
+                        Radio_no_socio.Checked = true;
                     }
 
                     if (cliente.EsApto)
@@ -224,7 +224,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     }
                     else
                     {
-                        radioAptoFisicoSi.Checked = false;
+                        radioAptoFisicoNo.Checked = true;
                     }
 
                 }
