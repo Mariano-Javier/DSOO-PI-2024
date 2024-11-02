@@ -1,5 +1,6 @@
 ﻿using DSOO_PI_ComC_Grupo12.Config;
 using DSOO_PI_ComC_Grupo12.Helpers;
+using DSOO_PI_ComC_Grupo12.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,12 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             {
                 conexionDb = ObtenerConexion();
 
-                using (var comando = new MySqlCommand("SELECT tipo_pago, valor_descuento FROM descuentos", conexionDb))
+                using (var comando = new MySqlCommand("SELECT id, tipo_pago, valor_descuento FROM descuentos", conexionDb))
                 using (var reader = comando.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        int id = reader.GetInt32("id");
                         string tipoPago = reader.GetString("tipo_pago");
                         decimal valorDescuento = reader.GetDecimal("valor_descuento");
 
@@ -51,9 +53,10 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 CerrarConexion(conexionDb);
             }
         }
-        public List<(int Id, string Tipo, decimal Descuento)> ObtenerDescuentos()
+
+        public List<Descuento> ObtenerDescuentos()
         {
-            List<(int Id, string Tipo, decimal Descuento)> descuentos = new List<(int Id, string Tipo, decimal Descuento)>();
+            List<Descuento> descuentos = new List<Descuento>();
             MySqlConnection conexionDb = null;
             try
             {
@@ -68,7 +71,12 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                         string tipoPago = reader.GetString("tipo_pago");
                         decimal valorDescuento = reader.GetDecimal("valor_descuento");
 
-                        descuentos.Add((id, tipoPago, valorDescuento));
+                        descuentos.Add(new Descuento
+                        {
+                            Id = id,
+                            TipoPago = tipoPago,
+                            ValorDescuento = valorDescuento
+                        });
                     }
                 }
             }
@@ -82,7 +90,8 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
             }
             return descuentos;
         }
-        public void ActualizarDescuento(int id, string tipoPago, decimal valorDescuento)
+
+        public void ActualizarDescuento(Descuento descuento)
         {
             MySqlConnection conexionDb = null;
             try
@@ -91,9 +100,9 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
 
                 using (var comando = new MySqlCommand("UPDATE descuentos SET tipo_pago = @tipoPago, valor_descuento = @valorDescuento WHERE id = @id", conexionDb))
                 {
-                    comando.Parameters.AddWithValue("@id", id);
-                    comando.Parameters.AddWithValue("@tipoPago", tipoPago);
-                    comando.Parameters.AddWithValue("@valorDescuento", valorDescuento);
+                    comando.Parameters.AddWithValue("@id", descuento.Id);
+                    comando.Parameters.AddWithValue("@tipoPago", descuento.TipoPago);
+                    comando.Parameters.AddWithValue("@valorDescuento", descuento.ValorDescuento);
 
                     comando.ExecuteNonQuery();
                 }

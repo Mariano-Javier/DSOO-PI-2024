@@ -112,6 +112,7 @@
     <Compile Include="Models\Actividad.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cuota.cs" />
+    <Compile Include="Models\Descuento.cs" />
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Persona.cs" />

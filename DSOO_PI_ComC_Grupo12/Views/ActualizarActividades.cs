@@ -254,12 +254,19 @@ namespace DSOO_PI_ComC_Grupo12.Views
                     if (editarForm.ShowDialog() == DialogResult.OK)
                     {
                         // Actualizar el descuento en la base de datos
-                        descuentosRepository.ActualizarDescuento(id, editarForm.Tipo, editarForm.Descuento);
+                        var descuentoActualizado = new Descuento
+                        {
+                            Id = id,
+                            TipoPago = editarForm.Tipo,
+                            ValorDescuento = editarForm.Descuento
+                        };
+                        descuentosRepository.ActualizarDescuento(descuentoActualizado);
                         CargarDescuentosEnDataGrid();
                     }
                 }
             }
         }
+
 
         private void CargarActividadesEnDataGrid()
         {
@@ -307,10 +314,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 foreach (var descuento in descuentos)
                 {
                     // Convertir el valor de descuento a porcentaje
-                    decimal porcentajeDescuento = descuento.Descuento * 100;
+                    decimal porcentajeDescuento = descuento.ValorDescuento * 100;
 
                     // Agregar los datos al DataGridView con el porcentaje formateado
-                    dataGridDescuentos.Rows.Add(descuento.Id, descuento.Tipo, porcentajeDescuento.ToString("0.##"));
+                    dataGridDescuentos.Rows.Add(descuento.Id, descuento.TipoPago, porcentajeDescuento.ToString("0.##"));
                 }
             }
             catch (Exception ex)
@@ -318,5 +325,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 MessageBox.Show("Error al cargar los descuentos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

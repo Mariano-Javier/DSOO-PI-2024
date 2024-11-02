@@ -42,20 +42,21 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void CargarDatosDescuentos()
         {
-            List<(int Id, string Tipo, decimal Descuento)> descuentos = descuentosRepository.ObtenerDescuentos();
+            List<Descuento> descuentos = descuentosRepository.ObtenerDescuentos();
 
             foreach (var descuento in descuentos)
             {
                 // Convertir el valor de descuento a porcentaje
-                decimal porcentajeDescuento = descuento.Descuento * 100;
+                decimal porcentajeDescuento = descuento.ValorDescuento * 100;
 
                 // Formatear el porcentaje para eliminar los ceros decimales
                 string porcentajeFormateado = porcentajeDescuento.ToString("0.##") + "%";
 
                 // Agregar los datos al DataGridView con el porcentaje formateado
-                dataGridDescuento.Rows.Add(descuento.Id, descuento.Tipo, porcentajeFormateado);
+                dataGridDescuento.Rows.Add(descuento.Id, descuento.TipoPago, porcentajeFormateado);
             }
         }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
