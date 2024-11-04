@@ -114,7 +114,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 22);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Versión: RC 0.95";
+            this.label5.Text = "Versión: RC 1.04";
             // 
             // label4
             // 
@@ -143,7 +143,7 @@
             // pictureMovie
             // 
             this.pictureMovie.BackColor = System.Drawing.Color.Transparent;
-            this.pictureMovie.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.logoMovie;
+            this.pictureMovie.Image = global::DSOO_PI_ComC_Grupo12.Properties.Resources.logoAbout2;
             this.pictureMovie.Location = new System.Drawing.Point(432, 85);
             this.pictureMovie.Name = "pictureMovie";
             this.pictureMovie.Size = new System.Drawing.Size(232, 195);
