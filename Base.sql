@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS grupo12_comc_test;
-CREATE DATABASE grupo12_comc_test;
+DROP DATABASE IF EXISTS grupo12_comc_club;
+CREATE DATABASE grupo12_comc_club;
 
-USE grupo12_comc_test;
+USE grupo12_comc_club;
 
 /* tabla que contiene el usuario administrador */ 
 CREATE TABLE empleado (

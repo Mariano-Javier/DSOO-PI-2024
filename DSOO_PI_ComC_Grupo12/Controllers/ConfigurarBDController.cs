@@ -9,6 +9,9 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
     {
         public void Initialize(TextBox txtNombreBD, TextBox txtServidor, TextBox txtPuerto, TextBox txtUsuario, TextBox txtContrasenia)
         {
+            // Cargar la configuración desde el archivo JSON
+            ConfiguracionBD.CargarConfiguracion();
+
             // Devuelvo los valores de la clase ConfiguracionBD y los pongo en el formulario.
             txtNombreBD.Text = ConfiguracionBD.NombreBase;
             txtServidor.Text = ConfiguracionBD.Servidor;
@@ -52,6 +55,9 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             ConfiguracionBD.Puerto = txtPuerto.Text;
             ConfiguracionBD.Usuario = txtUsuario.Text;
             ConfiguracionBD.Contrasenia = txtContrasenia.Text; // Si está vacío, se guarda como cadena vacía ("") y se acepta.
+
+            // Guardamos la configuración en el archivo JSON
+            ConfiguracionBD.GuardarConfiguracion();
 
             // Reiniciamos la instancia de Conexion para que tome los nuevos valores
             Conexion.ResetInstancia();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using DSOO_PI_ComC_Grupo12.Config;
 
 namespace DSOO_PI_ComC_Grupo12
 {
@@ -12,6 +13,17 @@ namespace DSOO_PI_ComC_Grupo12
         [STAThread]
         static void Main()
         {
+            // Cargar la configuración de la base de datos al iniciar la aplicación
+            try
+            {
+                ConfiguracionBD.CargarConfiguracion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar la configuración de la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Finaliza si no se puede cargar la configuración
+            }
+
             // Cargar descuentos desde la base de datos al iniciar la aplicación
             try
             {
