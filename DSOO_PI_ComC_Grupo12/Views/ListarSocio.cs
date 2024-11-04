@@ -1,24 +1,17 @@
-﻿using DSOO_PI_ComC_Grupo12.DTO;
-using DSOO_PI_ComC_Grupo12.Repositories;
+﻿using DSOO_PI_ComC_Grupo12.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
     public partial class ListarSocio : Form
     {
-        private readonly ClienteRepository _clienteRepository;
+        private readonly SocioController _socioController;
+
         public ListarSocio()
         {
             InitializeComponent();
-            _clienteRepository = new ClienteRepository();
+            _socioController = new SocioController();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -28,7 +21,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnTodos_MouseHover(object sender, EventArgs e)
         {
-            toolTipListado.Show("Lista todos los socios registrados con al menos un pago.",btnTodos);
+            toolTipListado.Show("Lista todos los socios registrados con al menos un pago.", btnTodos);
         }
 
         private void btnProximosVen_MouseHover(object sender, EventArgs e)
@@ -43,58 +36,17 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnTodos_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var socios = _clienteRepository.ObtenerSociosConPagos();
-                CargarDatosEnDataGrid(socios);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener los socios: " + ex.Message);
-            }
+            _socioController.CargarSocios(_socioController.ObtenerSociosConPagos, dataGridResumen);
         }
 
         private void btnProximosVen_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var socios = _clienteRepository.ObtenerSociosConCuotaVencidaHoy();
-                CargarDatosEnDataGrid(socios);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener los socios con cuota vencida hoy: " + ex.Message);
-            }
+            _socioController.CargarSocios(_socioController.ObtenerSociosConCuotaVencidaHoy, dataGridResumen);
         }
 
         private void btnSinActividad_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var socios = _clienteRepository.ObtenerSociosConCuotaVencida();
-                CargarDatosEnDataGrid(socios);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener los socios con cuota vencida: " + ex.Message);
-            }
-        }
-
-        private void CargarDatosEnDataGrid(List<SocioConPagoDTO> socios)
-        {
-            dataGridResumen.Rows.Clear(); // Limpiar las filas existentes
-
-            foreach (var socio in socios)
-            {
-                dataGridResumen.Rows.Add(
-                    socio.Id,
-                    socio.Nombre,
-                    socio.Apellido,
-                    socio.Email,
-                    socio.Telefono,
-                    socio.PeriodoFin?.ToString("yyyy-MM-dd") ?? string.Empty
-                );
-            }
+            _socioController.CargarSocios(_socioController.ObtenerSociosConCuotaVencida, dataGridResumen);
         }
     }
 }

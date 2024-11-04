@@ -1,14 +1,6 @@
-﻿using DSOO_PI_ComC_Grupo12.Models;
-using DSOO_PI_ComC_Grupo12.Repositories;
+﻿using DSOO_PI_ComC_Grupo12.Controllers;
+using DSOO_PI_ComC_Grupo12.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSOO_PI_ComC_Grupo12.Views
@@ -17,59 +9,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
     {
         public Cliente? ClienteSeleccionado { get; set; }
         private DateTime? FechaHoy;
+        private readonly CarnetController _carnetController;
+
         public Carnet()
         {
             InitializeComponent();
-            LimpiarCarnet();
+            _carnetController = new CarnetController();
+            _carnetController.LimpiarCarnet(panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
             btnGenerar.Enabled = false;
             btnImprimir.Enabled = false;
 
             // Suscribir el evento PrintPage del PrintDocument
-            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+            _carnetController.ImprimirCarnet(panelCarnet, printDocument);
         }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        private void LimpiarCarnet() 
-        {
-            panelCarnet.BackgroundImage = Properties.Resources.blank;
-            lblNombreApellidoCarnet.ForeColor = Color.White;
-            lblIdCarnet.ForeColor = Color.White;
-            lblDniCarnet.ForeColor = Color.White;
-            lblTelCarnet.ForeColor = Color.White;
-            lblEmailCarnet.ForeColor = Color.White;
-            lblVencimiento.ForeColor = Color.White;
-            lblEsApto.ForeColor = Color.White;
-            btnImprimir.Enabled = false;
-            lblEstadoCarnet.Text = string.Empty;
-        }
-
-        private void CarnetSocio()
-        {
-            panelCarnet.BackgroundImage = Properties.Resources.BCSoc;
-            lblNombreApellidoCarnet.ForeColor = Color.NavajoWhite;
-            lblIdCarnet.ForeColor = Color.NavajoWhite;
-            lblDniCarnet.ForeColor = Color.NavajoWhite;
-            lblTelCarnet.ForeColor = Color.NavajoWhite;
-            lblEmailCarnet.ForeColor = Color.NavajoWhite;
-            lblVencimiento.ForeColor = Color.NavajoWhite;
-            lblEsApto.ForeColor = Color.NavajoWhite;
-        }
-
-        private void CarnetComun()
-        {
-            panelCarnet.BackgroundImage = Properties.Resources.BSNOsocio;
-            lblNombreApellidoCarnet.ForeColor = Color.Black;
-            lblIdCarnet.ForeColor = Color.Black;
-            lblDniCarnet.ForeColor = Color.Black;
-            lblTelCarnet.ForeColor = Color.Black;
-            lblEmailCarnet.ForeColor = Color.Black;
-            lblEsApto.ForeColor = Color.Black;
-        }
-
-
 
         private void radioID_CheckedChanged(object sender, EventArgs e)
         {
@@ -97,59 +54,29 @@ namespace DSOO_PI_ComC_Grupo12.Views
             }
         }
 
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            LimpiarCarnet();
+            _carnetController.LimpiarCarnet(panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
             ClienteSeleccionado = null;
             btnGenerar.Enabled = false;
             string input = txtClienteIDoDNI.Text;
-            ClienteRepository clienteRepository = new ClienteRepository();
 
-            if (radioID.Checked)
+            Cliente? cliente = _carnetController.BuscarCliente(input, radioID.Checked);
+            if (cliente != null)
             {
-                if (int.TryParse(input, out int clienteId))
-                {
-                    Cliente? cliente = clienteRepository.BuscarClientePorId(clienteId);
-                    if (cliente != null)
-                    {
-                        lblResultadoBusqueda.Text = "Cliente encontrado: " + cliente.Nombre + " " + cliente.Apellido;
-                        btnGenerar.Enabled = true;
-                        ClienteSeleccionado = cliente;
-                    }
-                    else
-                    {
-                        lblResultadoBusqueda.Text = "Cliente no encontrado.";
-                    }
-                }
-                else
-                {
-                    lblResultadoBusqueda.Text = "ID no válido.";
-                }
-            }
-            else if (radioDNI.Checked)
-            {
-                Cliente? cliente = clienteRepository.BuscarClientePorDni(input);
-                if (cliente != null)
-                {
-                    lblResultadoBusqueda.Text = "Cliente encontrado: " + cliente.Nombre + " " + cliente.Apellido;
-                    ClienteSeleccionado = cliente;
-                    btnGenerar.Enabled = true;
-                }
-                else
-                {
-                    lblResultadoBusqueda.Text = "Cliente no encontrado.";
-                }
+                lblResultadoBusqueda.Text = "Cliente encontrado: " + cliente.Nombre + " " + cliente.Apellido;
+                btnGenerar.Enabled = true;
+                ClienteSeleccionado = cliente;
             }
             else
             {
-                lblResultadoBusqueda.Text = "Seleccione un tipo de búsqueda.";
+                lblResultadoBusqueda.Text = "Cliente no encontrado.";
             }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            LimpiarCarnet();
+            _carnetController.LimpiarCarnet(panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
             FechaHoy = DateTime.Now;
 
             if (ClienteSeleccionado == null)
@@ -158,8 +85,7 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 return;
             }
 
-            PagoRepository pagoRepository = new PagoRepository();
-            bool haPagado = pagoRepository.ClienteHaPagado(ClienteSeleccionado.Id);
+            bool haPagado = _carnetController.ClienteHaPagado(ClienteSeleccionado.Id);
 
             if (!haPagado)
             {
@@ -167,76 +93,19 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 return;
             }
 
-            DateTime? periodoFin = pagoRepository.ObtenerPeriodoFin(ClienteSeleccionado.Id);
-
-            if (ClienteSeleccionado.EsSocio)
-            {
-                // Generar tarjeta gold
-                lblNombreApellidoCarnet.Text = ClienteSeleccionado.Nombre + " " + ClienteSeleccionado.Apellido;
-                lblIdCarnet.Text = "ID: " + ClienteSeleccionado.Id.ToString();
-                lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
-                lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
-                lblEmailCarnet.Text = ClienteSeleccionado.Email;
-                lblVencimiento.Text = periodoFin.HasValue ? "Vencimiento: " + periodoFin.Value.ToString("dd/MM/yyyy") : "Vencimiento: No disponible";
-
-                if (ClienteSeleccionado.EsApto)
-                {
-                    lblEsApto.Text = "Apto Físico: Si";
-                }
-                else 
-                {
-                    lblEsApto.Text = "Apto Físico: No";
-                }
-
-                CarnetSocio();
-                btnImprimir.Enabled = true;
-
-                if (periodoFin.HasValue && periodoFin.Value < FechaHoy)
-                {
-                    lblEstadoCarnet.Text = "CARNET VENCIDO";
-                    lblEstadoCarnet.ForeColor = Color.Red;
-                }
-                else
-                {
-                    lblEstadoCarnet.Text = "CARNET ACTIVO";
-                    lblEstadoCarnet.ForeColor = Color.Green;
-                }
-
-            }
-            else
-            {
-                // Generar tarjeta común
-                lblNombreApellidoCarnet.Text = ClienteSeleccionado.Nombre + " " + ClienteSeleccionado.Apellido;
-                lblIdCarnet.Text = "ID: " + ClienteSeleccionado.Id.ToString();
-                lblDniCarnet.Text = "DNI: " + ClienteSeleccionado.Dni;
-                lblTelCarnet.Text = "Tel: " + ClienteSeleccionado.Telefono;
-                lblEmailCarnet.Text = ClienteSeleccionado.Email;
-                if (ClienteSeleccionado.EsApto)
-                {
-                    lblEsApto.Text = "Apto Físico: Si";
-                }
-                else
-                {
-                    lblEsApto.Text = "Apto Físico: No";
-                }
-                CarnetComun();
-                btnImprimir.Enabled = true;
-            }
+            _carnetController.GenerarCarnet(ClienteSeleccionado, FechaHoy.Value, panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
         }
-
-
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             ClienteSeleccionado = null;
             btnGenerar.Enabled = false;
-            LimpiarCarnet();
+            _carnetController.LimpiarCarnet(panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
             txtClienteIDoDNI.Clear();
             lblResultadoBusqueda.Text = string.Empty;
             btnImprimir.Enabled = false;
         }
 
-        //----------------------------------IMPRESION----------------------------------
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             PrintDialog printDialog = new PrintDialog();
@@ -247,15 +116,5 @@ namespace DSOO_PI_ComC_Grupo12.Views
                 printDocument.Print();
             }
         }
-
-        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            Bitmap bitmap = new Bitmap(panelCarnet.Width, panelCarnet.Height);
-            panelCarnet.DrawToBitmap(bitmap, new Rectangle(0, 0, panelCarnet.Width, panelCarnet.Height));
-            e.Graphics.DrawImage(bitmap, 0, 0);
-        }
-
-
-        //------------------------------FIN-IMPRESION----------------------------------
     }
 }

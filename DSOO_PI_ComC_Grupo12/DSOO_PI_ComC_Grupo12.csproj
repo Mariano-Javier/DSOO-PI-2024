@@ -104,6 +104,23 @@
   <ItemGroup>
     <Compile Include="Config\ConfiguracionBD.cs" />
     <Compile Include="Config\ConfiguracionDescuentos.cs" />
+    <Compile Include="Controllers\ActividadesController.cs" />
+    <Compile Include="Controllers\ActualizarClienteController.cs" />
+    <Compile Include="Controllers\CarnetController.cs" />
+    <Compile Include="Controllers\ComprobanteController.cs" />
+    <Compile Include="Controllers\ConfigurarBDController.cs" />
+    <Compile Include="Controllers\EditarActividadController.cs" />
+    <Compile Include="Controllers\EditarCuotaController.cs" />
+    <Compile Include="Controllers\EditarDescuentoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuPrincipalController.cs" />
+    <Compile Include="Controllers\RegistrarActividadController.cs" />
+    <Compile Include="Controllers\RegistrarClienteController.cs" />
+    <Compile Include="Controllers\RegistrarCuotaController.cs" />
+    <Compile Include="Controllers\RegistrarEmpleadoController.cs" />
+    <Compile Include="Controllers\RegistrarPagoController.cs" />
+    <Compile Include="Controllers\SocioController.cs" />
+    <Compile Include="Controllers\VerPreciosController.cs" />
     <Compile Include="DTO\SocioConPagoDTO.cs" />
     <Compile Include="Helpers\BaseRepository.cs" />
     <Compile Include="Helpers\DescuentoUtils.cs" />

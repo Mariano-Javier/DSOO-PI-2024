@@ -336,8 +336,8 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridCuota;
-        private System.Windows.Forms.DataGridView dataGridActividades;
+        internal System.Windows.Forms.DataGridView dataGridCuota;
+        internal System.Windows.Forms.DataGridView dataGridActividades;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
@@ -345,7 +345,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridDescuento;
+        internal System.Windows.Forms.DataGridView dataGridDescuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;

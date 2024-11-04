@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DSOO_PI_ComC_Grupo12.Controllers;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
@@ -8,20 +9,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public string Descripcion { get; private set; }
         public decimal Monto { get; private set; }
 
+        private EditarCuotaController controller;
+
         public EditarCuotaForm(int id, string descripcion, decimal monto)
         {
             InitializeComponent();
             txtId.Text = id.ToString();
             txtDescripcion.Text = descripcion;
             txtMonto.Text = monto.ToString();
+            controller = new EditarCuotaController(txtDescripcion, txtMonto);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())
+            if (controller.ValidarCampos())
             {
-                Descripcion = txtDescripcion.Text;
-                Monto = decimal.Parse(txtMonto.Text);
+                var datos = controller.ObtenerDatos();
+                Descripcion = datos.Descripcion;
+                Monto = datos.Monto;
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -31,29 +36,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private bool ValidarCampos()
-        {
-            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
-            {
-                MessageBox.Show("El campo Descripción no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtMonto.Text))
-            {
-                MessageBox.Show("El campo Monto no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (!decimal.TryParse(txtMonto.Text, out _))
-            {
-                MessageBox.Show("El campo Monto debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
         }
     }
 }

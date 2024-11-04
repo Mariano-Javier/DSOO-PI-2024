@@ -1,22 +1,21 @@
-﻿using DSOO_PI_ComC_Grupo12.Repositories;
+﻿using DSOO_PI_ComC_Grupo12.Controllers;
 using DSOO_PI_ComC_Grupo12.Helpers;
 using System;
 using System.Windows.Forms;
 using DSOO_PI_ComC_Grupo12.Interfaces;
-using DSOO_PI_ComC_Grupo12.Models;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
     public partial class Login : Form
     {
-        private readonly AutenticacionRepository _autenticacionRepository;
+        private readonly LoginController _loginController;
 
         public Login()
         {
             InitializeComponent();
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(MenuPrincipal_KeyDown);
-            _autenticacionRepository = new AutenticacionRepository();
+            _loginController = new LoginController();
         }
 
         // Este apartado es para que hacer click en enter simule el click del botón
@@ -80,28 +79,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Empleado empleado = _autenticacionRepository.AutenticarUsuario(txtUsuario.Text, txtContrasenia.Text);
-                if (empleado != null)
+            _loginController.HandleLogin(
+                txtUsuario.Text,
+                txtContrasenia.Text,
+                empleado =>
                 {
                     MenuPrincipal menuPrincipal = new MenuPrincipal(this, empleado.Nombre, empleado.Apellido, empleado.Email, empleado.Rol);
                     menuPrincipal.Show();
                     this.Hide();
                     txtUsuario.Clear();
                     txtContrasenia.Clear();
-                }
-                else
+                },
+                () =>
                 {
                     MessageBox.Show("Usuario o contraseña incorrecta");
                     txtUsuario.Clear();
                     txtContrasenia.Clear();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            );
         }
 
         private void linkNuevoRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DSOO_PI_ComC_Grupo12.Controllers;
 
 namespace DSOO_PI_ComC_Grupo12.Views
 {
@@ -8,43 +9,24 @@ namespace DSOO_PI_ComC_Grupo12.Views
         public string Nombre { get; private set; }
         public decimal Precio { get; private set; }
 
+        private EditarActividadController controller;
+
         public EditarActividadForm(int id, string nombre, decimal precio)
         {
             InitializeComponent();
             txtId.Text = id.ToString();
             txtNombre.Text = nombre;
             txtPrecio.Text = precio.ToString();
-        }
-
-        private bool ValidarCampos()
-        {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                MessageBox.Show("El campo Nombre no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
-            {
-                MessageBox.Show("El campo Precio no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (!decimal.TryParse(txtPrecio.Text, out _))
-            {
-                MessageBox.Show("El campo Precio debe ser un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
+            controller = new EditarActividadController(txtNombre, txtPrecio);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())
+            if (controller.ValidarCampos())
             {
-                Nombre = txtNombre.Text;
-                Precio = decimal.Parse(txtPrecio.Text);
+                var datos = controller.ObtenerDatos();
+                Nombre = datos.Nombre;
+                Precio = datos.Precio;
                 DialogResult = DialogResult.OK;
                 Close();
             }
