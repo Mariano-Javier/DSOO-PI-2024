@@ -35,7 +35,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             _comprobanteController.CargarDataGridViewNS(actividades, dataGridResumen, dataGridFechas, fechaInicio);
-            _comprobanteController.ImprimirComprobante(panelComprobante, printComprobante);
         }
 
         public Comprobante(Cliente cliente, DateTime fechaPago, String FormaPago, Decimal TotalPagar, List<Actividad> actividades, DateTime fechaInicio, DateTime fechaFin)
@@ -59,7 +58,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             dataGridFechas.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             _comprobanteController.CargarDataGridViewS(actividades, dataGridResumen, dataGridFechas, fechaInicio, fechaFin);
-            _comprobanteController.ImprimirComprobante(panelComprobante, printComprobante);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -69,14 +67,17 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printComprobante;
-
-            // Muestra el diálogo de impresión
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            // muestra el  setup dialog 
+            pageSetupDialog.Document = _comprobanteController.GetPrintDocument();
+            if (pageSetupDialog.ShowDialog() == DialogResult.OK)
             {
-                // Imprime el documento
-                printComprobante.Print();
+                // muestra el print dialog para seleccionar las opciones de impresion
+                printDialog.Document = _comprobanteController.GetPrintDocument();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // si se confirman las opciones pasa a imprimir
+                    _comprobanteController.ImprimirComprobante(panelComprobante);
+                }
             }
         }
     }

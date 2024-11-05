@@ -5,10 +5,24 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
+
 namespace DSOO_PI_ComC_Grupo12.Controllers
 {
     public class ComprobanteController
     {
+
+        private PrintDocument printdoc1;
+        private PrintPreviewDialog previewdlg;
+        private Bitmap MemoryImage;
+
+        public ComprobanteController()
+        {
+            printdoc1 = new PrintDocument();
+            previewdlg = new PrintPreviewDialog();
+
+            printdoc1.PrintPage += new PrintPageEventHandler(printdoc1_PrintPage);
+        }
+
         public void CargarDataGridViewNS(List<Actividad> actividades, DataGridView dataGridResumen, DataGridView dataGridFechas, DateTime fechaInicio)
         {
             // Limpiar el DataGridView antes de cargar nuevos datos
@@ -39,45 +53,34 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             dataGridFechas.Rows.Add(fechaInicio.ToString("dd/MM/yyyy"), fechaFin.ToString("dd/MM/yyyy"));
         }
 
-        public void ImprimirComprobante(Panel panelComprobante, PrintDocument printComprobante)
+        public void ImprimirComprobante(Panel panelComprobante)
         {
-            printComprobante.PrintPage += new PrintPageEventHandler((sender, e) =>
-            {
-                // Define la resolución deseada (por ejemplo, 96 DPI)
-                int dpi = 96;
+            // captura el panel a imprimir
+            GetPrintArea(panelComprobante);
 
-                // Calcula el tamaño del panel en píxeles a la resolución deseada
-                int width = panelComprobante.Width;
-                int height = panelComprobante.Height;
+            // Set up  preview dialog y lo muestra
+            previewdlg.Document = printdoc1;
+            previewdlg.ShowDialog();
+        }
+        private void GetPrintArea(Panel panel)
+        {
+            MemoryImage = new Bitmap(panel.Width, panel.Height);
+            panel.DrawToBitmap(MemoryImage, new Rectangle(0, 0, panel.Width, panel.Height));
+        }
+        private void printdoc1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Rectangle pageArea = e.PageBounds;
 
-                // Crea una imagen del panel con la resolución deseada
-                Bitmap bmp = new Bitmap(width, height);
-                bmp.SetResolution(dpi, dpi);
+            // Centro la imagen en el medio de la pagina
+            int x = (pageArea.Width / 2) - (MemoryImage.Width / 2);
+            int y = (pageArea.Height / 2) - (MemoryImage.Height / 2);
 
-                // Dibuja el contenido del panel en el Bitmap
-                panelComprobante.DrawToBitmap(bmp, new Rectangle(0, 0, width, height));
+            e.Graphics.DrawImage(MemoryImage, x, y);
+        }
 
-                // Calcula el tamaño de la página en píxeles
-                float pageWidth = e.PageBounds.Width;
-                float pageHeight = e.PageBounds.Height;
-
-                // Calcula el factor de escala para ajustar la imagen al tamaño de la página
-                float scale = Math.Min(pageWidth / bmp.Width, pageHeight / bmp.Height);
-
-                // Calcula el tamaño de la imagen escalada
-                int scaledWidth = (int)(bmp.Width * scale);
-                int scaledHeight = (int)(bmp.Height * scale);
-
-                // Calcula la posición de la imagen escalada para centrarla en la página
-                int x = (int)((pageWidth - scaledWidth) / 2);
-                int y = (int)((pageHeight - scaledHeight) / 2);
-
-                // Dibuja la imagen en el área de impresión
-                e.Graphics.DrawImage(bmp, x, y, scaledWidth, scaledHeight);
-
-                // Libera los recursos de la imagen
-                bmp.Dispose();
-            });
+        public PrintDocument GetPrintDocument()
+        {
+            return printdoc1;
         }
     }
 }
