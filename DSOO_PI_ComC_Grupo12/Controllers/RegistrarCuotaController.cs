@@ -34,18 +34,29 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
 
             try
             {
+                DateTime periodoInicio = _view.dateDiaInicio.Value;
+                DateTime periodoFin = periodoInicio.AddMonths(_view.MesesSeleccionados);
+
+                PagoRepository pagoRepository = new PagoRepository();
+
+                // Verificar si hay conflictos de fechas
+                if (pagoRepository.ExisteConflictoDeFechas(_view.ClienteSeleccionado.Id, periodoInicio, periodoFin))
+                {
+                    MessageBox.Show("El socio ya posee un periodo pago dentro de las fechas seleccionadas.");
+                    return;
+                }
+
                 Pago pago = new Pago(
                     _view.ClienteSeleccionado.Id,
                     _view.TotalPagar,
                     _view.FormaPago,
                     _view.dateFechaPago.Value,
-                    _view.dateDiaInicio.Value,
-                    _view.CantidadMesesPagos,
+                    periodoInicio,
+                    periodoFin,
                     true,  // socio_al_pagar es true
                     _view.TipoCuota // id_cuota
                 );
 
-                PagoRepository pagoRepository = new PagoRepository();
                 pagoRepository.RegistrarPago(pago);
 
                 MessageBox.Show("Pago registrado exitosamente.");
@@ -57,6 +68,7 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
                 MessageBox.Show("Error al registrar el pago: " + ex.Message);
             }
         }
+
 
         public void btnComprobante_Click(object sender, EventArgs e)
         {

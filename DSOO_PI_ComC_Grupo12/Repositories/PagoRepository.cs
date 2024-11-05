@@ -97,5 +97,40 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 CerrarConexion(conexionDb);
             }
         }
+        public bool ExisteConflictoDeFechas(int clienteId, DateTime periodoInicio, DateTime periodoFin)
+        {
+            MySqlConnection conexionDb = null;
+            try
+            {
+                conexionDb = ObtenerConexion();
+
+                using (var comando = new MySqlCommand())
+                {
+                    comando.Connection = conexionDb;
+                    comando.CommandText = @"SELECT COUNT(*)
+                                    FROM pago
+                                    WHERE id_cliente = @id_cliente
+                                    AND ((@periodoInicio BETWEEN periodo_inicio AND periodo_fin)
+                                    OR (@periodoFin BETWEEN periodo_inicio AND periodo_fin)
+                                    OR (periodo_inicio BETWEEN @periodoInicio AND @periodoFin)
+                                    OR (periodo_fin BETWEEN @periodoInicio AND @periodoFin))";
+
+                    comando.Parameters.AddWithValue("@id_cliente", clienteId);
+                    comando.Parameters.AddWithValue("@periodoInicio", periodoInicio);
+                    comando.Parameters.AddWithValue("@periodoFin", periodoFin);
+
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+                    return cantidad > 0;  // Si el conteo es mayor a 0, hay un conflicto de fechas
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar conflictos de fechas: " + ex.Message);
+            }
+            finally
+            {
+                CerrarConexion(conexionDb);
+            }
+        }
     }
 }
