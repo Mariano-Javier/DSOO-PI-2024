@@ -1,5 +1,7 @@
-﻿using DSOO_PI_ComC_Grupo12.Models;
+﻿using DSOO_PI_ComC_Grupo12.Helpers;
+using DSOO_PI_ComC_Grupo12.Models;
 using DSOO_PI_ComC_Grupo12.Repositories;
+using DSOO_PI_ComC_Grupo12.Utils;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -11,11 +13,13 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
     {
         private readonly ClienteRepository _clienteRepository;
         private readonly PagoRepository _pagoRepository;
+        private readonly PrintUtility _printUtility;
 
         public CarnetController()
         {
             _clienteRepository = new ClienteRepository();
             _pagoRepository = new PagoRepository();
+            _printUtility = new PrintUtility();
         }
 
         public void LimpiarCarnet(Panel panelCarnet, Label lblNombreApellidoCarnet, Label lblIdCarnet, Label lblDniCarnet, Label lblTelCarnet, Label lblEmailCarnet, Label lblVencimiento, Label lblEsApto, Button btnImprimir, Label lblEstadoCarnet)
@@ -142,14 +146,13 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             }
         }
 
-        public void ImprimirCarnet(Panel panelCarnet, PrintDocument printDocument)
+        public void ImprimirCarnet(Panel panelCarnet)
         {
-            printDocument.PrintPage += new PrintPageEventHandler((sender, e) =>
-            {
-                Bitmap bitmap = new Bitmap(panelCarnet.Width, panelCarnet.Height);
-                panelCarnet.DrawToBitmap(bitmap, new Rectangle(0, 0, panelCarnet.Width, panelCarnet.Height));
-                e.Graphics.DrawImage(bitmap, 0, 0);
-            });
+            _printUtility.Imprimir(panelCarnet);
+        }
+        public PrintDocument GetPrintDocument()
+        {
+            return _printUtility.GetPrintDocument();
         }
     }
 }

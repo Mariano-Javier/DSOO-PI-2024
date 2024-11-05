@@ -18,9 +18,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             _carnetController.LimpiarCarnet(panelCarnet, lblNombreApellidoCarnet, lblIdCarnet, lblDniCarnet, lblTelCarnet, lblEmailCarnet, lblVencimiento, lblEsApto, btnImprimir, lblEstadoCarnet);
             btnGenerar.Enabled = false;
             btnImprimir.Enabled = false;
-
-            // Suscribir el evento PrintPage del PrintDocument
-            _carnetController.ImprimirCarnet(panelCarnet, printDocument);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -108,12 +105,17 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printDocument;
-
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            // muestra el  setup dialog 
+            pageSetupDialog.Document = _carnetController.GetPrintDocument();
+            if (pageSetupDialog.ShowDialog() == DialogResult.OK)
             {
-                printDocument.Print();
+                // muestra el print dialog para seleccionar las opciones de impresion
+                printDialog.Document = _carnetController.GetPrintDocument();
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // si se confirman las opciones pasa a imprimir
+                    _carnetController.ImprimirCarnet(panelCarnet);
+                }
             }
         }
     }

@@ -1,26 +1,20 @@
-﻿using DSOO_PI_ComC_Grupo12.Models;
+﻿using DSOO_PI_ComC_Grupo12.Helpers;
+using DSOO_PI_ComC_Grupo12.Models;
+using DSOO_PI_ComC_Grupo12.Utils;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-
 
 namespace DSOO_PI_ComC_Grupo12.Controllers
 {
     public class ComprobanteController
     {
-
-        private PrintDocument printdoc1;
-        private PrintPreviewDialog previewdlg;
-        private Bitmap MemoryImage;
+        private readonly PrintUtility _printUtility;
 
         public ComprobanteController()
         {
-            printdoc1 = new PrintDocument();
-            previewdlg = new PrintPreviewDialog();
-
-            printdoc1.PrintPage += new PrintPageEventHandler(printdoc1_PrintPage);
+            _printUtility = new PrintUtility();
         }
 
         public void CargarDataGridViewNS(List<Actividad> actividades, DataGridView dataGridResumen, DataGridView dataGridFechas, DateTime fechaInicio)
@@ -55,32 +49,12 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
 
         public void ImprimirComprobante(Panel panelComprobante)
         {
-            // captura el panel a imprimir
-            GetPrintArea(panelComprobante);
-
-            // Set up  preview dialog y lo muestra
-            previewdlg.Document = printdoc1;
-            previewdlg.ShowDialog();
-        }
-        private void GetPrintArea(Panel panel)
-        {
-            MemoryImage = new Bitmap(panel.Width, panel.Height);
-            panel.DrawToBitmap(MemoryImage, new Rectangle(0, 0, panel.Width, panel.Height));
-        }
-        private void printdoc1_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            Rectangle pageArea = e.PageBounds;
-
-            // Centro la imagen en el medio de la pagina
-            int x = (pageArea.Width / 2) - (MemoryImage.Width / 2);
-            int y = (pageArea.Height / 2) - (MemoryImage.Height / 2);
-
-            e.Graphics.DrawImage(MemoryImage, x, y);
+            _printUtility.Imprimir(panelComprobante);
         }
 
         public PrintDocument GetPrintDocument()
         {
-            return printdoc1;
+            return _printUtility.GetPrintDocument();
         }
     }
 }

@@ -134,6 +134,7 @@
     <Compile Include="Helpers\BaseRepository.cs" />
     <Compile Include="Helpers\DescuentoUtils.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
+    <Compile Include="Helpers\PrintUtility.cs" />
     <Compile Include="Helpers\Validaciones.cs" />
     <Compile Include="Interfaces\ILimpiezaForm.cs" />
     <Compile Include="Interfaces\IPago.cs" />
