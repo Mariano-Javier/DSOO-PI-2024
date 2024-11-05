@@ -50,16 +50,19 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             Application.Exit();
         }
 
-        public void HandleSubMenuClick(Panel subMenu)
+        public void HandleSubMenuClick(Panel[] panelsToHide, Panel panelToShow)
         {
             if (FormHelper.activeForm != null)
             {
                 FormHelper.activeForm.Close();
             }
-            hideSubMenu(_panelConsultasSM);
-            hideSubMenu(_panelPagosSM);
-            hideSubMenu(_panelActualizarSM);
-            showSubMenu(subMenu);
+
+            foreach (var panel in panelsToHide)
+            {
+                hideSubMenu(panel);
+            }
+
+            showSubMenu(panelToShow);
         }
 
         public void HandleButtonClick(object formulario)

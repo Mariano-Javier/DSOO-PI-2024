@@ -29,22 +29,22 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnRegistros_Click(object sender, EventArgs e)
         {
-            _menuPrincipalController.HandleSubMenuClick(panelRegistrosSM);
+            _menuPrincipalController.HandleSubMenuClick(new Panel[] { panelConsultasSM, panelPagosSM, panelActualizarSM }, panelRegistrosSM);
         }
 
         private void btnConsultas_Click(object sender, EventArgs e)
         {
-            _menuPrincipalController.HandleSubMenuClick(panelConsultasSM);
+            _menuPrincipalController.HandleSubMenuClick(new Panel[] { panelRegistrosSM, panelPagosSM, panelActualizarSM }, panelConsultasSM);
         }
 
         private void btnPagos_Click(object sender, EventArgs e)
         {
-            _menuPrincipalController.HandleSubMenuClick(panelPagosSM);
+            _menuPrincipalController.HandleSubMenuClick(new Panel[] { panelRegistrosSM, panelConsultasSM, panelActualizarSM }, panelPagosSM);
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            _menuPrincipalController.HandleSubMenuClick(panelActualizarSM);
+            _menuPrincipalController.HandleSubMenuClick(new Panel[] { panelRegistrosSM, panelConsultasSM, panelPagosSM }, panelActualizarSM);
         }
 
         private void picLogOut_MouseLeave(object sender, EventArgs e)
