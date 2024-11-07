@@ -36,16 +36,22 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             {
                 DateTime periodoInicio = _view.dateDiaInicio.Value;
                 DateTime periodoFin = periodoInicio.AddMonths(_view.MesesSeleccionados);
+                periodoInicio = new DateTime(periodoInicio.Year, periodoInicio.Month, periodoInicio.Day, 0, 0, 0);
+
 
                 PagoRepository pagoRepository = new PagoRepository();
 
-                // Verificar si hay conflictos de fechas
-                if (pagoRepository.ExisteConflictoDeFechas(_view.ClienteSeleccionado.Id, periodoInicio, periodoFin))
+                // Obtener la última fecha de periodo_fin registrada para el cliente
+                DateTime? maxPeriodoFin = pagoRepository.ObtenerMaximoPeriodoFin(_view.ClienteSeleccionado.Id);
+
+                // Validar que el nuevo periodoInicio sea posterior a la última fecha registrada
+                if (maxPeriodoFin.HasValue && periodoInicio <= maxPeriodoFin.Value)
                 {
-                    MessageBox.Show("El socio ya posee un periodo pago dentro de las fechas seleccionadas.");
+                    MessageBox.Show("Error: El nuevo periodo de pago debe comenzar después de la última fecha registrada de pago del cliente: "+ maxPeriodoFin.Value.Date.ToString("d"));
                     return;
                 }
 
+                // Si la validación es exitosa, continuar con el registro del pago
                 Pago pago = new Pago(
                     _view.ClienteSeleccionado.Id,
                     _view.TotalPagar,
@@ -68,6 +74,9 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
                 MessageBox.Show("Error al registrar el pago: " + ex.Message);
             }
         }
+
+
+
 
 
         public void btnComprobante_Click(object sender, EventArgs e)
