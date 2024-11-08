@@ -44,15 +44,30 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                // Manejo específico de errores de MySQL
+                switch (ex.Number)
+                {
+                    case 1042: // No se puede conectar al servidor MySQL
+                        throw new Exception("No se pudo conectar al servidor MySQL. Verifica que el servicio esté en funcionamiento.");
+                    case 1045: // Error de autenticación
+                        throw new Exception("Acceso denegado. Verifica el usuario y la contraseña de la base de datos.");
+                    default:
+                        throw new Exception($"Error de MySQL ({ex.Number}): {ex.Message}");
+                }
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error al cargar los descuentos: " + ex.Message);
+                // Captura de cualquier otra excepción
+                throw new Exception($"Error al cargar los descuentos: {ex.Message}");
             }
             finally
             {
                 CerrarConexion(conexionDb);
             }
         }
+
 
         public List<Descuento> ObtenerDescuentos()
         {

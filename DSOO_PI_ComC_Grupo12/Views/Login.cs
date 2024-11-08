@@ -74,11 +74,25 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void btnConfigBD_Click(object sender, EventArgs e)
         {
+            if (!DatabaseConfigurationHelper.CargarConfiguracionBD())
+            {
+                return; // Finaliza si no se puede cargar la configuración
+            }
             FormHelper.OpenChildFormInPanel(new ConfigurarBD(), panelLogin);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (!DatabaseConfigurationHelper.CargarConfiguracionBD())
+            {
+                return; // Finaliza si no se puede cargar la configuración
+            }
+
+            if (!DatabaseConfigurationHelper.CargarDescuentos())
+            {
+                return; // Finaliza si no se pueden cargar los descuentos
+            }
+
             _loginController.HandleLogin(
                 txtUsuario.Text,
                 txtContrasenia.Text,
@@ -101,6 +115,10 @@ namespace DSOO_PI_ComC_Grupo12.Views
 
         private void linkNuevoRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (!DatabaseConfigurationHelper.CargarConfiguracionBD())
+            {
+                return; // Finaliza si no se puede cargar la configuración
+            }
             IRegistrar formulario = new RegistrarEmpleado();
             FormHelper.OpenChildFormInPanel((Form)formulario, panelLogin);
         }

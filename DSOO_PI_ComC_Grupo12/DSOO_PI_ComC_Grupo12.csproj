@@ -132,6 +132,7 @@
     <Compile Include="Controllers\VerPreciosController.cs" />
     <Compile Include="DTO\SocioConPagoDTO.cs" />
     <Compile Include="Helpers\BaseRepository.cs" />
+    <Compile Include="Helpers\DatabaseConfigurationHelper.cs" />
     <Compile Include="Helpers\DescuentoUtils.cs" />
     <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\PrintUtility.cs" />

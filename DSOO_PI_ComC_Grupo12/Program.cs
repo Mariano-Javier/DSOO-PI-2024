@@ -13,29 +13,6 @@ namespace DSOO_PI_ComC_Grupo12
         [STAThread]
         static void Main()
         {
-            // Cargar la configuración de la base de datos al iniciar la aplicación
-            try
-            {
-                ConfiguracionBD.CargarConfiguracion();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar la configuración de la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Finaliza si no se puede cargar la configuración
-            }
-
-            // Cargar descuentos desde la base de datos al iniciar la aplicación
-            try
-            {
-                var descuentosRepo = new DescuentosRepository();
-                descuentosRepo.CargarDescuentos(); // Carga los valores en ConfiguracionDescuentos
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar la configuración de descuentos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Finaliza si no se pueden cargar los descuentos
-            }
-
             // Configuración de la aplicación de Windows Forms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
