@@ -55,7 +55,7 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
                     socio.Apellido,
                     socio.Email,
                     socio.Telefono,
-                    socio.PeriodoFin?.ToString("yyyy-MM-dd") ?? string.Empty
+                    socio.PeriodoFin?.ToString("dd-MM-yyyy") ?? string.Empty
                 );
             }
         }

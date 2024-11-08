@@ -112,9 +112,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label5.Location = new System.Drawing.Point(14, 164);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 22);
+            this.label5.Size = new System.Drawing.Size(148, 22);
             this.label5.TabIndex = 55;
-            this.label5.Text = "Versión: RC 1.18";
+            this.label5.Text = "Versión:  1.2 VF";
             // 
             // label4
             // 
