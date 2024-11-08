@@ -23,9 +23,23 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     return cantidad > 0;  // Devuelve true si el usuario ya existe
                 }
             }
+            catch (MySqlException ex)
+            {
+                // Manejo específico de MySqlException
+                switch (ex.Number)
+                {
+                    case 1042: // No se puede conectar al servidor MySQL
+                        throw new Exception("No se pudo conectar al servidor MySQL. Verifica que el servicio esté en funcionamiento.");
+                    case 1045: // Error de autenticación
+                        throw new Exception("Acceso denegado. Verifica el usuario y la contraseña de la base de datos.");
+                    default:
+                        throw new Exception($"Error de MySQL ({ex.Number}): {ex.Message}");
+                }
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error al verificar usuario: " + ex.Message);
+                // Captura de cualquier otra excepción
+                throw new Exception($"Error al verificar usuario: {ex.Message}");
             }
             finally
             {
@@ -44,8 +58,8 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                 {
                     comando.Connection = conexionDb;
                     comando.CommandText = @"INSERT INTO empleado
-                                            (nombre, apellido, dni, email, telefono, fecha_nac, rol, usuario, contrasenia)
-                                            VALUES (@nombre, @apellido, @dni, @email, @telefono, @fecha_nac, @rol, @usuario, @contrasenia)";
+                                    (nombre, apellido, dni, email, telefono, fecha_nac, rol, usuario, contrasenia)
+                                    VALUES (@nombre, @apellido, @dni, @email, @telefono, @fecha_nac, @rol, @usuario, @contrasenia)";
 
                     comando.Parameters.AddWithValue("@nombre", empleado.Nombre);
                     comando.Parameters.AddWithValue("@apellido", empleado.Apellido);
@@ -61,14 +75,30 @@ namespace DSOO_PI_ComC_Grupo12.Repositories
                     return filasAfectadas > 0 ? comando.LastInsertedId : -1; // Devuelve el ID insertado o -1 si no se insertó
                 }
             }
+            catch (MySqlException ex)
+            {
+                // Manejo específico de MySqlException
+                switch (ex.Number)
+                {
+                    case 1062: // Duplicación de clave primaria (usuario ya existe)
+                        throw new Exception("Error al registrar empleado: el usuario ya existe.");
+                    case 1042: // No se puede conectar al servidor MySQL
+                        throw new Exception("No se pudo conectar al servidor MySQL. Verifica que el servicio esté en funcionamiento.");
+                    case 1045: // Error de autenticación
+                        throw new Exception("Acceso denegado. Verifica el usuario y la contraseña de la base de datos.");
+                    default:
+                        throw new Exception($"Error de MySQL ({ex.Number}): {ex.Message}");
+                }
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error al registrar empleado: " + ex.Message);
+                // Captura de cualquier otra excepción
+                throw new Exception($"Error al registrar empleado: {ex.Message}");
             }
             finally
             {
                 CerrarConexion(conexionDb);
             }
-        }        
+        }
     }
 }
