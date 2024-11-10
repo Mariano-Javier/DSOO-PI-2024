@@ -293,6 +293,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Club Deportivo - Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panelCreditos.ResumeLayout(false);
             this.panelCreditos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogoMain)).EndInit();

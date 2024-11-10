@@ -16,7 +16,6 @@ namespace DSOO_PI_ComC_Grupo12.Views
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(MenuPrincipal_KeyDown);
             _loginController = new LoginController();
-            CargarConfigBd();
         }
 
         private void CargarConfigBd() 
@@ -122,6 +121,11 @@ namespace DSOO_PI_ComC_Grupo12.Views
         private void btnInfo_Click(object sender, EventArgs e)
         {
             FormHelper.OpenChildFormInPanel(new About(), panelLogin);
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            CargarConfigBd();
         }
     }
 }
