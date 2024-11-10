@@ -26,6 +26,10 @@ namespace DSOO_PI_ComC_Grupo12.Helpers
 
             // Set up  preview dialog y lo muestra
             previewdlg.Document = printdoc1;
+            // Centra el print dialog en la pantalla
+            Form previewForm = (Form)previewdlg;
+            previewForm.StartPosition = FormStartPosition.CenterScreen;
+            // muestra el preview dialog
             previewdlg.ShowDialog();
         }
 
