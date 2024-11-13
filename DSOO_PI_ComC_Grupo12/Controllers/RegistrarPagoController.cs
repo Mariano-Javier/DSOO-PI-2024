@@ -10,9 +10,9 @@ using System.Windows.Forms;
 namespace DSOO_PI_ComC_Grupo12.Controllers
 {
     public class RegistrarPagoController
-    {
-        private readonly RegistrarPago _view;
-        private readonly ActividadRepository _actividadRepository;
+    {   // La palabra clave readonly asegura que estas dependencias no puedan ser reasignadas, mejorando así la integridad del estado del controlador y simplificando el flujo de datos dentro de la aplicación.
+        private readonly RegistrarPago _view;// me da acceso  a  a los elementos de la vista RegistrarPago, lo que permite al controlador interactuar con la interfaz de usuario, como actualizar controles, leer entradas de usuario, y controlar eventos. 
+        private readonly ActividadRepository _actividadRepository;//permite que el RegistrarPagoController tenga acceso centralizado a la lógica de obtención de datos de actividades, desacoplando la lógica de acceso a datos de la lógica de presentación.
         private List<Actividad> _actividades;
 
         public RegistrarPagoController(RegistrarPago view)
@@ -207,6 +207,13 @@ namespace DSOO_PI_ComC_Grupo12.Controllers
             {
                 MessageBox.Show("Por favor, seleccione al menos una actividad.");
                 return;
+            }
+
+            // Validación apto -fisico: si "Gimnasio" está seleccionada y el cliente no tiene apto físico
+            if (_view.actividadesSeleccionadas.Contains("Gimnasio") && _view.ClienteSeleccionado != null && !_view.ClienteSeleccionado.EsApto)
+            {
+                MessageBox.Show("El cliente no tiene el apto físico requerido para realizar actividades en el Gimnasio. Elija otra actividad/es.");
+                return; // Detener la ejecución
             }
 
             // Obtener los precios de las actividades seleccionadas
